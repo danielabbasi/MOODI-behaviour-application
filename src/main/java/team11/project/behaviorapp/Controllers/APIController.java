@@ -1,10 +1,12 @@
 package team11.project.behaviorapp.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
+import team11.project.behaviorapp.Services.PatientService;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ public class APIController {
     ActivityRepository activityRepository;
     @Autowired
     PatientRepository patientRepository;
+    @Autowired
+    PatientService patientService;
 
     @RequestMapping(path = "/activity/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date, @RequestParam final String time) {
@@ -26,9 +30,16 @@ public class APIController {
     public List<Patient> getAllPatients(){
         return patientRepository.findAll();
     }
+//
+//    @RequestMapping("/table")
+//    public String listPatients(Model model){
+//        model.addAttribute("patients", patientService.getAllPatients());
+//
+//        return "patients";
+    }
 
 //    @RequestMapping(path = "/gp/index")
 //    public String index(){
 //        return "index";
 //    }
-}
+//}
