@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/api/patient")
 public class APIController {
 
     @RequestMapping(path = "/activity/create", method = RequestMethod.POST)
