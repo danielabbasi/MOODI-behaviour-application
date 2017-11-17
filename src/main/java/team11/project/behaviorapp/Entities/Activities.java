@@ -3,6 +3,7 @@ package team11.project.behaviorapp.Entities;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -17,6 +18,9 @@ public class Activities {
         @Column(name = "activity_name")
         public String name;
 
+        @Column(name = "activity_date")
+        public Date activityDate;
+
         @Column(name="is_completed")
         public Boolean iscompleted;
 
@@ -26,21 +30,22 @@ public class Activities {
         @Column(name = "rating")
         public Long rating;
 
-        @ManyToOne
-        @JoinColumn(name = "nhs_number")
-        Patient patient;
+    @ManyToOne
+    @JoinColumn(name = "patient_id", insertable = false, updatable = false, referencedColumnName = "id")
+    public Patient patients;
 
         public Activities(){
 
         }
 
-        public Activities(Long id, String name, Boolean iscompleted, Boolean isdeleted, Long rating, Patient patient) {
+        public Activities(Date activityDate, Long id, String name, Boolean iscompleted, Boolean isdeleted, Long rating, Patient patient) {
                 this.name = name;
                 this.iscompleted = iscompleted;
                 this.isdeleted = isdeleted;
                 this.rating = rating;
-                this.patient = patient;
-                this.id= id;
+//                this.patient = patient;
+                this.activityDate=activityDate;
+                this.id = id;
         }
 
         public Long getId() {
@@ -83,12 +88,21 @@ public class Activities {
                 this.rating = rating;
         }
 
-        public Patient getPatient() {
-                return patient;
-        }
+    public Date getActivityDate() {
+        return activityDate;
+    }
 
-        public void setPatient(Patient patient) {
-                this.patient = patient;
-        }
+    public void setActivityDate(Date activityDate) {
+        this.activityDate = activityDate;
+    }
+
+
+    public Patient getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Patient patients) {
+        this.patients = patients;
+    }
 }
 

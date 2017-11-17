@@ -1,6 +1,7 @@
 package team11.project.behaviorapp.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by c1673239 on 17/11/2017.
@@ -11,9 +12,11 @@ public class Patient {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "nhs_number")
-        public Long nhsid;
+        @Column(name = "id")
+        public Long id;
 
+        @Column(name = "nhs_number")
+        public Long nhsnumber;
 
         @Column(name = "first_name")
         public String firstname;
@@ -23,25 +26,37 @@ public class Patient {
 
         @ManyToOne
         @JoinColumn(name = "gp_ID")
-        GP gp;
+        public GP gp;
+
+        @OneToMany(mappedBy = "patients")
+        List<Activities> activities;
 
         public Patient(){
 
         }
 
-        public Patient(Long nhsid, String firstname, String lastname, GP gp) {
-                this.nhsid = nhsid;
+        public Patient(Long id, Long nhsnumber, String firstname, String lastname, GP gp) {
+                this.id = id;
+                this.nhsnumber = nhsnumber;
                 this.firstname = firstname;
                 this.lastname = lastname;
                 this.gp = gp;
         }
 
-        public Long getNhsid() {
-                return nhsid;
+        public Long getID() {
+                return id;
         }
 
-        public void setNhsid(Long nhsid) {
-                this.nhsid = nhsid;
+        public void setID(Long id) {
+                this.id = id;
+        }
+
+        public Long getNhsnumber() {
+                return nhsnumber;
+        }
+
+        public void setNhsnumber(Long nhsnumber) {
+                this.nhsnumber = nhsnumber;
         }
 
         public String getFirstname() {
