@@ -7,10 +7,9 @@ import javax.persistence.*;
 /**
  * Created by c1673239 on 17/11/2017.
  */
+@Entity
+@Table(name = "activities")
 public class Activities {
-    @Entity
-    @Table(name = "activities")
-    public class Customer {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,4 +36,4 @@ public class Activities {
 
 
     }
-}
+

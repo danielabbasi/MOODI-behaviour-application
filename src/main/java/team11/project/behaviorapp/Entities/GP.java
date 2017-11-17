@@ -4,10 +4,9 @@ import javax.persistence.*;
 /**
  * Created by c1673239 on 17/11/2017.
  */
+@Entity
+@Table(name = "gps")
 public class GP {
-    @Entity
-    @Table(name = "gps")
-    public class Customer {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,4 +20,5 @@ public class GP {
         private String surname;
     }
 
-}
+
+
