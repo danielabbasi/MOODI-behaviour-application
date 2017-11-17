@@ -4,9 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
 
-/**
- * Created by c1673239 on 17/11/2017.
- */
+
 @Entity
 @Table(name = "activities")
 public class Activities {
