@@ -13,4 +13,9 @@ public class APIController {
     public String createActivity(@RequestBody final String activityName, @RequestBody final String date, @RequestBody final String time) {
         return "Activity Name: " + activityName + "\nDate: " + date + "\nTime: " + time;
     }
+
+//    @RequestMapping(path = "/gp/index")
+//    public String index(){
+//        return "index";
+//    }
 }
