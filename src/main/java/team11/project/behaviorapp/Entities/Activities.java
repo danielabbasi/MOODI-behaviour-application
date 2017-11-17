@@ -32,8 +32,5 @@ public class Activities {
         @JoinColumn(name = "nhs_number")
         Patient patient;
 
-
-
-
 }
 
