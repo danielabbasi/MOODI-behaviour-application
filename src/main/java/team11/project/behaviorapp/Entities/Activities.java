@@ -1,7 +1,37 @@
 package team11.project.behaviorapp.Entities;
 
-/**
- * Created by c1673239 on 17/11/2017.
- */
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "activities")
 public class Activities {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "activity_ID")
+        private Long id;
+
+        @Column(name = "activity_name")
+        private String name;
+
+        @Column(name="is_completed")
+        private Boolean iscompleted;
+
+        @Column(name="is_deleted")
+        private Boolean isdeleted;
+
+        @Column(name = "rating")
+        private Long rating;
+
+        @ManyToOne
+        @JoinColumn(name = "nhs_number")
+        Patient patient;
+
+
+
+
 }
+
