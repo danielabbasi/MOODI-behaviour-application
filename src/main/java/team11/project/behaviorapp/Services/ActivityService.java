@@ -9,7 +9,7 @@ public class ActivityService {
 
     @Autowired
     public ActivityService(ActivityRepository activityRepository) {
-        //this.activityRepository
+        this.activityRepository = activityRepository;
     }
 
     private ActivityRepository activityRepository;
