@@ -11,13 +11,8 @@ public class Patient {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "nhsnumber")
+        @Column(name = "nhs_number")
         private Long nhsid;
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "gp_ID")
-        private Long id;
 
 
         @Column(name = "first_name")
@@ -25,5 +20,9 @@ public class Patient {
 
         @Column(name = "last_name")
         private String lastname;
+
+        @ManyToOne
+        @JoinColumn(name = "gp_ID")
+        GP gp;
     }
 

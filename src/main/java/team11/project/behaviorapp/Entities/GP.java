@@ -10,7 +10,7 @@ public class GP {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "gpID")
+        @Column(name = "gp_ID")
         private Long id;
 
         @Column(name = "first_name")

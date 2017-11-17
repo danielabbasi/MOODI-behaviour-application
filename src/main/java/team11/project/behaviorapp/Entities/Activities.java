@@ -25,15 +25,15 @@ public class Activities {
         @Column(name="is_deleted")
         private Boolean isdeleted;
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "nhsnumber")
-        private Long nhsid;
-
         @Column(name = "rating")
-        private Integer rating;
+        private Long rating;
+
+        @ManyToOne
+        @JoinColumn(name = "nhs_number")
+        Patient patient;
 
 
 
-    }
+
+}
 
