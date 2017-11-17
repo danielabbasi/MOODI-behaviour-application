@@ -3,6 +3,7 @@ package team11.project.behaviorapp.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
@@ -30,6 +31,17 @@ public class APIController {
     public List<Patient> getAllPatients(){
         return patientRepository.findAll();
     }
+
+    @RequestMapping(path = "/activities/all")
+    public List<Activities> getAllActivities(){
+        return activityRepository.findAll();
+    }
+
+    @RequestMapping(path = "/{id}/activities")
+    public List<Activities> getActivity(@PathVariable Long id){
+        return activityRepository.findActivitiesById(id);
+    }
+
 //
 //    @RequestMapping("/table")
 //    public String listPatients(Model model){
