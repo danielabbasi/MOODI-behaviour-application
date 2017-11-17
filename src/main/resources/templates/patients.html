@@ -14,12 +14,12 @@
     <div th:if="${not #lists.isEmpty(patients)}">
         <table>
             <tr>
-                <th>nhsid</th>
+                <th>id</th>
                 <th>firstname</th>
                 <th>lastname</th>
             </tr>
             <tr th:each="patient : ${patients}">
-                <td th:text="${patient.nhsid}"></td>
+                <td th:text="${patient.id}"></td>
                 <td th:text="${patient.firstname}"></td>
                 <td th:text="${patient.lastname}"></td>
 
