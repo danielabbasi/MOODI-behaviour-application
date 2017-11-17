@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Patients list</title>
+    <link rel="stylesheet" href="../static/gg.css" th:href="@{/gg.css}"/>
+    <!--<link rel="stylesheet" href="../static/navbar.css" th:href="@{/navbar.css}"/>-->
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
 </head>
 <body>
 
 <div class ="container">
     <div th:if="${not #lists.isEmpty(patients)}">
-        <h2>Patient List</h2>
-        <table class="table table-stripped">
+        <table>
             <tr>
                 <th>nhsid</th>
                 <th>firstname</th>
