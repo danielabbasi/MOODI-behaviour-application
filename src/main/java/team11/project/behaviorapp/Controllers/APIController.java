@@ -33,8 +33,14 @@ public class APIController {
         return activityRepository.findAll();
     }
 
+    @RequestMapping(path = "/{id}/activities")
+    public List<Activities> getActivity(@PathVariable Long id){
+        return activityRepository.findActivitiesById(id);
+    }
+    }
+
 //    @RequestMapping(path = "/gp/index")
 //    public String index(){
 //        return "index";
 //    }
-}
+

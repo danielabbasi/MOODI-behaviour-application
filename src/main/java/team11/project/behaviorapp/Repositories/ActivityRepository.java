@@ -9,5 +9,6 @@ import java.util.List;
 public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
     List<Activities> findAll();
+    List<Activities> findActivitiesById(Long id);
 
 }

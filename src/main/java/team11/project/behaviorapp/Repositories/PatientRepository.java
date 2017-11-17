@@ -7,4 +7,5 @@ import team11.project.behaviorapp.Entities.Patient;
  * Created by c1443907 on 17/11/2017.
  */
 public interface PatientRepository extends JpaRepository<Patient, Long> {
+
 }
