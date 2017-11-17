@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div class ="container">
+    <div th:if="${not #lists.isEmpty(patients)}">
+        <h2>Patient List</h2>
+        <table class="table table-stripped">
+            <tr>
+                <th>nhsid</th>
+                <th>firstname</th>
+                <th>lastname</th>
+            </tr>
+            <tr th:each="patient : ${patients}">
+                <td th:text="${patient.nhsid}"></td>
+                <td th:text="${patient.firstname}"></td>
+                <td th:text="${patient.lastname}"></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
