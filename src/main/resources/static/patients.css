@@ -1,0 +1,254 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+
+*{
+    margin: 0;
+    padding:0;
+    text-decoration: none;
+    list-style:none;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+.topBar{
+    overflow: hidden;
+    background-color: #1c2631;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000000;
+    height: 70px;
+    box-shadow:  2px 2px 2px 1px #bfbfbf;
+    /*height: 50px;*/
+}
+
+.toggleMenu{
+    color: white;
+    cursor: pointer;
+    z-index: 10000000;
+    font-size: 2em;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+#sidenav {
+    position:fixed;
+    width: 0px;
+    height:100%;
+    background-color:#35495d;
+    margin-left:0px;
+    z-index:1;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    /*display: flex;*/
+    /*flex-direction:column;*/
+    box-shadow:  2px 2px 2px 1px #a1a1a1;
+
+}
+
+.logo {
+    /*margin: 12vh 0;*/
+    text-align: center;
+    border-bottom: 0.5px solid #f1f1f1;
+    margin-bottom: 20px;
+    margin-top:40px;
+    background-image: url("../static/bg2.jpg");
+    background-repeat:repeat;
+}
+
+
+.logo img{
+    margin-top: 40px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.logo p{
+    color: white;
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+
+
+#main-nav {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    width: 100%;
+    /*display: table;*/
+}
+
+
+#main-nav li {
+    padding:0;
+    margin:0;
+    /*display: table-cell;*/
+}
+
+#main-nav li a {
+    display:block;
+    padding:0 20px 0 100px;
+    text-decoration:none;
+    color:#98cde6;
+    font-weight:200;
+    line-height:65px;
+}
+
+#main-nav li a:hover {
+    color:white;
+    transition: all 0.3s ease-in-out;
+    background:rgba(0,0,0,.2);
+
+
+}
+
+#main-nav li.active a {
+    background:#1caf9a;
+    color:white;
+    /*box-shadow:inset 5px 0 0 #ef8700;*/
+}
+
+#main-nav li a .fa {
+    font-size:30px;
+    position:absolute;
+    width:60px;
+    height:65px;
+    line-height:65px;
+    text-align:center;
+    left:20px;
+    color: white;
+}
+
+#main-nav li.active a .fa {
+    color:#98cde6;
+}
+.main {
+    transition: all 0.3s ease-in-out;
+}
+
+.test{
+    font-size: 90px;
+    color: black;
+}
+
+#refresh{
+    margin-top: 150px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+}
+
+#refresh a:hover{
+    cursor: pointer;
+}
+
+.container {
+    /*width: 100%;*/
+    margin: 30px auto;
+    padding: 25px;
+    min-height: 400px;
+    height: auto;
+}
+
+.box h3 {
+    text-align: center;
+    position: relative;
+    top: 80px;
+}
+
+.box {
+    /*width: 90%;*/
+    background: #FFF;
+    margin: 40px auto;
+}
+
+.effect {
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.container table{
+    font-family: 'Montserrat', sans-serif;
+    border-collapse: collapse;
+    width:100%;
+}
+
+.container table td, .container table tr{
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+.container table th{
+    font-size: 18px;
+    border-right: 1px solid #dddddd;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background: #35495d;
+    font-weight:200;
+}
+
+.container table th .container table tr {
+    text-align: center;
+}
+
+.container table .goTo{
+    text-align: center;
+}
+.container table .goTo a{
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+
+.container table .goTo button:hover{
+    background: #00b3b3;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    color: #f1f1f1;
+
+}
+
+.selectPatient{
+    border:none;
+    font-size:15px;
+    background: #FFFFFF;
+    padding: 15px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+
+}
+
+
+
+@media only screen and (max-width: 1366px) {
+
+    #main-nav li a .fa {
+        font-size:25px;
+
+
+}
+
+    .logo img{
+        margin-top: 40px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+}
+
+
+    .logo p{
+        color: white;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+}
+
