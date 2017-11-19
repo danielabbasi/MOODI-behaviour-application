@@ -17,11 +17,13 @@
                 <th>id</th>
                 <th>firstname</th>
                 <th>lastname</th>
+                <th>Activities</th>
             </tr>
             <tr th:each="patient : ${patients}">
                 <td th:text="${patient.id}"></td>
                 <td th:text="${patient.firstname}"></td>
                 <td th:text="${patient.lastname}"></td>
+                <td></td>
 
             </tr>
         </table>
