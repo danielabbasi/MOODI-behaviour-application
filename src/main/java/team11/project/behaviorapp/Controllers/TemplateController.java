@@ -22,7 +22,7 @@ public class TemplateController {
     }
 
 
-    @RequestMapping("/table")
+    @RequestMapping("/gp/patients")
     public String listPatients(Model model){
         model.addAttribute("patients", patientService.getAllPatients());
 
