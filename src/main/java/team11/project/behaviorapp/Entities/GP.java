@@ -13,6 +13,9 @@ public class GP {
         @Column(name = "gp_ID")
         public Long id;
 
+        @Column(name="title")
+        public String title;
+
         @Column(name = "first_name")
         public String name;
 
@@ -23,10 +26,19 @@ public class GP {
 
         }
 
-        public GP(Long id, String name, String surname) {
+        public GP(String title, Long id, String name, String surname) {
                 this.name = name;
                 this.surname = surname;
                 this.id = id;
+                this.title = title;
+        }
+
+        public String getTitle() {
+                return title;
+        }
+
+        public void setTitle(String title) {
+                this.title = title;
         }
 
         public Long getId() {
