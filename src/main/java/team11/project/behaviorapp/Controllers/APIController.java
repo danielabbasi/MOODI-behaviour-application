@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.*;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
-import team11.project.behaviorapp.Repositories.CustomList;
 import team11.project.behaviorapp.Repositories.PatientRepository;
+import team11.project.behaviorapp.Services.ActivityCreationService;
 import team11.project.behaviorapp.Services.PatientService;
 
-import java.util.Collection;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -23,10 +26,17 @@ public class APIController {
     PatientRepository patientRepository;
     @Autowired
     PatientService patientService;
+    @Autowired
+    ActivityCreationService activityCreationService;
 
-    @RequestMapping(path = "/activity/create", method = RequestMethod.POST)
-    public String createActivity(@RequestParam final String activityName, @RequestParam final String date, @RequestParam final String time) {
-        return "Activity Name: " + activityName + "\nDate: " + date + "\nTime: " + time;
+    @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
+    public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
+        //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+
+        activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
+
+        return "Activity created.";
     }
 
     @RequestMapping(path = "/All")
@@ -40,7 +50,7 @@ public class APIController {
     }
 
     @RequestMapping(path = "/{id}/activities")
-    public Collection<CustomList> getActivity(@PathVariable Long id){
+    public List<Activities> getActivity(@PathVariable Long id){
         return activityRepository.findActivitiesById(id);
     }
 

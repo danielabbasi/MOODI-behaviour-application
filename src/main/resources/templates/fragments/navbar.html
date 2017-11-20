@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Slide</title>
+    <link rel="stylesheet" href="../static/patients.css" th:href="@{/patients.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="sidenav" th:fragment="navbar">
+    <div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">
+        <img src="http://images.medicaldaily.com/sites/medicaldaily.com/files/2015/03/14/doctor.jpg"/>
+        <p class="welcome"> Welcome Dr Funk </p>
+    </div>
+
+    <ul id="main-nav">
+        <li class="active">
+            <a href="index.html" th:href="@{/gp/index}">
+                <i class="fa fa-th-large"></i>
+                Dashboard
+            </a>
+        </li>
+
+
+        <li>
+            <a href="patients.html" th:href="@{/gp/patients}">
+                <i class="fa fa-user-circle"></i>
+                Patients
+
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-wrench"></i>
+                Settings
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-calendar"></i>
+                Calendar
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-question-circle"></i>
+                Help
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
