@@ -34,7 +34,7 @@ function rangeSlider(id, onDrag) {
     function updateDragger(e) {
         if (down && e.pageX >= rangeLeft && e.pageX <= (rangeLeft + rangeWidth)) {
             dragger.style.left = e.pageX - rangeLeft - draggerWidth + 'px';
-            if (typeof onDrag == "function") onDrag(Math.round(((e.pageX - rangeLeft) / rangeWidth) * 10));
+            if (typeof onDrag == "function") onDrag(Math.round(((e.pageX - rangeLeft) / rangeWidth) * 100));
         }
     }
 
@@ -42,14 +42,10 @@ function rangeSlider(id, onDrag) {
 
 
 // Run!
-moods = ["Happy", "Complacent", "Neutral", "Sad", "Depressed"];
+moods = ["Happy", "Complacent", "Neutral", "Sad", "Depressed", "KMS"];
 //moods = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 rangeSlider('range-slider-1', function(value) {
-    document.getElementById('test-result').innerHTML = determineState(value, moods) + " " + value + '%';
-});
-
-rangeSlider('range-slider-2', function(value) {
-    document.getElementById('test-result').innerHTML = determineState(value, moods) + '%';
+    document.getElementById('test-result').innerHTML = determineState(value, moods);
 });
 
 function determineState(percentage, statesArray) {
