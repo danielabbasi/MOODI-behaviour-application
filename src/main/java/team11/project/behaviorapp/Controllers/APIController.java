@@ -29,16 +29,14 @@ public class APIController {
     @Autowired
     ActivityCreationService activityCreationService;
 
-    @RequestMapping(path = "/activity/create", method = RequestMethod.POST)
+    @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
-        System.out.println("Activity Name: " + activityName + "\nDate: " + date);
-
         //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
-        System.out.println(dateFormat.parse(date).toString());
         activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
-        return "boo";
+
+        return "Activity created.";
     }
 
     @RequestMapping(path = "/All")

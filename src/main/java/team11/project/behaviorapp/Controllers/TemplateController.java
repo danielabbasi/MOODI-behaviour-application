@@ -29,6 +29,8 @@ public class TemplateController {
         return "patients";
     }
 
-
-
+    @RequestMapping("/patient/activities/create")
+    public String createActivity() {
+        return "createActivity";
+    }
 }

@@ -29,8 +29,7 @@ public class ActivityCreationRepository extends JdbcRepository implements IActiv
                     connection.close();
                 }
             } catch (SQLException exception) {
-                System.out.println("boooooo");
-                System.out.println(exception.getMessage());
+
             }
         }
     }
