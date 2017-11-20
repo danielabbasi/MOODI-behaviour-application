@@ -1,45 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>Slide</title>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
     <link rel="stylesheet" href="../static/patients.css" th:href="@{/patients.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
-<body>
-
 <header>
     <div th:replace="fragments/header :: header"></div>
 </header>
 
+<!--<div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>-->
+<!--<div th:fragment="footer">-->
 
+
+<body>
 <div th:replace="fragments/navbar :: navbar"></div>
-
-
-
-<main id="main" class="main">
-    <div class="container">
-        <div class="box effect">
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Activities</th>
-                </tr>
-                <tr th:each="patient : ${patients}">
-                    <td th:text="${patient.id}"> Test</td>
-                    <td th:text="${patient.firstname}">Test</td>
-                    <td th:text="${patient.lastname}">Test</td>
-                    <td class="goTo"><button class="selectPatient">Check Activities</button></td>
-
-                </tr>
-            </table>
-        </div>
-    </div>
-</main>
-
 
 
 <script>
@@ -68,17 +45,7 @@
             main.style.marginLeft = '250px';
         }
     }
-
-
-
-
-
-
-
-
-
 </script>
-
 
 </body>
 </html>

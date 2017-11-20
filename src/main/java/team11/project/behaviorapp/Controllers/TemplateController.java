@@ -18,7 +18,7 @@ public class TemplateController {
 
     @RequestMapping(path = "/gp/index")
     public String index() {
-        return "index";
+        return "gpIndex";
     }
 
 
