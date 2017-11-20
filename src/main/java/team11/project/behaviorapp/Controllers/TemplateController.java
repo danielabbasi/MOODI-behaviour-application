@@ -17,16 +17,18 @@ public class TemplateController {
     PatientService patientService;
 
     @RequestMapping(path = "/gp/index")
-    public String index(){
+    public String index() {
         return "index";
     }
 
 
     @RequestMapping("/gp/patients")
-    public String listPatients(Model model){
+    public String listPatients(Model model) {
         model.addAttribute("patients", patientService.getAllPatients());
 
         return "patients";
-}
+    }
+
+
 
 }

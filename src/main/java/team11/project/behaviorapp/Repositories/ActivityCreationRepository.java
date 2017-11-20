@@ -1,37 +1,37 @@
 package team11.project.behaviorapp.Repositories;
 
+import org.springframework.stereotype.Repository;
+
 import java.sql.*;
 import java.util.Date;
 
-public class ActivityCreationRepository implements IActivityCreationRepository {
+@Repository
+public class ActivityCreationRepository extends JdbcRepository implements IActivityCreationRepository {
 
     public void createActivity(long patientID, String activityName, Date date) {
         Connection connection = null;
 
-//        try {
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/donations", "root", "comsc");
-//
-//            PreparedStatement preparedStatement = connection.prepareStatement("");
-//
-//            preparedStatement.setString(1, charityRegistrationNumber);
-//            preparedStatement.setString(2, charityRegistrationNumber);
-//            preparedStatement.setInt(3, count);
-//
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//
-//            while(resultSet.next()) {
-//                returnCharityActivities.add(new CharityActivity(resultSet.getString(1), resultSet.getString(2), resultSet.getDate(3)));
-//            }
-//        } catch (SQLException exception) {
-//
-//        } finally {
-//            try {
-//                if(connection != null) {
-//                    connection.close();
-//                }
-//            } catch (SQLException exception) {
-//
-//            }
-//        }
+        try {
+            connection = getDatabaseConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO activities (activity_name, activity_date, is_completed, rating, is_deleted, patient_id) VALUES(?, ?, false, null, false, ?);");
+
+            preparedStatement.setString(1, activityName);
+            preparedStatement.setTimestamp(2, new java.sql.Timestamp(date.getTime())); //Don't use 'setDate(...)' here because this will only include the date, not the time.
+            preparedStatement.setLong(3, patientID);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception) {
+
+        } finally {
+            try {
+                if(connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException exception) {
+                System.out.println("boooooo");
+                System.out.println(exception.getMessage());
+            }
+        }
     }
 }

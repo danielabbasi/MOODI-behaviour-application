@@ -7,8 +7,13 @@ import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
+import team11.project.behaviorapp.Services.ActivityCreationService;
 import team11.project.behaviorapp.Services.PatientService;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -21,10 +26,19 @@ public class APIController {
     PatientRepository patientRepository;
     @Autowired
     PatientService patientService;
+    @Autowired
+    ActivityCreationService activityCreationService;
 
     @RequestMapping(path = "/activity/create", method = RequestMethod.POST)
-    public String createActivity(@RequestParam final String activityName, @RequestParam final String date, @RequestParam final String time) {
-        return "Activity Name: " + activityName + "\nDate: " + date + "\nTime: " + time;
+    public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
+        System.out.println("Activity Name: " + activityName + "\nDate: " + date);
+
+        //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+
+        System.out.println(dateFormat.parse(date).toString());
+        activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
+        return "boo";
     }
 
     @RequestMapping(path = "/All")
