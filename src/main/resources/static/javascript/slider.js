@@ -42,7 +42,17 @@ function rangeSlider(id, onDrag) {
 
 
 // Run!
-
+moods = ["Happy", "Complacent", "Neutral", "Sad", "Depressed"];
+//moods = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 rangeSlider('range-slider-1', function(value) {
-    document.getElementById('test-result').innerHTML = value + '%';
+    document.getElementById('test-result').innerHTML = determineState(value, moods) + " " + value + '%';
 });
+
+rangeSlider('range-slider-2', function(value) {
+    document.getElementById('test-result').innerHTML = determineState(value, moods) + '%';
+});
+
+function determineState(percentage, statesArray) {
+    valueOfOne = 100 / (statesArray.length -1);
+    return statesArray[Math.round(percentage / valueOfOne)];
+}
