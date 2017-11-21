@@ -74,7 +74,13 @@ public class APIController {
 //        model.addAttribute("patients", patientService.getAllPatients());
 //
 //        return "patients";
+
+
+    @RequestMapping("test/{firstname}")
+    public List<Patient> getPatientByName(@PathVariable String firstname){
+        return patientService.getPatientByName(firstname);
     }
+}
 
 //    @RequestMapping(path = "/gp/index")
 //    public String index(){

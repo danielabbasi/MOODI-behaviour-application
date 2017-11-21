@@ -42,4 +42,8 @@ public class PatientService {
 
     }
 
+    public List<Patient> getPatientByName(@PathVariable String firstname){
+        return patientRepository.findPatientByFirstname(firstname);
+    }
+
 }
