@@ -28,7 +28,14 @@ public class PatientService {
     public List<Patient>getAllPatients(){
         return patientRepository.findAll();
     }
-    public Collection<CustomList>getActivityList(Long id) {return activityRepository.findActivitiesById(id);}
+    public Collection<CustomList>getActivityList(Long id) {
+
+        Patient p = patientRepository.findById(id);
+
+        Collection<CustomList> activities = activityRepository.findActivitiesByPatients(p);
+
+        return activities;
+    }
 
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
