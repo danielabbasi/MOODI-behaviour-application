@@ -51,16 +51,23 @@ public class APIController {
         return activityRepository.findAll();
     }
 
-    @RequestMapping(path = "/{id}/activities")
-    public Collection<CustomList> getActivity(@PathVariable Long id){
-        return activityRepository.findActivitiesById(id);
-    }
+//    @RequestMapping(path = "/{id}/activities")
+//    public Collection<CustomList> getActivity(@PathVariable Long id){
+//        return activityRepository.findActivitiesById(id);
+//    }
 
     @RequestMapping("/patient/specific/{id}")
     public Patient getSinglePatent(@PathVariable Long id){
         return patientRepository.findOne(id);
     }
 
+    @RequestMapping(path = "/{id}/activities")
+    public Collection<CustomList> getActivities(@PathVariable Long id) {
+
+        Collection<CustomList> activities = patientService.getActivityList(id);
+
+        return activities;
+    }
 //
 //    @RequestMapping("/table")
 //    public String listPatients(Model model){
