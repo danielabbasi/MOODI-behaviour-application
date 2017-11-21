@@ -97,18 +97,18 @@
 }
 
 #main-nav li a:hover {
-    color:white;
+    color:#FFFFFF;
     transition: all 0.3s ease-in-out;
-    background:rgba(0,0,0,.2);
-
-
-}
-
-#main-nav li.active a {
     background:#1caf9a;
-    color:white;
-    /*box-shadow:inset 5px 0 0 #ef8700;*/
+
+
 }
+
+/*#main-nav li.active a {*/
+    /*background:#1caf9a;*/
+    /*color:white;*/
+    /*!*box-shadow:inset 5px 0 0 #ef8700;*!*/
+/*}*/
 
 #main-nav li a .fa {
     font-size:30px;
@@ -156,6 +156,12 @@
     text-align: center;
     position: relative;
     top: 80px;
+}
+
+.box h1{
+    text-align: center;
+    font-weight:200;
+    color: #00cccc;
 }
 
 .box {
@@ -206,11 +212,27 @@
 }
 
 
-.container table .goTo button:hover{
-    background: #00b3b3;
-    cursor: pointer;
+
+#activityButton .fa {
+    font-size: 30px;
+    color:    #00b3b3
+;
+    }
+
+#activityButton .fa:hover{
+    color: #ff9933;
     transition: all 0.3s ease-in-out;
-    color: #f1f1f1;
+
+}
+
+#recordButton .fa{
+    font-size: 30px;
+    color:   #00b3b3;
+}
+
+#recordButton .fa:hover{
+    color: #ff9933;
+    transition: all 0.3s ease-in-out;
 
 }
 
@@ -250,5 +272,11 @@
         padding-top: 10px;
     }
 
+}
+
+.gpDashboard{
+    background:url("https://i.imgur.com/WyPvWWM.jpg");
+    background-repeat:no-repeat;
+    background-position: center;
 }
 
