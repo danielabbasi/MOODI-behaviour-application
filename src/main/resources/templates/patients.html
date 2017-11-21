@@ -35,7 +35,7 @@
                     <td th:text="${patient.lastname}">Test</td>
                     <td class="goTo" id="activityButton"><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     </a></td>
-                    <td class="goTo" id="recordButton"><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    <td class="goTo" id="recordButton"><a href="#" th:href="@{'/gp/patients/record/' + ${patient.id}}"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     </a></td>
 
 
