@@ -56,6 +56,11 @@ public class APIController {
         return activityRepository.findActivitiesById(id);
     }
 
+    @RequestMapping("/patient/specific/{id}")
+    public Patient getSinglePatent(@PathVariable Long id){
+        return patientRepository.findOne(id);
+    }
+
 //
 //    @RequestMapping("/table")
 //    public String listPatients(Model model){
