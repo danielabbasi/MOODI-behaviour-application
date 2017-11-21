@@ -57,7 +57,7 @@ public class TemplateController {
         return "createActivity";
     }
 
-    @RequestMapping("patient/{id}/activityList")
+    @RequestMapping("/patient/{id}/activityList")
     public String listActivities(@PathVariable Long id, Model model){
         model.addAttribute("activities", patientService.getActivityList(id));
         return "activityList";

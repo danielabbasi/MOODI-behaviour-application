@@ -33,8 +33,7 @@
                     <td th:text="${patient.id}"> Test</td>
                     <td th:text="${patient.firstname}">Test</td>
                     <td th:text="${patient.lastname}">Test</td>
-                    <td class="goTo" id="activityButton"><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                    </a></td>
+                    <td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>
                     <td class="goTo" id="recordButton"><a href="#" th:href="@{'/gp/patients/record/' + ${patient.id}}"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
                     </a></td>
 
