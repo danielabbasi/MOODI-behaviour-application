@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team11.project.behaviorapp.AbstractTest;
-import team11.project.behaviorapp.Entities.Patient;
+
 import static org.hamcrest.Matchers.hasProperty;
 
 

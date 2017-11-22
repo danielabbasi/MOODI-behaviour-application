@@ -105,9 +105,9 @@
 }
 
 /*#main-nav li.active a {*/
-    /*background:#1caf9a;*/
-    /*color:white;*/
-    /*!*box-shadow:inset 5px 0 0 #ef8700;*!*/
+/*background:#1caf9a;*/
+/*color:white;*/
+/*!*box-shadow:inset 5px 0 0 #ef8700;*!*/
 /*}*/
 
 #main-nav li a .fa {
@@ -217,7 +217,7 @@
     font-size: 30px;
     color:    #00b3b3
 ;
-    }
+}
 
 #activityButton .fa:hover{
     color: #ff9933;
@@ -256,14 +256,14 @@
         font-size:25px;
 
 
-}
+    }
 
     .logo img{
         margin-top: 40px;
         border-radius: 50%;
         width: 50px;
         height: 50px;
-}
+    }
 
 
     .logo p{
@@ -281,7 +281,7 @@
 }
 
 .formContainer{
-display: flex;
+    display: flex;
     justify-content: center;
 }
 

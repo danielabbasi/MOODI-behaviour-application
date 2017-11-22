@@ -8,62 +8,62 @@ import javax.persistence.*;
 @Table(name = "gps")
 public class GP {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "gp_ID")
-        public Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "gp_ID")
+    public Long id;
 
-        @Column(name="title")
-        public String title;
+    @Column(name="title")
+    public String title;
 
-        @Column(name = "first_name")
-        public String name;
+    @Column(name = "first_name")
+    public String name;
 
-        @Column(name = "last_name")
-        public String surname;
+    @Column(name = "last_name")
+    public String surname;
 
-        public GP(){
+    public GP(){
 
-        }
+    }
 
-        public GP(String title, Long id, String name, String surname) {
-                this.name = name;
-                this.surname = surname;
-                this.id = id;
-                this.title = title;
-        }
+    public GP(String title, Long id, String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+        this.id = id;
+        this.title = title;
+    }
 
-        public String getTitle() {
-                return title;
-        }
+    public String getTitle() {
+        return title;
+    }
 
-        public void setTitle(String title) {
-                this.title = title;
-        }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-        public Long getId() {
-                return id;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public void setId(Long id) {
-                this.id = id;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public String getName() {
-                return name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setName(String name) {
-                this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getSurname() {
-                return surname;
-        }
+    public String getSurname() {
+        return surname;
+    }
 
-        public void setSurname(String surname) {
-                this.surname = surname;
-        }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 }
 
 
