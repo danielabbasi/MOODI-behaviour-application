@@ -43,7 +43,7 @@ public class TemplateController {
     public String listPatients(Model model) {
         model.addAttribute("patients", patientService.getAllPatients());
 
-        return "patients";
+        return "patientsList";
     }
 
     @RequestMapping("/gp/patients/record/{id}")

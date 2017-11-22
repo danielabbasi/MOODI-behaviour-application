@@ -3,13 +3,13 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <title>Slide</title>
-    <link rel="stylesheet" href="../static/patients.css" th:href="@{/patients.css}"/>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
-<div id="sidenav" th:fragment="navbar">
+<div id="sidenav" th:fragment="gpSideMenu">
     <div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">
         <img src="http://images.medicaldaily.com/sites/medicaldaily.com/files/2015/03/14/doctor.jpg"/>
         <p class="welcome"> Welcome Dr Funk </p>
