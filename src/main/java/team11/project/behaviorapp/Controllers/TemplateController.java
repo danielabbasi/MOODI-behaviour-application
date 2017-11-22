@@ -33,6 +33,7 @@ public class TemplateController {
     @Autowired
     PatientRepository patientRepository;
 
+//    <-------- GP ------------>
     @RequestMapping(path = "/gp/index")
     public String index() {
         return "gpIndex";
@@ -50,6 +51,12 @@ public class TemplateController {
     public String specificRecord(@PathVariable Long id, Model model){
         model.addAttribute("records", patientService.getSpecificRecord(id));
         return "patientRecord";
+    }
+//    <-------- Patient ------------>
+
+    @RequestMapping(path = "/patient/index")
+    public String patientIndex() {
+        return "patientIndex";
     }
 
     @RequestMapping("/patient/activities/create")

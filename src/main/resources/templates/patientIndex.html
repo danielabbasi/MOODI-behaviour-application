@@ -14,7 +14,27 @@
 </header>
 
 
+<div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
 
+<script>
+    $('#main-nav li a').click(function(){
+        $('#main-nav li').removeClass('active');
+        $(this).parent().addClass('active')
+    });
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+</script>
 
 </body>
 </html>

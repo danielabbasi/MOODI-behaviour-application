@@ -38,7 +38,7 @@ public class PatientServiceTest extends AbstractTest {
     public void getActivityList() throws Exception {
     }
 
-    // Test that checks that the query in the service/specified below does get a specific record passed in by the user
+    // Test that checks that the query in the service/specified below does indeed get a specific record passed in by the user
     @Test
     public void getSpecificRecord() throws Exception {
 
@@ -48,7 +48,9 @@ public class PatientServiceTest extends AbstractTest {
 
         Assert.assertEquals("Should return a patient with the above id", id, record.getID());
     }
-    // Tests the query works by finding the record with the firstname "Sam" and checks the size of the resultset
+    // Tests that the query works by finding the record with the first name "Sam"
+    // Retrieves the corresponding surname
+    // and checks the size of the resultset which should be one, since there is only one Sam in the DB
     @Test
     public void getPatientByName() throws Exception{
         List<Patient> recordEntry = patientService.getPatientByName("Sam");
