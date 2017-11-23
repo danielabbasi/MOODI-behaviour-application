@@ -27,9 +27,13 @@ the slider on the tabs in this specific page-->
 
     <div id="tabs" class="c-tabs">
         <div class="c-tabs-nav">
-            <a href="#" class="c-tabs-nav__link is-active">Upcoming</a>
+            <!--/patient/test/test/{id}/test/{isCompleted}-->
+            <!--th:href="@{'/patient/history' + ${patient.id}}"-->
+            <a href="#"   class="c-tabs-nav__link is-active">Upcoming</a>
             <a href="#" class="c-tabs-nav__link">Create</a>
+            <!--<a href="#" class="c-tabs-nav__link" th:href="@{'/patient/history/' + ${patient.id}}">History</a>-->
             <a href="#" class="c-tabs-nav__link">History</a>
+
 
 
             <div class="c-tab-nav-marker"></div>
@@ -38,7 +42,19 @@ the slider on the tabs in this specific page-->
 
         <div class="c-tab is-active">
             <div class="c-tab__content">
+                <table>
+                    <tr>
+                        <th>Activity Name</th>
+                        <th>Date</th>
+                        <th>Rating</th>
+                    </tr>
+                    <tr th:each="activities : ${upcoming}">
+                        <td th:text="${activities.name}"> Test</td>
+                        <td th:text="${activities.activityDate}">Test</td>
+                        <td th:text="${activities.rating}">Test</td>
 
+                    </tr>
+                </table>
             </div>
         </div>
 
@@ -61,28 +77,20 @@ the slider on the tabs in this specific page-->
         <div class="c-tab">
             <div class="c-tab__content">
                 <div class="container">
-                    <div class="box effect">
-                    <table class="patientTable">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Activities</th>
-                        <th>Record</th>
-                    </tr>
-                    <tr th:each="patient : ${patients}">
-                        <td th:text="${patient.id}"> Test</td>
-                        <td th:text="${patient.firstname}">Test</td>
-                        <td th:text="${patient.lastname}">Test</td>
-                        <td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>
-                        <td class="goTo" id="recordButton"><a href="#" th:href="@{'/gp/patients/record/' + ${patient.id}}"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                        </a></td>
+                    <table class="actTable"  method="GET" action="http://localhost:8080/patient/history/form/{id}">
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr th:each="activities : ${history}">
+                            <td th:text="${activities.name}"> Test</td>
+                            <td th:text="${activities.activityDate}">Test</td>
+                            <td th:text="${activities.rating}">Test</td>
 
+                        </tr>
+                    </table>
 
-
-                    </tr>
-                </table>
-            </div>
             </div>
             </div>
         </div>
