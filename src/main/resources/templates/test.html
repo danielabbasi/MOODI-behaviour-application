@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+
+
+
+<body class="activitiesBody">
+<div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+
+<!--Id not given to main because JS "main" push animation messes up
+the slider on the tabs in this specific page-->
+<main class="main">
+
+
+
+    <div id="tabs" class="c-tabs">
+        <div class="c-tabs-nav">
+            <a href="#" class="c-tabs-nav__link is-active">Upcoming</a>
+            <a href="#" class="c-tabs-nav__link">Create</a>
+            <a href="#" class="c-tabs-nav__link">History</a>
+
+
+            <div class="c-tab-nav-marker"></div>
+        </div>
+
+
+        <div class="c-tab is-active">
+            <div class="c-tab__content">
+
+            </div>
+        </div>
+
+        <div class="c-tab">
+            <div class="c-tab__content">
+                <div class="formContainer">
+                    <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/activities/create">
+                        <div class="form-group">
+                            <input type="text" name="activityName" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
+                        </div>
+                        <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="c-tab">
+            <div class="c-tab__content">
+                <div class="container">
+                    <div class="box effect">
+                    <table class="patientTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Activities</th>
+                        <th>Record</th>
+                    </tr>
+                    <tr th:each="patient : ${patients}">
+                        <td th:text="${patient.id}"> Test</td>
+                        <td th:text="${patient.firstname}">Test</td>
+                        <td th:text="${patient.lastname}">Test</td>
+                        <td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>
+                        <td class="goTo" id="recordButton"><a href="#" th:href="@{'/gp/patients/record/' + ${patient.id}}"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                        </a></td>
+
+
+
+                    </tr>
+                </table>
+            </div>
+            </div>
+            </div>
+        </div>
+
+
+        </div>
+
+<!--Reference & Credit to Felix Franzen, Open Source CodePen
+@ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
+</main>
+
+<script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
+<script>
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+
+</script>
+
+</body>
+</html>
