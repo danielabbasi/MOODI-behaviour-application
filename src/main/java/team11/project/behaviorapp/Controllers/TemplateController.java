@@ -70,6 +70,18 @@ public class TemplateController {
         return "activityList";
     }
 
+    //    <-------- Test ------------>
+
+    @RequestMapping("/patient/test")
+    public String tablePatients(Model model) {
+        model.addAttribute("patients", patientService.getAllPatients());
+
+        return "test";
+    }
+
+
+
+
 //    @RequestMapping("/login")
 //    public String login(HttpSession httpSession, @RequestParam("username") String username, @RequestParam("password") String password){
 //        Account a = accountSrvice.authnticate(username, password);
