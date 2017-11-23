@@ -79,7 +79,7 @@ public class TemplateController {
         return "test";
     }
 
-    @RequestMapping("/patient/history/{id}")
+    @RequestMapping("/patient/activities/{id}")
     public String listTableActivitiesll(@PathVariable Long id, Model model){
         model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false));
         model.addAttribute("history", patientService.getUpcomingActivities(id, true));
