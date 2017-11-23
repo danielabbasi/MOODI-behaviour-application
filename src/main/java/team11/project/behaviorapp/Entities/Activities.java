@@ -1,7 +1,5 @@
 package team11.project.behaviorapp.Entities;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -22,10 +20,10 @@ public class Activities {
         public Date activityDate;
 
         @Column(name="is_completed")
-        public Boolean iscompleted;
+        public Boolean isCompleted;
 
         @Column(name="is_deleted")
-        public Boolean isdeleted;
+        public Boolean isDeleted;
 
         @Column(name = "rating")
         public Long rating;
@@ -38,10 +36,10 @@ public class Activities {
 
         }
 
-        public Activities(Date activityDate, Long id, String name, Boolean iscompleted, Boolean isdeleted, Long rating, Patient patient) {
+        public Activities(Date activityDate, Long id, String name, Boolean isCompleted, Boolean isDeleted, Long rating, Patient patient) {
                 this.name = name;
-                this.iscompleted = iscompleted;
-                this.isdeleted = isdeleted;
+                this.isCompleted = isCompleted;
+                this.isDeleted = isDeleted;
                 this.rating = rating;
 //                this.patient = patient;
                 this.activityDate=activityDate;
@@ -64,20 +62,20 @@ public class Activities {
                 this.name = name;
         }
 
-        public Boolean getIscompleted() {
-                return iscompleted;
+        public Boolean getIsCompleted() {
+                return isCompleted;
         }
 
-        public void setIscompleted(Boolean iscompleted) {
-                this.iscompleted = iscompleted;
+        public void setIsCompleted(Boolean isCompleted) {
+                this.isCompleted = isCompleted;
         }
 
-        public Boolean getIsdeleted() {
-                return isdeleted;
+        public Boolean getIsDeleted() {
+                return isDeleted;
         }
 
-        public void setIsdeleted(Boolean isdeleted) {
-                this.isdeleted = isdeleted;
+        public void setIsDeleted(Boolean isDeleted) {
+                this.isDeleted = isDeleted;
         }
 
         public Long getRating() {
