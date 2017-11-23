@@ -68,6 +68,21 @@ public class APIController {
 
         return activities;
     }
+
+    @RequestMapping("/test/test/lol/{isCompleted}")
+    public List<Activities> getCompletedActivities(@PathVariable Boolean isCompleted ) {
+        return activityRepository.findActivitiesByIsCompleted(isCompleted);
+
+    }
+
+    @RequestMapping("/test/test/{id}/test/{isCompleted}")
+    public List<Activities> getCompletedActivities(@PathVariable Long id, @PathVariable Boolean isCompleted ) {
+
+        List<Activities> upcomingActivities = patientService.getUpcomingActivities(id, isCompleted);
+
+        return upcomingActivities;
+
+    }
 //
 //    @RequestMapping("/table")
 //    public String listPatients(Model model){

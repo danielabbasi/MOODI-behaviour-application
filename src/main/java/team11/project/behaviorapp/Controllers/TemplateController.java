@@ -79,6 +79,30 @@ public class TemplateController {
         return "test";
     }
 
+    @RequestMapping("/patient/history/{id}")
+    public String listTableActivitiesll(@PathVariable Long id, Model model){
+        model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false));
+        model.addAttribute("history", patientService.getUpcomingActivities(id, true));
+
+        return "test";
+    }
+
+//    @RequestMapping("/patient/history/form/{id}")
+//    public String listTableActivitiesllCompleted(@PathVariable Long id, Model model){
+//        model.addAttribute("act", patientService.getUpcomingActivities(id, false));
+//        return "test";
+ //   }
+
+
+
+
+//    @RequestMapping("/patient/test/test/{id}")
+//    public String listTableActivities(@PathVariable Long id, Model model){
+////        model.addAttribute("activities", patientService.getUpcomingActivities(id));
+//
+//        return "test";
+//    }
+
 
 
 
