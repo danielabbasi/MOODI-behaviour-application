@@ -439,3 +439,11 @@ ul.flexbox li:hover{
 
     transition: all 0.3s ease-out;
 }
+
+.upcomingTable td .fa{
+    color: #1caf9a;
+}
+
+.upcomingTable td{
+    text-align: center;
+}
