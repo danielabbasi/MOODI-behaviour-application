@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
@@ -68,6 +69,17 @@ public class TemplateController {
     public String listActivities(@PathVariable Long id, Model model){
         model.addAttribute("activities", patientService.getActivityList(id));
         return "activityList";
+    }
+
+    @RequestMapping("/patient/activities/update")
+    public String updateActivity(){
+        return "updateActivity";
+    }
+
+    @RequestMapping("/list/{id}")
+    public String findSpecific(@PathVariable Long id, Model model){
+        model.addAttribute("activity", activityRepository.findOne(id));
+            return "newlist";
     }
 
     //    <-------- Test ------------>
