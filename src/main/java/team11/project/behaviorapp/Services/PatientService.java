@@ -3,6 +3,7 @@ package team11.project.behaviorapp.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
@@ -28,6 +29,7 @@ public class PatientService {
     public List<Patient>getAllPatients(){
         return patientRepository.findAll();
     }
+
     public Collection<CustomList>getActivityList(Long id) {
 
         Patient p = patientRepository.findById(id);
@@ -35,6 +37,15 @@ public class PatientService {
         Collection<CustomList> activities = activityRepository.findActivitiesByPatients(p);
 
         return activities;
+    }
+
+    public List<Activities> getUpcomingActivities(Long id, Boolean isCompleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> upcomingActivities = activityRepository.findActivitiesByPatientsAndIsCompleted(p, isCompleted);
+
+        return upcomingActivities;
     }
 
     public Patient getSpecificRecord(@PathVariable Long id){

@@ -9,6 +9,7 @@ import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 import team11.project.behaviorapp.Services.ActivityCreationService;
+import team11.project.behaviorapp.Services.ActivityService;
 import team11.project.behaviorapp.Services.PatientService;
 
 import java.text.DateFormat;
@@ -30,6 +31,8 @@ public class APIController {
     PatientService patientService;
     @Autowired
     ActivityCreationService activityCreationService;
+    @Autowired
+    ActivityService activityService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -41,6 +44,24 @@ public class APIController {
         return "Activity created.";
     }
 
+    @RequestMapping(value = "/one/update", method = RequestMethod.PUT)
+    public String updateOneActivity(@RequestParam  String name, @RequestParam String date)throws ParseException{
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+
+        Activities activities = new Activities();
+        activities.setId(3L);
+        activities.setName(name);
+        activities.setActivityDate(dateFormat.parse(date));
+        activities.setIsCompleted(false);
+        activities.setIsDeleted(false);
+        activities.setRating(null);
+        activityService.saveActivity(activities);
+        return "Activity updated";
+    }
+
+
+
+
     @RequestMapping(path = "/All")
     public List<Patient> getAllPatients(){
         return patientRepository.findAll();
@@ -51,10 +72,7 @@ public class APIController {
         return activityRepository.findAll();
     }
 
-//    @RequestMapping(path = "/{id}/activities")
-//    public Collection<CustomList> getActivity(@PathVariable Long id){
-//        return activityRepository.findActivitiesById(id);
-//    }
+
 
     @RequestMapping("/patient/specific/{id}")
     public Patient getSinglePatent(@PathVariable Long id){
@@ -68,12 +86,23 @@ public class APIController {
 
         return activities;
     }
-//
-//    @RequestMapping("/table")
-//    public String listPatients(Model model){
-//        model.addAttribute("patients", patientService.getAllPatients());
-//
-//        return "patients";
+
+    @RequestMapping("/test/test/lol/{isCompleted}")
+    public List<Activities> getCompletedActivities(@PathVariable Boolean isCompleted ) {
+        return activityRepository.findActivitiesByIsCompleted(isCompleted);
+
+    }
+
+    @RequestMapping("/test/test/{id}/test/{isCompleted}")
+    public List<Activities> getCompletedActivities(@PathVariable Long id, @PathVariable Boolean isCompleted ) {
+
+        List<Activities> upcomingActivities = patientService.getUpcomingActivities(id, isCompleted);
+
+        return upcomingActivities;
+
+    }
+
+
 
 
     @RequestMapping("test/{firstname}")
@@ -82,8 +111,3 @@ public class APIController {
     }
 }
 
-//    @RequestMapping(path = "/gp/index")
-//    public String index(){
-//        return "index";
-//    }
-//}
