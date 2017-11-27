@@ -87,10 +87,13 @@ public class APIController {
         return activities;
     }
 
-    @RequestMapping("/test/test/lol/{isCompleted}")
-    public List<Activities> getCompletedActivities(@PathVariable Boolean isCompleted ) {
-        return activityRepository.findActivitiesByIsCompleted(isCompleted);
 
+    @RequestMapping("/test/test/lol/{id}")
+    public List<Activities> getCompletedActivities(@PathVariable Long id ) {
+
+        List<Activities> upcomingActivities = patientService.getUpcomingActivities(id, true);
+
+        return upcomingActivities;
     }
 
     @RequestMapping("/test/test/{id}/test/{isCompleted}")

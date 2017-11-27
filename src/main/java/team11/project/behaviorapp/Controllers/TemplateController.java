@@ -99,6 +99,12 @@ public class TemplateController {
         return "test";
     }
 
+    @RequestMapping("/patient/graph")
+    public String lineGraph(){
+
+        return "linegraph";
+    }
+
 //    @RequestMapping("/patient/history/form/{id}")
 //    public String listTableActivitiesllCompleted(@PathVariable Long id, Model model){
 //        model.addAttribute("act", patientService.getUpcomingActivities(id, false));
