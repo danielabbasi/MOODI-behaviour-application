@@ -109,5 +109,10 @@ public class APIController {
     public List<Patient> getPatientByName(@PathVariable String firstname){
         return patientService.getPatientByName(firstname);
     }
+
+    @RequestMapping("/patient/activities/{id}/rate")
+    public void rateActivity(@RequestParam long activityId, @PathVariable int rating) {
+
+    }
 }
 
