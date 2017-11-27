@@ -36,7 +36,7 @@ public class APIController {
     private ActivityService activityService;
 
     @Autowired
-    ActivityRatingService activityRatingService;
+    private ActivityRatingService activityRatingService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -114,9 +114,9 @@ public class APIController {
         return patientService.getPatientByName(firstname);
     }
 
-    @RequestMapping("/patient/activities/{id}/rate")
-    public void rateActivity(@RequestParam long activityId, @PathVariable int rating) {
-
+    @RequestMapping("/activities/{activityId}/rate")
+    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "rating", required = true) int rating) {
+        activityRatingService.rateActivity(activityId, rating);
     }
 }
 
