@@ -55,7 +55,7 @@ the slider on the tabs in this specific page-->
                     <tr th:each="activities : ${upcoming}">
                         <td th:text="${activities.name}"> Test</td>
                         <td th:text="${activities.activityDate}">Test</td>
-                        <td class="iconHolder"><a href="#"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
+                        <td class="iconHolder"><a href="#" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
                         <td class="iconHolder"><a href="#"> <i class="fa fa-cog"  aria-hidden="true" id="myBtn"></i></a></td>
                         <td class="iconHolder"><a href="#"> <i class="fa fa-trash" aria-hidden="true"></i></a></td>
                         <!--<td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>-->
@@ -125,20 +125,7 @@ the slider on the tabs in this specific page-->
                 <div class="result-emoji-wrapper">
                     <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
                 </div>
-                <!--<div class="formContainer">-->
-                    <!--<form  class="activityForm" action="#" th:action="@{/api/patient/one/update}"      th:method="put">-->
-                        <!--<div class="form-group">-->
-                            <!--<input type="text" name="name"  class="form-control" placeholder="Activity Name" value="" />-->
-                            <!--<input type="hidden" name="_method" value="put"/>-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<input type="text" name="date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />-->
-                            <!--<input type="hidden" name="_method" value="put"/>-->
-
-                        <!--</div>-->
-                        <!--<button id="activityUpdateSubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>-->
-                    <!--</form>-->
-                <!--</div>-->
+                <input type="hidden" name="selected_activity_id" id="selected_activity_id" value="" />
             </div>
             <div class="modal-footer">
             </div>
