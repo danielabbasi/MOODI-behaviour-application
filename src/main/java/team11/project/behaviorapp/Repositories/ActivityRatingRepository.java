@@ -1,9 +1,12 @@
 package team11.project.behaviorapp.Repositories;
 
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Repository
 public class ActivityRatingRepository extends JdbcRepository implements IActivityRatingRepository {
 
     public void rateActivity(long activityId, int rating) {

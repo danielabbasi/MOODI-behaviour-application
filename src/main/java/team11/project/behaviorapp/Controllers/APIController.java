@@ -9,6 +9,7 @@ import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 import team11.project.behaviorapp.Services.ActivityCreationService;
+import team11.project.behaviorapp.Services.ActivityRatingService;
 import team11.project.behaviorapp.Services.ActivityService;
 import team11.project.behaviorapp.Services.PatientService;
 
@@ -24,15 +25,18 @@ import java.util.List;
 public class APIController {
 
     @Autowired
-    ActivityRepository activityRepository;
+    private ActivityRepository activityRepository;
     @Autowired
-    PatientRepository patientRepository;
+    private PatientRepository patientRepository;
     @Autowired
-    PatientService patientService;
+    private PatientService patientService;
     @Autowired
-    ActivityCreationService activityCreationService;
+    private ActivityCreationService activityCreationService;
     @Autowired
-    ActivityService activityService;
+    private ActivityService activityService;
+
+    @Autowired
+    ActivityRatingService activityRatingService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
