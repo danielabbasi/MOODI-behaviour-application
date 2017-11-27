@@ -1,6 +1,8 @@
 /**
  * Created by c1673218 on 26/11/2017.
  */
+// Currently only using data of patient with id 4, need to change so that the patient id can be
+// variable according the user specifies in controller.
 $(document).ready(function(){
     $.ajax({
         url : "http://localhost:8080/api/patient/4/activities",
