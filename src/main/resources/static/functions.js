@@ -9,7 +9,8 @@ function loadDoc() {
     xhttp.send();
 }
 
-function markActivityAsComplete(activityId) {
+function markActivityAsComplete() {
+    var activityId = document.getElementById("selected_activity_id").value;
     var testResult = document.getElementById('test-result').innerHTML.toLowerCase();
     var testResultNumber = 0;
     if(testResult == "very happy") {

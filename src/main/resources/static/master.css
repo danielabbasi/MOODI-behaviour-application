@@ -538,11 +538,13 @@
     width: 100%;
     text-align:center;
 }
-.result-emoji-wrapper {
+.modal-wrapper {
     width: 100%;
-    height: 32px;
     margin-top: 10px;
     text-align: center;
+}
+.result-emoji-wrapper {
+    height: 32px;
 }
 #result-emoji {
     width: 32px;
