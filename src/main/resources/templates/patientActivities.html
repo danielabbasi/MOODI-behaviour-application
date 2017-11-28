@@ -12,6 +12,9 @@
 
 <header>
     <div th:replace="fragments/header :: header"></div>
+    <div class="topBar" th:fragment="header">
+        <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
+    </div>
 </header>
 
 
@@ -19,9 +22,55 @@
 <body class="activitiesBody">
 <div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
 
+<div id="sidenav" th:fragment="patientSideMenu">
+    <div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">
+        <p class="welcome"> Welcome John Smith </p>
+    </div>
+
+    <ul id="main-nav">
+        <li class="active">
+            <a href="patientIndex.html" th:href="@{/patient/index}">
+                <i class="fa fa-th-large"></i>
+                Dashboard
+            </a>
+        </li>
+
+
+
+        <li>
+            <a href="patientActivities.html" th:href="@{/patient/activities/1}">
+                <i class="fa fa-heartbeat"></i>
+                Activities
+
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-wrench"></i>
+                Settings
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-calendar"></i>
+                Calendar
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<div class="activityContainer">
 <!--Id not given to main because JS "main" push animation messes up
 the slider on the tabs in this specific page-->
 <main class="main">
+
 
 
 
@@ -29,10 +78,11 @@ the slider on the tabs in this specific page-->
         <div class="c-tabs-nav">
             <!--/patient/test/test/{id}/test/{isCompleted}-->
             <!--th:href="@{'/patient/history' + ${patient.id}}"-->
-            <a href="#"   class="c-tabs-nav__link is-active">Upcoming</a>
-            <a href="#" class="c-tabs-nav__link">Create</a>
-            <!--<a href="#" class="c-tabs-nav__link" th:href="@{'/patient/history/' + ${patient.id}}">History</a>-->
-            <a href="#" class="c-tabs-nav__link">History</a>
+            <a href="#"   class="c-tabs-nav__link is-active"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                Upcoming</a>
+            <a href="#" class="c-tabs-nav__link"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                Create</a>
+            <a href="#" class="c-tabs-nav__link"><i class="fa fa-history" aria-hidden="true"></i> History</a>
 
 
 
@@ -185,6 +235,7 @@ the slider on the tabs in this specific page-->
     <!--Reference & Credit to Felix Franzen, Open Source CodePen
     @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
 </main>
+</div>
 
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
 <script src="../static/modal.js "  th:src="@{/modal.js}"></script>

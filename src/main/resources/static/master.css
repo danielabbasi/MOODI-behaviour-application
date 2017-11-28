@@ -381,14 +381,15 @@
     }
 
     .c-tabs-nav a {
-        margin-left: 20%;
+        margin-left: 18%;
     }
 
     .c-tabs-nav__link {
         text-decoration: none;
         color: black;
         opacity: 0.7;
-        margin-right: 25px;
+        font-size: 30px;
+        /*margin-right: 40px;*/
         padding: 10px 15px;
     }
 
@@ -401,7 +402,7 @@
      */
     .c-tab {
         display: none;
-        border-top: 1px solid rgba(217, 217, 217, 0.5);
+        border-top: 3px solid rgba(217, 217, 217, 0.5);
     }
 
     .c-tab.is-active {
@@ -559,5 +560,7 @@
 
         color: white;
     }
+
+
 
 
