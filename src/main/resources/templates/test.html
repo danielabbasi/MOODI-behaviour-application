@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+
+
+
+<body class="activitiesBody">
+<div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+
+<!--Id not given to main because JS "main" push animation messes up
+the slider on the tabs in this specific page-->
+<main class="main">
+
+
+
+    <div id="tabs" class="c-tabs">
+        <div class="c-tabs-nav">
+            <!--/patient/test/test/{id}/test/{isCompleted}-->
+            <!--th:href="@{'/patient/history' + ${patient.id}}"-->
+            <a href="#"   class="c-tabs-nav__link is-active">Upcoming</a>
+            <a href="#" class="c-tabs-nav__link">Create</a>
+            <!--<a href="#" class="c-tabs-nav__link" th:href="@{'/patient/history/' + ${patient.id}}">History</a>-->
+            <a href="#" class="c-tabs-nav__link">History</a>
+
+
+
+            <div class="c-tab-nav-marker"></div>
+        </div>
+
+
+        <div class="c-tab is-active">
+            <div class="c-tab__content">
+                <div class="container">
+                <table class="upcomingTable">
+                    <tr>
+                        <th>Activity Name</th>
+                        <th>Date</th>
+                        <th>Mark as completed</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    <tr th:each="activities : ${upcoming}">
+                        <td th:text="${activities.name}"> Test</td>
+                        <td th:text="${activities.activityDate}">Test</td>
+                        <td class="iconHolder"><a href="#" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
+                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog"  aria-hidden="true" id="myBtn"></i></a></td>
+                        <td class="iconHolder"><a href="#"> <i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        <!--<td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>-->
+
+
+
+
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="c-tab">
+            <div class="c-tab__content">
+                <div class="formContainer">
+                    <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/activities/create">
+                        <div class="form-group">
+                            <input type="text" name="activityName" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
+                        </div>
+                        <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="c-tab">
+            <div class="c-tab__content">
+                <div class="container">
+                    <table>
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+                        </tr>
+                        <tr th:each="activities : ${history}">
+                            <td th:text="${activities.name}"> Test</td>
+                            <td th:text="${activities.activityDate}">Test</td>
+                            <td th:text="${activities.rating}">Test</td>
+
+                        </tr>
+                    </table>
+
+            </div>
+            </div>
+        </div>
+
+
+        </div>
+
+    <div id="rate_modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="range-slider" id="range-slider-1">
+                    <!--<img src="images/emohappy.png.png" />-->
+                    <span></span>
+                </div>
+                <div class="test-result" id="test-result">Very Happy</div>
+                <div class="modal-wrapper result-emoji-wrapper">
+                    <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
+                </div>
+                <input type="hidden" name="selected_activity_id" id="selected_activity_id" value="" />
+                <div class="modal-wrapper">
+                    <button id="complete_button" onclick="markActivityAsComplete()">Mark Activity as Complete</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+
+<!--Credit to W3schools @ https://www.w3schools.com/howto/howto_css_modals.asp-->
+    <!--Reference & Credit to Felix Franzen, Open Source CodePen
+    @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
+</main>
+
+<script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
+<script src="../static/modal.js "  th:src="@{/modal.js}"></script>
+<script src="../static/rateModal.js "  th:src="@{/rateModal.js}"></script>
+<script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
+<script src="../static/functions "  th:src="@{/functions.js}"></script>
+
+<script>
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+
+</script>
+
+</body>
+</html>

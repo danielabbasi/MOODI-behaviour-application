@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Slide</title>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+
+
+<div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+
+
+
+<main id="main" class="main">
+    <div class="container">
+        <div class="box effect">
+            <table class="patientTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Activities</th>
+                    <th>Record</th>
+                </tr>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.id}"> Test</td>
+                    <td th:text="${patient.firstname}">Test</td>
+                    <td th:text="${patient.lastname}">Test</td>
+                    <td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>
+                    <td class="goTo" id="recordButton"><a href="#" th:href="@{'/gp/patients/record/' + ${patient.id}}"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                    </a></td>
+
+
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+
+
+
+<script>
+
+    // $('#menu-toggle,#menu-overlay').click(function(){
+    //   $('body').toggleClass('open-menu');
+    // });
+
+//    $('#main-nav li a').click(function(){
+//        $('#main-nav li').removeClass('active');
+//        $(this).parent().addClass('active')
+//    });
+
+
+
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

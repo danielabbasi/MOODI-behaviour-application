@@ -42,10 +42,13 @@ function rangeSlider(id, onDrag) {
 
 
 // Run!
-moods = ["Happy", "Complacent", "Neutral", "Sad", "Depressed", "KMS"];
+moods = ["Very Happy", "Happy", "Neutral", "Sad", "Upset", "Very Sad"];
 //moods = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 rangeSlider('range-slider-1', function(value) {
     document.getElementById('test-result').innerHTML = determineState(value, moods);
+
+    //Following line added in by Jamie Highfield
+    document.getElementById('result-emoji').src = "/images/emojis/" + (determineState(value, moods).replace(/\s/g, '')).toLowerCase() + ".png";
 });
 
 function determineState(percentage, statesArray) {
