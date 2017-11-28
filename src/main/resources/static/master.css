@@ -498,8 +498,13 @@
     }
 
     .modal-header {
+        text-align: right;
+        color: #000000;
+    }
 
-        color: white;
+    .modal-header span {
+        cursor: pointer;
+        font-size: 30px;
     }
 
     .modal-body {padding: 16px;}
