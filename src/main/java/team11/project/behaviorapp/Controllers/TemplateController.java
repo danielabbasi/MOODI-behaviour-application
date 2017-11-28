@@ -96,7 +96,7 @@ public class TemplateController {
         model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
 
-        return "test";
+        return "patientActivities";
     }
 
 
