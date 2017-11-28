@@ -99,6 +99,7 @@ public class TemplateController {
         return "test";
     }
 
+
     @RequestMapping("/patient/graph")
     public String lineGraph(){
 

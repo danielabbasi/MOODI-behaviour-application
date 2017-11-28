@@ -4,8 +4,12 @@
 // Currently only using data of patient with id 4, need to change so that the patient id can be
 // variable according the user specifies in controller.
 $(document).ready(function(){
+
+    var id = $.url(2);
+
+
     $.ajax({
-        url : "http://localhost:8080/api/patient/4/activities",
+        url : "http://localhost:8080/api/patient/" + id + "/activities/completed",
         type : "GET",
         success : function(data){
             console.log(data);
