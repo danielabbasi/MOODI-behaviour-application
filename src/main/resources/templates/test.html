@@ -158,6 +158,29 @@ the slider on the tabs in this specific page-->
 
     </div>
 
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="formContainer">
+                <form  class="activityForm" action="http://localhost:8080/api/patient/one/update"       th:method="put">
+                    <div class="form-group">
+                        <input type="text" name="name" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
+                        <input type="hidden" name="_method" value="put"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
+                        <input type="hidden" name="_method" value="put"/>
+
+                    </div>
+                    <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
 <!--Credit to W3schools @ https://www.w3schools.com/howto/howto_css_modals.asp-->
     <!--Reference & Credit to Felix Franzen, Open Source CodePen
     @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->

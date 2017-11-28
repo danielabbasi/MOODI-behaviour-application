@@ -52,14 +52,14 @@ public class APIController {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
         Activities activities = new Activities();
-        activities.setId(3L);
+        activities.setId(1L);
         activities.setName(name);
         activities.setActivityDate(dateFormat.parse(date));
         activities.setIsCompleted(false);
         activities.setIsDeleted(false);
         activities.setRating(null);
         activityService.saveActivity(activities);
-        return new ModelAndView("redirect:/patient/activities/3");
+        return new ModelAndView("redirect:/patient/activities/1");
     }
 
 
