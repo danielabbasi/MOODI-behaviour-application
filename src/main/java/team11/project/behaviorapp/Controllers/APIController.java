@@ -9,6 +9,7 @@ import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 import team11.project.behaviorapp.Services.ActivityCreationService;
+import team11.project.behaviorapp.Services.ActivityRatingService;
 import team11.project.behaviorapp.Services.ActivityService;
 import team11.project.behaviorapp.Services.PatientService;
 
@@ -33,6 +34,8 @@ public class APIController {
     ActivityCreationService activityCreationService;
     @Autowired
     ActivityService activityService;
+    @Autowired
+    ActivityRatingService activityRatingService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -111,6 +114,11 @@ public class APIController {
     @RequestMapping("test/{firstname}")
     public List<Patient> getPatientByName(@PathVariable String firstname){
         return patientService.getPatientByName(firstname);
+    }
+
+    @RequestMapping("/activities/{activityId}/rate")
+    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "rating", required = true) int rating) {
+        activityRatingService.rateActivity(activityId, rating);
     }
 }
 
