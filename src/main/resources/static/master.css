@@ -507,10 +507,10 @@
         font-size: 30px;
     }
 
-    .modal-body {padding: 16px;}
+    .modal-body {padding: 16px;
+        transition: all 0.3s ease-out;
+    }
 
-<<<<<<< HEAD
-    transition: all 0.3s ease-out;
 }
 .range-slider {
     width:400px;
@@ -555,11 +555,9 @@
     width: 32px;
     height: 32px;
 }
-=======
     .modal-footer {
 
         color: white;
     }
 
-}
->>>>>>> 3237a3edbc126a72c132369aeaa7d92993d698c6
+
