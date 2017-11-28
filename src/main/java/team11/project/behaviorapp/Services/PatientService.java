@@ -48,6 +48,15 @@ public class PatientService {
         return upcomingActivities;
     }
 
+    public List<Activities> getCompletedActivities(Long id, Boolean isCompleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> completedActivities = activityRepository.findActivitiesByPatientsAndIsCompleted(p, isCompleted);
+
+        return completedActivities;
+    }
+
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
 
