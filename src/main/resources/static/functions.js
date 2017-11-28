@@ -37,6 +37,19 @@ function markActivityAsComplete() {
     httpRequest.send();
 }
 
+function deleteActivity() {
+    var completeButton = document.getElementById("delete_button");
+    completeButton.innerHTML = "Delete Activity (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_delete_activity_id").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/delete")
+    httpRequest.send();
+}
+
 function refreshPage() {
     location.reload();
 }
