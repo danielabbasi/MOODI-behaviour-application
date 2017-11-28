@@ -92,7 +92,7 @@ public class APIController {
     @RequestMapping("{id}/activities/completed")
     public List<Activities> getCompletedActivities(@PathVariable Long id ) {
 
-        List<Activities> completedActivities = patientService.getUpcomingActivities(id, true);
+        List<Activities> completedActivities = patientService.getCompletedActivities(id, true);
 
         return completedActivities;
     }
