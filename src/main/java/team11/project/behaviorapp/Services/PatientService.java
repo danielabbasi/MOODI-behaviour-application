@@ -39,11 +39,11 @@ public class PatientService {
         return activities;
     }
 
-    public List<Activities> getUpcomingActivities(Long id, Boolean isCompleted) {
+    public List<Activities> getUpcomingActivities(Long id, Boolean isCompleted, Boolean isDeleted) {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> upcomingActivities = activityRepository.findActivitiesByPatientsAndIsCompleted(p, isCompleted);
+        List<Activities> upcomingActivities = activityRepository.findActivitiesByPatientsAndIsCompletedAndIsDeleted(p, isCompleted, isDeleted);
 
         return upcomingActivities;
     }
