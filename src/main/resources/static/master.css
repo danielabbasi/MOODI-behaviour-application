@@ -1,5 +1,5 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100|Raleway');
 
 *{
     margin: 0;
@@ -7,6 +7,7 @@
     text-decoration: none;
     list-style:none;
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 
 }
 
@@ -111,6 +112,7 @@ body{
     height:100%;
     margin-top: 3.5%;
     background-color: #f2f2f2;
+    /*background-color: #e6e6e6;*/
     margin-left:0px;
     z-index:100000000;
     transition: all 0.3s ease-in-out;
@@ -208,7 +210,7 @@ body{
     padding:0 20px 0 100px;
     text-decoration:none;
     color:#666666;
-    font-weight:200;
+    font-weight:600;
     line-height:65px;
     margin-top: 5%;
 }
@@ -220,8 +222,6 @@ body{
     border-radius: 8px;
     box-shadow:inset 5px 0 0 #ef8700;
     transition: all 0.5s ease-in-out;
-
-
 
 }
 
@@ -338,6 +338,8 @@ body{
 .container table td, .container table tr{
     border-bottom: 1px solid #ddd;
     padding: 8px;
+    font-weight: 600;
+
 
 }
 
@@ -350,11 +352,11 @@ body{
 .container table th{
     font-size: 18px;
     /*border-right: 1px solid #dddddd;*/
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 1%;
+    padding-bottom: 2%;
     color: black;
     /*background: #35495d;*/
-    font-weight:200;
+    font-weight:600;
 }
 
 .container table th .container table tr {
@@ -455,15 +457,17 @@ body{
 }
 
 .formContainer button[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
+    /*width: 100%;*/
+    background-color: #00b3b3;
+
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+
+    }
 
     /*.activityForm input {*/
         /*display: block;*/
@@ -492,7 +496,8 @@ body{
 
     #activitySubmitBtn:hover {
         cursor: pointer;
-        background-color: #00b3b3;
+        background-color: #00e673
+    ;
         transition: all 0.3s ease-in-out;
 
     }
@@ -618,80 +623,87 @@ body{
         text-align: center;
     }
 
+.deleteModal {
+    height: 20%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(38, 38, 38, 0.8);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: 0.3s;
+    /*padding-top: 60px;*/
+}
+
+
+
+.delete_close{
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+.delete_close:hover{
+    transition: all 0.3s ease-in-out;
+
+    color: #00e673;
+    cursor: pointer;
+}
+
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        right: 0;
+        background-color: rgba(38, 38, 38, 0.8);
+        overflow-x: hidden;
+        transition: 0.8s;
+        padding-top: 60px;
     }
 
-    /* Modal Content */
     .modal-content {
-        position: relative;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 80%;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
+        transition: all 0.3s ease-in-out;
+
+
     }
 
-    /* Add Animation */
-    @-webkit-keyframes animatetop {
-        from {top:-300px; opacity:0}
-        to {top:0; opacity:1}
+
+
+    .rate_close {
+        position: absolute;
+        top: 50px;
+        right: 25px;
+        font-size: 90px;
+        margin-left: 50px;
+        color: #FFFFFF;
     }
 
-    @keyframes animatetop {
-        from {top:-300px; opacity:0}
-        to {top:0; opacity:1}
-    }
+    .rate_close:hover{
+        transition: all 0.3s ease-in-out;
 
-    /* The Close Button */
-    .close {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
+        color: #00e673;
         cursor: pointer;
     }
 
-    .modal-header {
-        text-align: right;
-        color: #000000;
-    }
 
-    .modal-header span {
-        cursor: pointer;
-        font-size: 30px;
-    }
 
-    .modal-body {padding: 16px;
-        transition: all 0.3s ease-out;
-    }
+
+
+
 
 /*}*/
 .range-slider {
     width:400px;
-    height:20px;
+    height:40px;
     margin:0 auto 1em;
+    /*border-radius: 50%;*/
     position:relative;
     cursor:e-resize;
 }
@@ -702,34 +714,61 @@ body{
     top:9px;
     left:0;
     width:100%;
-    height:2px;
-    background-color:black;
+    height:40px;
+    box-shadow:  1px 1px 1px 1px  #000000;
+
+    /*background-color:black;*/
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url("https://1.bp.blogspot.com/-fcCvGS8VBWo/VQzRw5LI0cI/AAAAAAAADFs/v2niIm8FJ_Q/s1600/spectrum.png")
 }
 .range-slider span {
     display:block;
-    height:inherit;
+    /*height:inherit;*/
+    height: 50px;
+    width: 90px;
     position:relative;
+    border-radius: 50%;
     z-index:2;
-    background-color:springgreen;
+    background-color:#FFFFFF;
     cursor:inherit;
+    box-shadow:  1px 1px 1px 1px  #000000;
+
 }
 
 /* Test result */
 .test-result {
+    /*margin-top:10%;*/
     width: 100%;
     text-align:center;
+    color: #ffffff;
+    font-size:2em;
 }
 .modal-wrapper {
     width: 100%;
     margin-top: 10px;
     text-align: center;
 }
+
+.modal-wrapper img{
+    width: 100px;
+}
+
+.modal-wrapper .fa{
+    background: #00b3b3;
+}
+
+.modal-wrapper button{
+    background: #00b3b3;
+    font-size: 5em;
+
+}
 .result-emoji-wrapper {
     height: 32px;
 }
 #result-emoji {
-    width: 32px;
-    height: 32px;
+    width: 100px;
+    height: 100px;
 }
     .modal-footer {
 
@@ -813,6 +852,116 @@ body{
     background:#00e673;
 
 }
+
+    .fullScreenModal{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: rgba(38, 38, 38, 0.8)
+    ;
+        overflow-x: hidden;
+        transition: 0.8s;
+        padding-top: 60px;
+    }
+
+    .fullScreenModal a{
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .fullScreenModal a:hover{
+        color: #f1f1f1;
+
+    }
+
+.fullScreenModal .closebtn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+
+.fullScreenModal .closebtn:hover {
+
+    color: #00e673;
+}
+
+.modalTitle{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modalSubtitle{
+display:flex;
+    justify-content:center;
+}
+
+.titleModal {
+    color: #FFFFFF;
+    font-size: 5em;
+    font-weight:200;
+    /*font-weight: lighter;*/
+}
+
+
+.modalSubtitle p{
+    color: #FFFFFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+
+
+.formWrapper{
+    margin-top:5%;
+    display: flex;
+    justify-content:center;
+
+}
+
+.formContainer{
+    width:50%;
+}
+
+.btnWrapper{
+    display: flex;
+    justify-content: center;
+}
+.formContainer button .fa{
+    font-size:5em;
+    /*background:  #00b3b3;*/
+}
+.formContainer button .fa:hover{
+    font-size:5em;
+    /*background:  #00e673;*/
+    transition: all 0.3s ease-in-out;
+
+}
+
+.btnWrapper{
+    margin-top: 10%;
+    justify-content: center;
+    display: flex}
+
+.btnWrapper button:hover{
+    background: #00e673;
+    transition: all 0.3s ease-in-out;
+
+}
+
 
 
 

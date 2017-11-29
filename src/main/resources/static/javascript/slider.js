@@ -7,7 +7,7 @@ function rangeSlider(id, onDrag) {
 
     var range = document.getElementById(id),
         dragger = range.children[0],
-        draggerWidth = 20, // width of your dragger
+        draggerWidth = 50, // width of your dragger
         down = false,
         rangeWidth, rangeLeft;
 
