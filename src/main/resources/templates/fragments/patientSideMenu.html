@@ -10,13 +10,29 @@
 <body>
 
 <div id="sidenav" th:fragment="patientSideMenu">
-    <div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">
-        <p class="welcome"> Welcome John Smith </p>
-    </div>
 
-    <ul id="main-nav">
-        <li class="active">
-            <a href="patientIndex.html" th:href="@{/patient/index}">
+
+    <ul id="main-nav" class="nav">
+        <div class="userSection">
+            <div class="imageWrapper">
+                <div class="userImageWrapper">
+                    <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>
+                </div>
+                <div class="userTitle">
+                    <p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        Jane Smith</p>
+
+                </div>
+            </div>
+        </div>
+
+        <li class="liSection">
+            <p>
+                MAIN
+            </p>
+        </li>
+        <li>
+            <a href="patientIndex.html" th:href="@{/patient/index}" >
                 <i class="fa fa-th-large"></i>
                 Dashboard
             </a>
@@ -25,11 +41,23 @@
 
 
         <li>
-            <a href="patientActivities.html" th:href="@{/patient/activities/1}">
+            <a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">
                 <i class="fa fa-heartbeat"></i>
                 Activities
-
+                <div class="notificationWrapper">
+                    <div class="notificationNav">
+                        <p>
+                            3
+                        </p>
+                    </div>
+                </div>
             </a>
+        </li>
+
+        <li class="liSection">
+            <p>
+                EXTRAS
+            </p>
         </li>
         <li>
             <a href="#">
@@ -41,7 +69,15 @@
             <a href="#">
                 <i class="fa fa-calendar"></i>
                 Calendar
+                <div class="notificationWrapper">
+                    <div class="notificationNav">
+                        <p id="calanderNotification">
+                            5
+                        </p>
+                    </div>
+                </div>
             </a>
+
         </li>
         <li>
             <a href="#">
