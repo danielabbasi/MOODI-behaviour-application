@@ -5,12 +5,12 @@ function showDeleteModal(activityId) {
     document.getElementById('delete_modal').style.display = "block";
 }
 
-document.getElementsByClassName("close")[0].onclick = function() {
-    document.getElementsByClassName("close")[0].style.display = "none";
+document.getElementById("delete_close").onclick = function() {
+    document.getElementById('delete_modal').style.display = "none";
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
-        document.getElementsByClassName("close")[0].style.display = "none";
+        document.getElementById('delete_modal').style.display = "none";
     }
 }

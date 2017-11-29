@@ -3,6 +3,7 @@ package team11.project.behaviorapp.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
@@ -37,28 +38,28 @@ public class APIController {
     ActivityDeletionService activityDeletionService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
-    public String createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
+    public ModelAndView createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
         //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
         activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
 
-        return "Activity created.";
+        return new ModelAndView("redirect:/patient/activities/1");
     }
 
     @RequestMapping(value = "/one/update", method = RequestMethod.PUT)
-    public String updateOneActivity(@RequestParam  String name, @RequestParam String date)throws ParseException{
+    public ModelAndView updateOneActivity(@RequestParam  String name, @RequestParam String date)throws ParseException{
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
         Activities activities = new Activities();
-        activities.setId(3L);
+        activities.setId(1L);
         activities.setName(name);
         activities.setActivityDate(dateFormat.parse(date));
         activities.setIsCompleted(false);
         activities.setIsDeleted(false);
         activities.setRating(null);
         activityService.saveActivity(activities);
-        return "Activity updated";
+        return new ModelAndView("redirect:/patient/activities/1");
     }
 
 
@@ -92,7 +93,7 @@ public class APIController {
     @RequestMapping("{id}/activities/completed")
     public List<Activities> getCompletedActivities(@PathVariable Long id ) {
 
-        List<Activities> completedActivities = patientService.getUpcomingActivities(id, true);
+        List<Activities> completedActivities = patientService.getCompletedActivities(id, true);
 
         return completedActivities;
     }

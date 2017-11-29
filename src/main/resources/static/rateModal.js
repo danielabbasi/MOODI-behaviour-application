@@ -5,12 +5,12 @@ function showModal(activityId) {
     document.getElementById('rate_modal').style.display = "block";
 }
 
-document.getElementsByClassName("close")[0].onclick = function() {
-    document.getElementsByClassName("close")[0].style.display = "none";
+document.getElementById("rate_close").onclick = function() {
+    document.getElementById('rate_modal').style.display = "none";
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
-        document.getElementsByClassName("close")[0].style.display = "none";
+        document.getElementById('rate_modal').style.display = "none";
     }
 }
