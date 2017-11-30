@@ -805,9 +805,9 @@ body{
 
     .boxContainer{
         display: inline-block;
-        border-right:1px solid #dddddd;
+        /*border-right:1px solid #dddddd;*/
         width: 100%;
-        /*margin-left:5px;*/
+        margin-left:10px;
         box-shadow:  2px 5px 4px 3px  #bfbfbf;
 
     }
@@ -962,7 +962,38 @@ display:flex;
 
 }
 
+#indexAvgDemo h2{
+    font-size: 5em;
+}
 
+#indexAvgDemo{
+    background:  #ff8533;
+}
+
+#indexCountDemo h2{
+    font-size: 5em;
+}
+
+#indexFav{
+    background: #ff4d4d;
+}
+
+#indexUsual{
+    background: #669999
+}
+
+#indexDistance{
+background: #1affa3;
+}
+
+#indexCig{
+    background: #00cccc;
+
+}
+
+#indexDivorce{
+    background: #cc33ff;
+}
 
 
 
