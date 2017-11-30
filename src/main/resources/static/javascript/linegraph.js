@@ -25,15 +25,17 @@ $(document).ready(function(){
 
             var chartdata = {
                 labels: name,
+                fontColor: 'white',
                 datasets: [
                     {
-                        label: "rating",
+                        label: "Activity score",
                         fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(59, 89, 152, 0.75)",
-                        borderColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBorderColor: "rgba(59, 89, 152, 1)",
+                        lineTension: 0,
+                        // fontColor: 'white',
+                        backgroundColor: "#FFFFFF",
+                        borderColor: "red",
+                        pointHoverBackgroundColor: "#00b3b3",
+                        pointHoverBorderColor: "pink",
                         data: rating
                     }
 
@@ -44,7 +46,14 @@ $(document).ready(function(){
 
             var LineGraph = new Chart(ctx, {
                 type: 'line',
-                data: chartdata
+                data: chartdata,
+                options: {
+                    legend:  {
+                        labels: {
+                            fontColor: 'white'
+                        }
+                    }
+                }
             });
         },
         error : function(data) {
