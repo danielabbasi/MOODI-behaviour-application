@@ -10,11 +10,12 @@
 <body>
 
 <header>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/gpHeader :: gpHeader"></div>
 </header>
 
 
 <div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+<div class="activityContainer">
 
 <main id="main" class="main">
     <div class="container">
@@ -42,6 +43,7 @@
         </div>
     </div>
 </main>
+</div>
 <script>
 
     // $('#menu-toggle,#menu-overlay').click(function(){

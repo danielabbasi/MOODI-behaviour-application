@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Activities</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
@@ -19,55 +19,55 @@
 <header>
     <div th:replace="fragments/header :: header"></div>
 
-    <!--<div class="topBar" th:fragment="header">-->
-        <!--<div class="holder" id="logoHolder">-->
-            <!--<div class="companyHolder">-->
-                <!--<p><i class="fa fa-heartbeat"></i>-->
-                    <!--MOODi </p>-->
-            <!--</div>-->
+    <div class="topBar" th:fragment="header">
+        <div class="holder" id="logoHolder">
+            <div class="companyHolder">
+                <p><i class="fa fa-heartbeat"></i>
+                    MOODi </p>
+            </div>
 
 
-        <!--</div>-->
-
-
-
-        <!--<div class="holder">-->
-            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="pageTitle">-->
-            <!--<div class="pageTitle">-->
-                <!--<h3 id="titleChange"> Activities-->
-                <!--</h3>-->
-            <!--</div>-->
-
-
-        <!--</div>-->
-
-        <!--<div class="holder" id="langHolder">-->
-            <!--<div class="languageSelect">-->
-
-                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
-                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
-                <!--</p>-->
-
-
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="userHolder">-->
-            <!--<div class="loggedInUser">-->
-                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
-
-                    <!--Jane Smith </p>-->
+        </div>
 
 
 
-            <!--</div>-->
-        <!--</div>-->
+        <div class="holder">
+            <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
+        </div>
+
+        <div class="holder" id="pageTitle">
+            <div class="pageTitle">
+                <h3 id="titleChange"> Activities
+                </h3>
+            </div>
 
 
-    <!--</div>-->
+        </div>
+
+        <div class="holder" id="langHolder">
+            <div class="languageSelect">
+
+                <p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>
+                    ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>
+                </p>
+
+
+            </div>
+        </div>
+
+        <div class="holder" id="userHolder">
+            <div class="loggedInUser">
+                <p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
+                    Jane Smith </p>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
 </header>
 
 <div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
@@ -244,9 +244,9 @@
                     <tr th:each="activities : ${upcoming}">
                         <td th:text="${activities.name}"> Test</td>
                         <td th:text="${activities.activityDate}">Test</td>
-                        <td class="iconHolder"><a href="#" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
-                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog"  aria-hidden="true" id="myBtn"></i></a></td>
-                        <td class="iconHolder"><a href="#" th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        <td class="iconHolder"><a href="#" onclick="showModal()" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
+                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog"  aria-hidden="true" onclick="openFullScreenModalUpdate()"></i></a></td>
+                        <td class="iconHolder"><a href="#" onclick="showDeleteModal()" th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-trash" aria-hidden="true"></i></a></td>
                         <!--<td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>-->
 
                     </tr>
@@ -263,6 +263,8 @@
 
         <div class="c-tab">
             <div class="c-tab__content">
+                <div class="formWrapper">
+
                 <div class="formContainer">
                     <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/activities/create">
                         <div class="form-group">
@@ -274,6 +276,7 @@
                         <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>
                     </form>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -310,12 +313,20 @@
 
         <!-- Modal content -->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="rateCloseHolder">
                 <span class="rate_close" id="rate_close">&times;</span>
-            </div>
+        </div>
             <div class="modal-body">
+                <div class="modalTitle">
+                    <p class="titleModal">Activity completion</p>
+                </div>
+                <div class="modalSubtitle">
+                    <p> How did you feel about this activity?</p>
+                </div>
+                <div class="formWrapper">
+
+                    <div class="formContainer">
                 <div class="range-slider" id="range-slider-1">
-                    <!--<img src="images/emohappy.png.png" />-->
                     <span></span>
                 </div>
                 <div class="test-result" id="test-result">Very Happy</div>
@@ -323,8 +334,13 @@
                     <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
                 </div>
                 <input type="hidden" name="selected_activity_id" id="selected_activity_id" value="" />
-                <div class="modal-wrapper">
-                    <button id="complete_button" onclick="markActivityAsComplete()">Mark Activity as Complete</button>
+                <!--<div class="modal-wrapper">-->
+
+                <div class="btnWrapper">
+                <button id="complete_button" type="submit" onclick="markActivityAsComplete()"><i class="fa fa-check-circle-o"></i></button>
+                <!--</div>-->
+                </div>
+                </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -333,20 +349,29 @@
 
     </div>
 
-    <div id="delete_modal" class="modal">
+    <div id="delete_modal" class="deleteModal">
 
         <!-- Modal content -->
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="deleteCloseHolder">
                 <span class="delete_close" id="delete_close">&times;</span>
             </div>
             <div class="modal-body">
-                <div class="modal-wrapper result-emoji-wrapper">
-                    Are you sure you want to delete this activity?
+
+                <div class="modalSubtitle">
+                    <p> Are you sure?</p>
                 </div>
+                <div class="formWrapper">
+
+                    <div class="formContainer">
+                <!--<div class="modal-wrapper result-emoji-wrapper">-->
+                    <!--Are you sure you want to delete this activity?-->
+                <!--</div>-->
                 <input type="hidden" name="selected_delete_activity_id" id="selected_delete_activity_id" value="" />
-                <div class="modal-wrapper">
-                    <button id="delete_button" onclick="deleteActivity()">Delete Activity</button>
+                <div class="btnWrapper">
+                    <button id="delete_button" type="submit" onclick="deleteActivity()">Delete Activity</button>
+                </div>
+            </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -355,28 +380,41 @@
 
     </div>
 
-    <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="formContainer">
-                <form  class="activityForm" action="http://localhost:8080/api/patient/one/update"       th:method="put">
-                    <div class="form-group">
-                        <input type="text" name="name" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
-                        <input type="hidden" name="_method" value="put"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
-                        <input type="hidden" name="_method" value="put"/>
 
-                    </div>
-                    <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
+    <div class="fullScreenModal" id="fullScreenUpdate">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalUpdate()">&times;</a>
+        <div class="modalTitle">
+        <p class="titleModal">Editing Activity 1</p>
+        </div>
+        <div class="modalSubtitle">
+            <p> Please fill in the new name and date</p>
+        </div>
+
+        <div class="formWrapper">
+
+        <div class="formContainer">
+            <form  class="activityForm" action="http://localhost:8080/api/patient/one/update"       th:method="put">
+                <div class="form-group">
+                    <input type="text" name="name" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
+                    <input type="hidden" name="_method" value="put"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
+                    <input type="hidden" name="_method" value="put"/>
+
+                </div>
+                <div class="btnWrapper">
+                <button id="activitySubmitBtn" type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o"></i>
+                </button>
+                </div>
+            </form>
+        </div>
         </div>
 
     </div>
+
+
 
 <!--Credit to W3schools @ https://www.w3schools.com/howto/howto_css_modals.asp-->
     <!--Reference & Credit to Felix Franzen, Open Source CodePen
@@ -391,6 +429,26 @@
 <script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
 <script src="../static/functions "  th:src="@{/functions.js}"></script>
 <script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>
+
+<script>
+    function openFullScreenModalUpdate() {
+        document.getElementById("fullScreenUpdate").style.width = "100%";
+    }
+
+    function closeFullScreenModalUpdate() {
+        document.getElementById("fullScreenUpdate").style.width = "0";
+    }
+</script>
+
+<script>
+    function openFullScreenModalRate() {
+        document.getElementById("fullScreenUpdate").style.width = "100%";
+    }
+
+    function closeFullScreenModalRate() {
+        document.getElementById("fullScreenUpdate").style.width = "0";
+    }
+</script>
 
 
 <script>
@@ -410,11 +468,29 @@
 
 </script>
 
-<script>
-    function myFunction() {
-        document.getElementById("titleChange").innerHTML = "Hello World";
-    }
-</script>
+<!--<script>-->
+
+    <!--function showModal() {-->
+<!--//        document.getElementById('selected_activity_id').value = activityId;-->
+        <!--document.getElementById('rate_modal').style.width = "100%";-->
+    <!--}-->
+
+    <!--document.getElementById("rate_close").onclick = function() {-->
+        <!--document.getElementById('rate_modal').style.width="0";-->
+    <!--}-->
+
+    <!--window.onclick = function(event) {-->
+        <!--if (event.target == modal) {-->
+            <!--document.getElementById('rate_modal').style.display = "none";-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+
+<!--<script>-->
+    <!--function myFunction() {-->
+        <!--document.getElementById("titleChange").innerHTML = "Hello World";-->
+    <!--}-->
+<!--</script>-->
 
 <!--<script type="text/javascript" th:inline="javascript">-->
 
