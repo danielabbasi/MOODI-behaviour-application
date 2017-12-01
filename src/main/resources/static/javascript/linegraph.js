@@ -1,12 +1,8 @@
 /**
  * Created by c1673218 on 26/11/2017.
  */
-// Currently only using data of patient with id 4, need to change so that the patient id can be
-// variable according the user specifies in controller.
 $(document).ready(function(){
-
     var id = $.url(2);
-
 
     $.ajax({
         url : "http://localhost:8080/api/patient/" + id + "/activities/completed",
@@ -15,11 +11,13 @@ $(document).ready(function(){
             console.log(data);
 
             var name = [];
+            var ratingBefore = [];
             var ratingAfter = [];
 
 
             for(var i in data) {
                 name.push(data[i].name);
+                ratingBefore.push(data[i].ratingBefore);
                 ratingAfter.push(data[i].ratingAfter);
             }
 
@@ -28,11 +26,21 @@ $(document).ready(function(){
                 fontColor: 'white',
                 datasets: [
                     {
-                        label: "Activity score",
+                        label: "Before",
                         fill: false,
                         lineTension: 0,
                         // fontColor: 'white',
                         backgroundColor: "#FFFFFF",
+                        borderColor: "red",
+                        pointHoverBackgroundColor: "#00b3b3",
+                        pointHoverBorderColor: "pink",
+                        data: ratingBefore
+                    }, {
+                        label: "After",
+                        fill: false,
+                        lineTension: 0,
+                        // fontColor: 'white',
+                        backgroundColor: "red",
                         borderColor: "red",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
@@ -44,14 +52,20 @@ $(document).ready(function(){
 
             var ctx = $("#mycanvas");
 
-            var LineGraph = new Chart(ctx, {
-                type: 'line',
+            var BarGraph = new Chart(ctx, {
+                type: 'bar',
                 data: chartdata,
                 options: {
-                    legend:  {
-                        labels: {
-                            fontColor: 'white'
-                        }
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+
+
+
+
+                        }]
                     }
                 }
             });
