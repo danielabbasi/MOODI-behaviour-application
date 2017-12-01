@@ -66,4 +66,12 @@ public class PatientService {
         return patientRepository.findPatientByFirstname(firstname);
     }
 
+//    public int countActivities(){
+//        return activityRepository.getActivitiesByName();
+//    }
+
+//    public Activities getActivityCount(){
+//        return activityRepository.count();
+//    }
+
 }
