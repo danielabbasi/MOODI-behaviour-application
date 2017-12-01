@@ -1038,6 +1038,7 @@ background: #1affa3;
    width: 80%;
 }
 
+/*START OF MOBILE RESOLUTION*/
 @media only screen and (max-width: 600px) {
 
     .topBar{
@@ -1322,6 +1323,12 @@ background: #1affa3;
 
 
 
+}
+
+/*END OF MOBILE RESOLUTION*/
+
+.inline{
+    display: inline-block;
 }
 
 

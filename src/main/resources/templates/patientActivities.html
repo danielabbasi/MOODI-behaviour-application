@@ -160,14 +160,14 @@
 
     <div class="activityBoxes">
         <div class="boxContainer">
-            <div class="activityCount">
+            <div class="activityUpcoming">
                 <div class="boxIcon">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 
 
                 </div>
-                <h2> 52 </h2>
-                <p> Activities completed</p>
+                <h2 th:text="${upcomingActivities}"> # </h2>
+                <p> upcoming activities </p>
 
             </div>
         </div>
@@ -179,7 +179,7 @@
 
 
                 </div>
-                <h2>                     <i class="fa fa-smile-o" aria-hidden="true"></i>
+                <h2 th:text="${avgRating}">    #
                 </h2>
                 <p> Average activity score</p>
             </div>
@@ -191,7 +191,7 @@
                     <i class="fa fa-pie-chart" aria-hidden="true"></i>
 
                 </div>
-                <h2> 65% </h2>
+                <h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}"> #</h2>
                 <p> Completion rate</p>
             </div>
         </div>
@@ -199,12 +199,11 @@
             <div class="boxContainer">
                 <div class="avgTime">
                     <div class="boxIcon">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-
+                        <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i>
                     </div>
-                    <h2> 1:34:22 </h2>
+                    <h2 th:text="${completedCount}"> 1:34:22 </h2>
 
-                    <p> Average completion time</p>
+                    <p> Completed activities</p>
                 </div>
             </div>
         </div>
