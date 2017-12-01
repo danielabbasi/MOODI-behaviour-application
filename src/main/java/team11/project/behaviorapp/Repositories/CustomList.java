@@ -6,5 +6,6 @@ package team11.project.behaviorapp.Repositories;
 public interface CustomList {
     String getName();
     String getActivityDate();
-    Integer getRating();
+    Integer getRatingBefore();
+    Integer getRatingAfter();
 }

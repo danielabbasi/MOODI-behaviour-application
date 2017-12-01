@@ -59,7 +59,6 @@ public class PatientService {
 
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
-
     }
 
     public List<Patient> getPatientByName(@PathVariable String firstname){

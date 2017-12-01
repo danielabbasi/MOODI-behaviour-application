@@ -15,12 +15,12 @@ $(document).ready(function(){
             console.log(data);
 
             var name = [];
-            var rating = [];
+            var ratingAfter = [];
 
 
             for(var i in data) {
                 name.push(data[i].name);
-                rating.push(data[i].rating);
+                ratingAfter.push(data[i].ratingAfter);
             }
 
             var chartdata = {
@@ -36,7 +36,7 @@ $(document).ready(function(){
                         borderColor: "red",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
-                        data: rating
+                        data: ratingAfter
                     }
 
                 ]

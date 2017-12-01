@@ -92,7 +92,7 @@ public class TemplateController {
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", activityRepository.getActivitiesByName());
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRating());
+        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
         model.addAttribute("totalCreated", total);
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 
@@ -122,7 +122,7 @@ public class TemplateController {
     @RequestMapping("/patient/stats/template")
     public String statTemplate(Model model){
         model.addAttribute("completedCount", activityRepository.getActivitiesByName());
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRating());
+        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
         model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 

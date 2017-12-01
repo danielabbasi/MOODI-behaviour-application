@@ -14,7 +14,7 @@ public class ActivityRatingService {
 
     private IActivityRatingRepository activityRatingRepository;
 
-    public void rateActivity(long activityId, int rating) {
-        activityRatingRepository.rateActivity(activityId, rating);
+    public void rateActivity(long activityId, int ratingAfter) {
+        activityRatingRepository.rateActivity(activityId, ratingAfter);
     }
 }

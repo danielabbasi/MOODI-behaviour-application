@@ -9,15 +9,15 @@ import java.sql.SQLException;
 @Repository
 public class ActivityRatingRepository extends JdbcRepository implements IActivityRatingRepository {
 
-    public void rateActivity(long activityId, int rating) {
+    public void rateActivity(long activityId, int ratingAfter) {
         Connection connection = null;
 
         try {
             connection = getDatabaseConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE activities SET rating = ?, is_completed = true WHERE activity_id = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE activities SET rating_after = ?, is_completed = true WHERE activity_id = ?;");
 
-            preparedStatement.setInt(1, rating);
+            preparedStatement.setInt(1, ratingAfter);
             preparedStatement.setLong(2, activityId);
 
             preparedStatement.executeUpdate();

@@ -33,7 +33,7 @@ function markActivityAsComplete() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?rating=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
     httpRequest.send();
 }
 

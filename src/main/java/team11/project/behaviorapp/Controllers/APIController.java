@@ -55,9 +55,10 @@ public class APIController {
         activities.setId(1L);
         activities.setName(name);
         activities.setActivityDate(dateFormat.parse(date));
-        activities.setIsCompleted(false);
-        activities.setIsDeleted(false);
-        activities.setRating(null);
+        activities.setCompleted(false);
+        activities.setDeleted(false);
+        activities.setRatingBefore(null);
+        activities.setRatingAfter(null);
         activityService.saveActivity(activities);
         return new ModelAndView("redirect:/patient/activities/1");
     }
@@ -106,8 +107,8 @@ public class APIController {
     }
 
     @RequestMapping("/activities/{activityId}/rate")
-    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "rating", required = true) int rating) {
-        activityRatingService.rateActivity(activityId, rating);
+    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "ratingAfter", required = true) int ratingAfter) {
+        activityRatingService.rateActivity(activityId, ratingAfter);
     }
 
     @RequestMapping("activities/{activityId}/delete")
