@@ -84,12 +84,16 @@ public class TemplateController {
 
     @RequestMapping("/patient/activities/{id}")
     public String listTableActivitiesll(@PathVariable Long id, Model model){
+        double numCompleted = activityRepository.getActivitiesByName();
+        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        int percent = (int) Math.round((numCompleted / total) * 100);
+
         model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
-
+        model.addAttribute("percent", percent);
         model.addAttribute("completedCount", activityRepository.getActivitiesByName());
         model.addAttribute("avgRating", activityRepository.getActivitiesByRating());
-        model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
+        model.addAttribute("totalCreated", total);
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 
 
