@@ -82,6 +82,20 @@ public class TemplateController {
             return "newlist";
     }
 
+    @RequestMapping("/patient/activities/{id}")
+    public String listTableActivitiesll(@PathVariable Long id, Model model){
+        model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
+        model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
+
+        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
+        model.addAttribute("avgRating", activityRepository.getActivitiesByRating());
+        model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
+        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+
+
+        return "patientActivities";
+    }
+
     //    <-------- Test ------------>
 
     @RequestMapping("/patient/test")
@@ -91,50 +105,30 @@ public class TemplateController {
         return "test";
     }
 
-    @RequestMapping("/patient/activities/{id}")
-    public String listTableActivitiesll(@PathVariable Long id, Model model){
-        model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
-        model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
-
-        return "patientActivities";
-    }
-
-
     @RequestMapping("/patient/graph")
     public String lineGraph(){
 
         return "linegraph";
     }
 
-//    @RequestMapping("/patient/history/form/{id}")
-//    public String listTableActivitiesllCompleted(@PathVariable Long id, Model model){
-//        model.addAttribute("act", patientService.getUpcomingActivities(id, false));
-//        return "test";
- //   }
+
+//   <---------- Statistics ------------>
+
+
+    @RequestMapping("/patient/stats/template")
+    public String statTemplate(Model model){
+        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
+        model.addAttribute("avgRating", activityRepository.getActivitiesByRating());
+        model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
+        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 
 
 
 
-//    @RequestMapping("/patient/test/test/{id}")
-//    public String listTableActivities(@PathVariable Long id, Model model){
-////        model.addAttribute("activities", patientService.getUpcomingActivities(id));
-//
-//        return "test";
-//    }
 
+        return "statsTest";
+    }
 
-
-
-//    @RequestMapping("/login")
-//    public String login(HttpSession httpSession, @RequestParam("username") String username, @RequestParam("password") String password){
-//        Account a = accountSrvice.authnticate(username, password);
-//
-//        if (a != null) httpSession.setAttribute("account", a);
-//        else return null;
-////        model.addAttribute("activities", patientService.getActivityList(id));
-//
-//        return "activityList";
-//    }
 
 
 
