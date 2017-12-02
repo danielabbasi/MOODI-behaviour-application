@@ -64,6 +64,20 @@ function favouriteActivity() {
     httpRequest.send();
 }
 
+function unFavouriteActivity() {
+    var completeButton = document.getElementById("unFavourite_button");
+    completeButton.innerHTML = "Removing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_unFavourite_activity_id").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/unfavourite")
+    httpRequest.send();
+}
+
+
 function refreshPage() {
     location.reload();
 }
