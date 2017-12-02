@@ -36,6 +36,8 @@ public class APIController {
     ActivityRatingService activityRatingService;
     @Autowired
     ActivityDeletionService activityDeletionService;
+    @Autowired
+    ActivityFavouriteService activityFavouriteService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public ModelAndView createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -57,6 +59,7 @@ public class APIController {
         activities.setActivityDate(dateFormat.parse(date));
         activities.setCompleted(false);
         activities.setDeleted(false);
+        activities.setFavourite(false);
         activities.setRatingBefore(null);
         activities.setRatingAfter(null);
         activityService.saveActivity(activities);
@@ -115,5 +118,11 @@ public class APIController {
     public void deleteActivity(@PathVariable long activityId) {
         activityDeletionService.deleteActivity(activityId);
     }
+
+    @RequestMapping("activities/{activityId}/favourite")
+    public void favouriteActivity(@PathVariable long activityId) {
+        activityFavouriteService.favouriteActivity(activityId);
+    }
+
 }
 
