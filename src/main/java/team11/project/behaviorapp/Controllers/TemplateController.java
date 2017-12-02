@@ -55,8 +55,26 @@ public class TemplateController {
     }
 //    <-------- Patient ------------>
 
-    @RequestMapping(path = "/patient/index")
-    public String patientIndex() {
+    @RequestMapping(path = "/patient/{id}/index")
+    public String patientIndex(@PathVariable Long id, Model model) {
+
+        double numCompleted = activityRepository.getActivitiesByName();
+        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        int percent = (int) Math.round((numCompleted / total) * 100);
+
+        model.addAttribute("favourite", patientService.getFavouritedActivities(id, true, false));
+        model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
+        model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
+
+        // stats
+        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("percent", percent);
+        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
+        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
+        model.addAttribute("totalCreated", total);
+        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+
+
         return "patientIndex";
     }
 
@@ -89,11 +107,12 @@ public class TemplateController {
         double total = activityRepository.getActivitiesByNameAndIsDeleted();
         int percent = (int) Math.round((numCompleted / total) * 100);
 
-        model.addAttribute("favourite", patientService.getFavouritedActivities(id, true));
+        model.addAttribute("favourite", patientService.getFavouritedActivities(id, true, false));
         model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
 
         // stats
+        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", activityRepository.getActivitiesByName());
         model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());

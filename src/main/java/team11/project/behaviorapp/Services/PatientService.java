@@ -57,11 +57,11 @@ public class PatientService {
         return completedActivities;
     }
 
-    public List<Activities> getFavouritedActivities(Long id, Boolean isFavourite) {
+    public List<Activities> getFavouritedActivities(Long id, Boolean isFavourite,Boolean isDeleted) {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> favouriteActivities = activityRepository.findActivitiesByPatientsAndIsFavourite(p, isFavourite);
+        List<Activities> favouriteActivities = activityRepository.findActivitiesByPatientsAndIsFavouriteAndIsDeleted(p, isFavourite, isDeleted);
 
         return favouriteActivities;
     }

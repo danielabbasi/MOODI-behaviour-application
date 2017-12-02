@@ -18,202 +18,150 @@
 
 <div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
 
-<div id="sidenav" th:fragment="patientSideMenu">
+<!--<div id="sidenav" th:fragment="patientSideMenu">-->
 
-    <div class="topBar" th:fragment="header">
-        <div class="holder" id="logoHolder">
-            <div class="companyHolder">
-                <p><i class="fa fa-heartbeat"></i>
-                    MOODi </p>
-            </div>
-
-
-        </div>
+    <!--<div class="topBar" th:fragment="header">-->
+        <!--<div class="holder" id="logoHolder">-->
+            <!--<div class="companyHolder">-->
+                <!--<p><i class="fa fa-heartbeat"></i>-->
+                    <!--MOODi </p>-->
+            <!--</div>-->
 
 
-
-        <div class="holder">
-            <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
-        </div>
-
-        <div class="holder" id="pageTitle">
-            <div class="pageTitle">
-                <h3 id="titleChange"> Activities
-                </h3>
-            </div>
-
-
-        </div>
-
-        <div class="holder" id="langHolder">
-            <div class="languageSelect">
-
-                <p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>
-                    ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </p>
-
-
-            </div>
-        </div>
-
-        <div class="holder" id="userHolder">
-            <div class="loggedInUser">
-                <p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-
-                    Jane Smith </p>
+        <!--</div>-->
 
 
 
-            </div>
-        </div>
+        <!--<div class="holder">-->
+            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="pageTitle">-->
+            <!--<div class="pageTitle">-->
+                <!--<h3 id="titleChange"> Activities-->
+                <!--</h3>-->
+            <!--</div>-->
 
 
-    </div>
+        <!--</div>-->
 
-    <ul id="main-nav" class="nav">
-        <div class="userSection">
-            <div class="imageWrapper">
-                <div class="userImageWrapper">
-                    <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>
-                </div>
-                <div class="userTitle">
-                    <p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                        Jane Smith</p>
+        <!--<div class="holder" id="langHolder">-->
+            <!--<div class="languageSelect">-->
 
-                </div>
-            </div>
-        </div>
+                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
+                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                <!--</p>-->
 
-        <li class="liSection">
-            <p>
-                MAIN
-            </p>
-        </li>
-        <li>
-            <a href="patientIndex.html" th:href="@{/patient/index}" >
-                <i class="fa fa-th-large"></i>
-                Dashboard
-            </a>
-        </li>
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="userHolder">-->
+            <!--<div class="loggedInUser">-->
+                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
+
+                    <!--Jane Smith </p>-->
 
 
 
-        <li>
-            <a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">
-                <i class="fa fa-heartbeat"></i>
-                Activities
-                <div class="notificationWrapper">
-                    <div class="notificationNav">
-                        <p>
-                            3
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </li>
+            <!--</div>-->
+        <!--</div>-->
 
-        <li class="liSection">
-            <p>
-                EXTRAS
-            </p>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-wrench"></i>
-                Settings
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                Calendar
-                <div class="notificationWrapper">
-                    <div class="notificationNav">
-                        <p id="calanderNotification">
-                            5
-                        </p>
-                    </div>
-                </div>
-            </a>
 
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-power-off"></i>
-                Logout
-            </a>
-        </li>
-    </ul>
+    <!--</div>-->
 
-</div>
+    <!--<ul id="main-nav" class="nav">-->
+        <!--<div class="userSection">-->
+            <!--<div class="imageWrapper">-->
+                <!--<div class="userImageWrapper">-->
+                    <!--<img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>-->
+                <!--</div>-->
+                <!--<div class="userTitle">-->
+                    <!--<p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
+                        <!--Jane Smith</p>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<li class="liSection">-->
+            <!--<p>-->
+                <!--MAIN-->
+            <!--</p>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="patientIndex.html" th:href="@{/patient/index}" >-->
+                <!--<i class="fa fa-th-large"></i>-->
+                <!--Dashboard-->
+            <!--</a>-->
+        <!--</li>-->
+
+
+
+        <!--<li>-->
+            <!--<a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">-->
+                <!--<i class="fa fa-heartbeat"></i>-->
+                <!--Activities-->
+                <!--<div class="notificationWrapper">-->
+                    <!--<div class="notificationNav">-->
+                        <!--<p>-->
+                            <!--3-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
+
+        <!--<li class="liSection">-->
+            <!--<p>-->
+                <!--EXTRAS-->
+            <!--</p>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-wrench"></i>-->
+                <!--Settings-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-calendar"></i>-->
+                <!--Calendar-->
+                <!--<div class="notificationWrapper">-->
+                    <!--<div class="notificationNav">-->
+                        <!--<p id="calanderNotification">-->
+                            <!--5-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-power-off"></i>-->
+                <!--Logout-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+<!--</div>-->
 
 
 <div class="activityContainer">
 
 <main class="main" id="main">
 
-<div class="activityBoxes">
-    <div class="boxContainer">
-        <div class="activityCount" id="indexCountDemo">
-            <div class="boxIcon">
-                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-
-
-
-            </div>
-            <h2> 3 </h2>
-            <p> Upcoming Activities</p>
-
-        </div>
-    </div>
-
-    <div class="boxContainer" id="indexAvgDemo">
-        <div class="activityAvg" >
-            <div class="boxIcon">
-                <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
-
-
-            </div>
-            <h2>                     5
-            </h2>
-            <p> Missed activities</p>
-        </div>
-    </div>
-
-    <!--<div class="boxContainer">-->
-        <!--<div class="completionRate">-->
-            <!--<div class="boxIcon">-->
-                <!--<i class="fa fa-pie-chart" aria-hidden="true"></i>-->
-
-            <!--</div>-->
-            <!--<h2> 65% </h2>-->
-            <!--<p> Completion rate</p>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="boxContainer">-->
-        <!--<div class="avgTime">-->
-            <!--<div class="boxIcon">-->
-                <!--<i class="fa fa-clock-o" aria-hidden="true"></i>-->
-
-            <!--</div>-->
-            <!--<h2> 1:34:22 </h2>-->
-
-            <!--<p> Average completion time</p>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
     <div class="activityBoxes">
         <div class="boxContainer">
-            <div class="activityCount">
+            <div class="activityUpcoming">
                 <div class="boxIcon">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 
 
                 </div>
-                <h2> 52 </h2>
-                <p> Activities completed</p>
+                <h2 th:text="${upcomingActivities}"> # </h2>
+                <p> upcoming activities </p>
 
             </div>
         </div>
@@ -225,7 +173,7 @@
 
 
                 </div>
-                <h2>                     <i class="fa fa-smile-o" aria-hidden="true"></i>
+                <h2 th:text="${avgRating}">    #
                 </h2>
                 <p> Average activity score</p>
             </div>
@@ -237,7 +185,8 @@
                     <i class="fa fa-pie-chart" aria-hidden="true"></i>
 
                 </div>
-                <h2> 65% </h2>
+                <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
                 <p> Completion rate</p>
             </div>
         </div>
@@ -245,125 +194,30 @@
         <div class="boxContainer">
             <div class="avgTime">
                 <div class="boxIcon">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-
+                    <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
-                <h2> 1:34:22 </h2>
+                <h2 th:text="${completedCount}"> # </h2>
 
-                <p> Average completion time</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <div class="activityBoxes">
-        <div class="boxContainer" id="indexFav">
-            <div class="activityCount">
-                <div class="boxIcon">
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-
-
-                </div>
-                <h2> 11 </h2>
-                <p> Activities favourited</p>
-
+                <p> Completed activities</p>
             </div>
         </div>
 
-        <div class="boxContainer" id="indexUsual">
-            <div class="activityAvg">
-                <div class="boxIcon">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+
+            <div class="boxContainer" id="indexFav">
+                <div class="activityCount">
+                    <div class="boxIcon">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
 
 
-
-                </div>
-                <h2>                     13:25:11
-                </h2>
-                <p> Usual activity time</p>
-            </div>
-        </div>
-
-        <div class="boxContainer">
-            <div class="completionRate">
-                <div class="boxIcon">
-                    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </div>
+                    <h2 th:text="${favouriteCount}"> # </h2>
+                    <p> Activities favourited</p>
 
                 </div>
-                <h2> 88% </h2>
-                <p> Score improvement</p>
-            </div>
-        </div>
 
-        <div class="boxContainer">
-            <div class="avgTime">
-                <div class="boxIcon">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-
-                </div>
-                <h2> 12:30:32 </h2>
-
-                <p> Usual login time</p>
-            </div>
-        </div>
     </div>
 
-
-
-    <div class="activityBoxes">
-        <div class="boxContainer" id="indexDistance">
-            <div class="activityCount">
-                <div class="boxIcon">
-                    <i class="fa fa-arrows-h" aria-hidden="true"></i>
-
-
-                </div>
-                <h2> 4KM </h2>
-                <p> Average walking distance</p>
-
-            </div>
-        </div>
-
-        <div class="boxContainer">
-            <div class="activityAvg">
-                <div class="boxIcon">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-
-
-
-                </div>
-                <h2>                     00:35:21
-                </h2>
-                <p> Average swimming session</p>
-            </div>
-        </div>
-
-        <div class="boxContainer" id="indexCig">
-            <div class="completionRate">
-                <div class="boxIcon">
-                    <i class="fa fa-ban" aria-hidden="true"></i>
-
-                </div>
-                <h2> 302 </h2>
-                <p> Days since last cigarette</p>
-            </div>
-        </div>
-
-        <div class="boxContainer" id="indexDivorce">
-            <div class="avgTime">
-                <div class="boxIcon">
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-
-                </div>
-                <h2> 1203 </h2>
-
-                <p> Days since you got divorced</p>
-            </div>
-        </div>
     </div>
-
-
 </main>
 </div>
 <script>

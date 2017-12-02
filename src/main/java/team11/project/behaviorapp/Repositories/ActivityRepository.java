@@ -18,7 +18,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompleted(Patient p, Boolean isCompleted);
-    List<Activities>findActivitiesByPatientsAndIsFavourite(Patient p, Boolean isFavourite);
+    List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
 
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
@@ -34,6 +34,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
     @Query(value = "SELECT COUNT(name) FROM Activities  WHERE isDeleted = 0 AND isCompleted = 0")
     int getActivitiesByNameAndIsDeletedAndIsCompleted();
+
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isFavourite = 1")
+    int getActivitiesByNameAndIsFavourite();
 
 
 
