@@ -100,6 +100,13 @@ public class TemplateController {
             return "newlist";
     }
 
+    @RequestMapping("/patient/sidemenu")
+    public String sideMenuView(Model model){
+        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+
+        return "patientSideMenu";
+    }
+
     @RequestMapping("/patient/activities/{id}")
     public String listTableActivitiesll(@PathVariable Long id, Model model){
 
