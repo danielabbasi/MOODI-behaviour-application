@@ -1,5 +1,6 @@
 package team11.project.behaviorapp.Repositories;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
@@ -17,6 +18,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompleted(Patient p, Boolean isCompleted);
+    List<Activities>findActivitiesByPatientsAndIsFavourite(Patient p, Boolean isFavourite);
 
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);

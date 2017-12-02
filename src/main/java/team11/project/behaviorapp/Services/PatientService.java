@@ -57,6 +57,15 @@ public class PatientService {
         return completedActivities;
     }
 
+    public List<Activities> getFavouritedActivities(Long id, Boolean isFavourite) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> favouriteActivities = activityRepository.findActivitiesByPatientsAndIsFavourite(p, isFavourite);
+
+        return favouriteActivities;
+    }
+
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
     }
