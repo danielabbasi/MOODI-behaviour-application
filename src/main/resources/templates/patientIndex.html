@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
     <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../javascript/patientIndexGraph.js" th:href="@{/patientIndexGraph.js}"/>
+    <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
+    <script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}" ></script >
 </head>
 <body>
 
@@ -161,6 +164,8 @@
 
                 </div>
                 <h2 th:text="${upcomingActivities}"> # </h2>
+                <!--<h2 th:text="${patient}"> # </h2>-->
+
                 <p> upcoming activities </p>
 
             </div>
@@ -216,10 +221,55 @@
                 </div>
 
     </div>
-
     </div>
+
+    <div class="graphToggleWrapper">
+        <div class="graphToggleHolder">
+            <i class="fa fa-bar-chart" aria-hidden="true" onclick="openFullScreenModalChart()"></i>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box effect">
+            <table>
+                <tr>
+                    <th>Activity Name</th>
+                    <th>Date</th>
+                    <th>Rating</th>
+                </tr>
+                <tr th:each="activities : ${activities}">
+                    <td th:text="${activities.name}"> Test</td>
+                    <td th:text="${activities.activityDate}">Test</td>
+                    <td th:text="${activities.ratingAfter}">Test</td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="fullScreenModal" id="chartOverlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalChart()">&times;</a>
+
+        <div class="chartWrapper">
+            <div class="chart-container">
+                <canvas id="indexGraph"></canvas>
+            </div>
+        </div>
+    </div>
+
+
 </main>
 </div>
+
+<script>
+    function openFullScreenModalChart() {
+        document.getElementById("chartOverlay").style.width = "100%";
+    }
+
+    function closeFullScreenModalChart() {
+        document.getElementById("chartOverlay").style.width = "0";
+    }
+</script>
 <script>
     $('#main-nav li a').click(function(){
         $('#main-nav li').removeClass('active');
