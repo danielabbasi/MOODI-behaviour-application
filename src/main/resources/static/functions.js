@@ -50,6 +50,20 @@ function deleteActivity() {
     httpRequest.send();
 }
 
+
+function favouriteActivity() {
+    var completeButton = document.getElementById("favourite_button");
+    completeButton.innerHTML = "Favouriting (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_favourite_activity_id").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/favourite")
+    httpRequest.send();
+}
+
 function refreshPage() {
     location.reload();
 }

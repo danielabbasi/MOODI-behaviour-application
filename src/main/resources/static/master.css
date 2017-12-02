@@ -655,7 +655,25 @@ body{
     /*padding-top: 60px;*/
 }
 
+.favourite_close{
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
 
+#favouriteIcon{
+    color: #ffd633;
+}
+
+.favourite_close:hover{
+    transition: all 0.3s ease-in-out;
+
+    color: #818181;
+    cursor: pointer;
+}
 
 .delete_close{
     position: absolute;
