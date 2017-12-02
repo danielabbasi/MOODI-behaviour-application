@@ -70,6 +70,10 @@ public class PatientService {
         return patientRepository.findOne(id);
     }
 
+    public Patient getPatientFirstLastName(@PathVariable Long id){
+        return patientRepository.findOne(id);
+    }
+
     public List<Patient> getPatientByName(@PathVariable String firstname){
         return patientRepository.findPatientByFirstname(firstname);
     }

@@ -1,5 +1,6 @@
 package team11.project.behaviorapp.Controllers;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -130,6 +131,14 @@ public class APIController {
     public void unFavouriteActivity(@PathVariable long activityId) {
         activityUnFavouriteService.UnFavouriteActivity(activityId);
     }
+//
+//    @RequestMapping("patient/{id}/patient")
+//    public Patient findOnePatient(@PathVariable Long id, Model model){
+//
+//        model.addAttribute("patient", patientRepository.findById(id));
+//
+//        return patientRepository.findOne(id);
+//    }
 
 
 }

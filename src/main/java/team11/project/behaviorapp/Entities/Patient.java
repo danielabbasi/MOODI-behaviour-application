@@ -1,5 +1,7 @@
 package team11.project.behaviorapp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 

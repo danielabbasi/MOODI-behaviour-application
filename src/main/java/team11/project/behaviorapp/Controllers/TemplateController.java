@@ -36,13 +36,23 @@ public class TemplateController {
 
 //    <-------- GP ------------>
     @RequestMapping(path = "/gp/index")
-    public String index() {
+    public String index( Model model) {
+        String topBarTitleForGpIndex = "Dashboard";
+
+
+
+        model.addAttribute("topBarTitle", topBarTitleForGpIndex);
+
         return "gpIndex";
     }
 
 
     @RequestMapping("/gp/patients")
     public String listPatients(Model model) {
+
+        String topBarTitleForGpPatientList = "List of Patients";
+
+        model.addAttribute("topBarTitle", topBarTitleForGpPatientList);
         model.addAttribute("patients", patientService.getAllPatients());
 
         return "patientsList";
@@ -50,17 +60,36 @@ public class TemplateController {
 
     @RequestMapping("/gp/patients/record/{id}")
     public String specificRecord(@PathVariable Long id, Model model){
+
+        String topBarTitleForGpRecords = "Record For ";
+
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+        model.addAttribute("topBarTitle", topBarTitleForGpRecords);
         model.addAttribute("records", patientService.getSpecificRecord(id));
         return "patientRecord";
     }
 //    <-------- Patient ------------>
 
+//    @RequestMapping(path = "/patient/{id}/topbar")
+//    public String patientTopBar(@PathVariable Long id, Model model){
+//        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+//        return "header";
+//    }
+
     @RequestMapping(path = "/patient/{id}/index")
     public String patientIndex(@PathVariable Long id, Model model) {
+
+        String topBarTitleForIndex = "Dashboard";
+
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+
+        model.addAttribute("activities", patientService.getActivityList(id));
 
         double numCompleted = activityRepository.getActivitiesByName();
         double total = activityRepository.getActivitiesByNameAndIsDeleted();
         int percent = (int) Math.round((numCompleted / total) * 100);
+
+        model.addAttribute("topBarTitle", topBarTitleForIndex);
 
         model.addAttribute("favourite", patientService.getFavouritedActivities(id, true, false));
         model.addAttribute("upcoming", patientService.getUpcomingActivities(id, false, false));
@@ -85,6 +114,11 @@ public class TemplateController {
 
     @RequestMapping("/patient/{id}/activityList")
     public String listActivities(@PathVariable Long id, Model model){
+
+        String topBarForGpPatientActivities = "Activities For ";
+
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+        model.addAttribute("topBarTitle", topBarForGpPatientActivities);
         model.addAttribute("activities", patientService.getActivityList(id));
         return "activityList";
     }
@@ -110,6 +144,10 @@ public class TemplateController {
     @RequestMapping("/patient/activities/{id}")
     public String listTableActivitiesll(@PathVariable Long id, Model model){
 
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+
+        String topBarTitleForActivities = "Activities";
+
         double numCompleted = activityRepository.getActivitiesByName();
         double total = activityRepository.getActivitiesByNameAndIsDeleted();
         int percent = (int) Math.round((numCompleted / total) * 100);
@@ -120,6 +158,7 @@ public class TemplateController {
 
         // stats
         model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("topBarTitle", topBarTitleForActivities);
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", activityRepository.getActivitiesByName());
         model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());

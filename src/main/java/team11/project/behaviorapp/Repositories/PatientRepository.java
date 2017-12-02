@@ -3,6 +3,7 @@ package team11.project.behaviorapp.Repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import team11.project.behaviorapp.Entities.Patient;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -14,5 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     Patient findById(Long id);
 
     List<Patient> findPatientByFirstname(String firstname);
+
+    Collection<patientNameOnly>findPatientById(Long id);
 
 }
