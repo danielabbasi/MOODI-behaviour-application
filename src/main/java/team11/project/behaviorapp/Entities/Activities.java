@@ -31,6 +31,9 @@ public class Activities {
     @Column(name="is_deleted")
     public Boolean isDeleted;
 
+    @Column(name = "is_favourite")
+    public Boolean isFavourite;
+
     @ManyToOne
     @JoinColumn(name = "patient_id", insertable = false, updatable = false, referencedColumnName = "id")
     public Patient patients;
@@ -39,7 +42,7 @@ public class Activities {
 
     }
 
-    public Activities(Long id, String name, Date activityDate, Boolean isCompleted, Long ratingBefore, Long ratingAfter, Boolean isDeleted, Patient patients) {
+    public Activities(Long id, String name, Date activityDate, Boolean isCompleted, Long ratingBefore, Long ratingAfter, Boolean isDeleted, Boolean isFavourite, Patient patients) {
         this.id = id;
         this.name = name;
         this.activityDate = activityDate;
@@ -47,6 +50,7 @@ public class Activities {
         this.ratingBefore = ratingBefore;
         this.ratingAfter = ratingAfter;
         this.isDeleted = isDeleted;
+        this.isFavourite = isFavourite;
         this.patients = patients;
     }
 
@@ -104,6 +108,14 @@ public class Activities {
 
     public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public Boolean getFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(Boolean favourite) {
+        isFavourite = favourite;
     }
 
     public Patient getPatients() {
