@@ -38,6 +38,8 @@ public class APIController {
     ActivityDeletionService activityDeletionService;
     @Autowired
     ActivityFavouriteService activityFavouriteService;
+    @Autowired
+    ActivityUnFavouriteService activityUnFavouriteService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public ModelAndView createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -124,5 +126,12 @@ public class APIController {
         activityFavouriteService.favouriteActivity(activityId);
     }
 
+    @RequestMapping("activities/{activityId}/unfavourite")
+    public void unFavouriteActivity(@PathVariable long activityId) {
+        activityUnFavouriteService.UnFavouriteActivity(activityId);
+    }
+
+
 }
+
 
