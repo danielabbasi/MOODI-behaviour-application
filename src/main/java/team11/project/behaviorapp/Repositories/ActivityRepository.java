@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 
+import javax.xml.crypto.Data;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activities, Long>{
@@ -37,6 +39,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
     @Query(value = "SELECT COUNT(name) FROM Activities WHERE isFavourite = 1")
     int getActivitiesByNameAndIsFavourite();
+
+    @Query(value = "SELECT activityDate FROM Activities  WHERE id =1")
+    Date getActivitiesByActivityDate();
 
 
 
