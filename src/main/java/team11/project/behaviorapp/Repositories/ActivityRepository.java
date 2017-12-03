@@ -1,6 +1,7 @@
 package team11.project.behaviorapp.Repositories;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
@@ -22,6 +23,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
     List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
     List<Activities> findByActivityDateGreaterThan(LocalDateTime aMoment);
+    List<Activities> findByActivityDateBetween(LocalDateTime aMoment, LocalDateTime bMoment);
 
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
