@@ -1,6 +1,7 @@
 package team11.project.behaviorapp.Entities;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -17,7 +18,7 @@ public class Activities {
     public String name;
 
     @Column(name = "activity_date")
-    public Date activityDate;
+    public LocalDateTime activityDate;
 
     @Column(name="is_completed")
     public Boolean isCompleted;
@@ -42,7 +43,7 @@ public class Activities {
 
     }
 
-    public Activities(Long id, String name, Date activityDate, Boolean isCompleted, Long ratingBefore, Long ratingAfter, Boolean isDeleted, Boolean isFavourite, Patient patients) {
+    public Activities(Long id, String name, LocalDateTime activityDate, Boolean isCompleted, Long ratingBefore, Long ratingAfter, Boolean isDeleted, Boolean isFavourite, Patient patients) {
         this.id = id;
         this.name = name;
         this.activityDate = activityDate;
@@ -70,11 +71,11 @@ public class Activities {
         this.name = name;
     }
 
-    public Date getActivityDate() {
+    public LocalDateTime getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
+    public void setActivityDate(LocalDateTime activityDate) {
         this.activityDate = activityDate;
     }
 

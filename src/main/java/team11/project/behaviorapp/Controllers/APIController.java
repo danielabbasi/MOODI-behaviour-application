@@ -15,6 +15,7 @@ import team11.project.behaviorapp.Services.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -59,7 +60,7 @@ public class APIController {
         Activities activities = new Activities();
         activities.setId(1L);
         activities.setName(name);
-        activities.setActivityDate(dateFormat.parse(date));
+        activities.setActivityDate(LocalDateTime.parse(date));
         activities.setCompleted(false);
         activities.setDeleted(false);
         activities.setFavourite(false);
