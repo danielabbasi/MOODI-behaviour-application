@@ -21,6 +21,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
+    List<Activities> findByActivityDateBetween(LocalDateTime aMoment, LocalDateTime bMoment);
     List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
     List<Activities> findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(Patient p, Boolean isCompleted);
 
