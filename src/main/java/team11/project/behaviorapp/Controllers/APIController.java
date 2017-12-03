@@ -106,6 +106,14 @@ public class APIController {
         return completedActivities;
     }
 
+    @RequestMapping("{id}/activities/patient/index")
+    public List<Activities> getPatientsLastActivities(@PathVariable Long id ) {
+
+        List<Activities> completedActivities = patientService.lastActivitiesOfPatient(id, true);
+
+        return completedActivities;
+    }
+
 
 
     @RequestMapping("test/{firstname}")

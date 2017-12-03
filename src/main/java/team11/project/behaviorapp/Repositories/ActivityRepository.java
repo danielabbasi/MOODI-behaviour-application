@@ -1,7 +1,6 @@
 package team11.project.behaviorapp.Repositories;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.tomcat.jni.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
@@ -10,6 +9,7 @@ import team11.project.behaviorapp.Entities.Patient;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activities, Long>{
@@ -21,9 +21,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
-    List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
-    List<Activities> findByActivityDateGreaterThan(LocalDateTime aMoment);
     List<Activities> findByActivityDateBetween(LocalDateTime aMoment, LocalDateTime bMoment);
+    List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
+    List<Activities> findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(Patient p, Boolean isCompleted);
 
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
@@ -42,6 +42,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
     @Query(value = "SELECT COUNT(name) FROM Activities WHERE isFavourite = 1")
     int getActivitiesByNameAndIsFavourite();
+
+    @Query(value = "SELECT activityDate FROM Activities WHERE id = 1")
+    LocalDateTime getActivitiesByActivityDate();
 
 
 

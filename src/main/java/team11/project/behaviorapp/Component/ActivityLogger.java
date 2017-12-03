@@ -29,9 +29,10 @@ public class ActivityLogger {
     @Transactional
     public void logActivityReminder(){
         LocalDateTime start = LocalDateTime.now().minus(10, ChronoUnit.MINUTES);
-        LocalDateTime end = LocalDateTime.now();
-        System.out.println("Activities Since " + start);
-        for (Activities a : activityRepository.findByActivityDateBetween(start, end) ){
+        LocalDateTime finish = LocalDateTime.now();
+
+        System.out.println("Activities between " + start + " and " + finish );
+        for (Activities a : activityRepository.findByActivityDateBetween(start, finish) ){
             System.out.println(a.getName());
         }
     }

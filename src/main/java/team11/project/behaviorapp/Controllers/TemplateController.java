@@ -157,6 +157,7 @@ public class TemplateController {
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
 
         // stats
+        model.addAttribute("date", activityRepository.getActivitiesByActivityDate());
         model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
         model.addAttribute("topBarTitle", topBarTitleForActivities);
         model.addAttribute("percent", percent);

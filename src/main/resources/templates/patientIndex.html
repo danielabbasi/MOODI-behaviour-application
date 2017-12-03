@@ -229,23 +229,23 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="box effect">
-            <table>
-                <tr>
-                    <th>Activity Name</th>
-                    <th>Date</th>
-                    <th>Rating</th>
-                </tr>
-                <tr th:each="activities : ${activities}">
-                    <td th:text="${activities.name}"> Test</td>
-                    <td th:text="${activities.activityDate}">Test</td>
-                    <td th:text="${activities.ratingAfter}">Test</td>
+    <!--<div class="container">-->
+        <!--<div class="box effect">-->
+            <!--<table>-->
+                <!--<tr>-->
+                    <!--<th>Activity Name</th>-->
+                    <!--<th>Date</th>-->
+                    <!--<th>Rating</th>-->
+                <!--</tr>-->
+                <!--<tr th:each="activities : ${activities}">-->
+                    <!--<td th:text="${activities.name}"> Test</td>-->
+                    <!--<td th:text="${activities.activityDate}">Test</td>-->
+                    <!--<td th:text="${activities.ratingAfter}">Test</td>-->
 
-                </tr>
-            </table>
-        </div>
-    </div>
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <div class="fullScreenModal" id="chartOverlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalChart()">&times;</a>

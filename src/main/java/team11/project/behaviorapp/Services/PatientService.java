@@ -57,6 +57,16 @@ public class PatientService {
         return completedActivities;
     }
 
+    public List<Activities> lastActivitiesOfPatient(Long id, Boolean isCompleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> lastActivities = activityRepository.findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(p, isCompleted);
+
+        return lastActivities;
+    }
+
+
     public List<Activities> getFavouritedActivities(Long id, Boolean isFavourite,Boolean isDeleted) {
 
         Patient p = patientRepository.findById(id);

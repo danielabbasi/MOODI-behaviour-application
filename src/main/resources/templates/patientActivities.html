@@ -168,6 +168,7 @@
                 </div>
                 <h2 th:text="${upcomingActivities}"> # </h2>
                 <p> upcoming activities </p>
+                <div id="r"></div>
 
             </div>
         </div>
@@ -182,6 +183,8 @@
                 <h2 th:text="${avgRating}">    #
                 </h2>
                 <p> Average activity score</p>
+                <p id="demo"></p>
+
             </div>
         </div>
 
@@ -525,6 +528,7 @@
 </div>
 
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
+<script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>
 <script src="../static/modal.js "  th:src="@{/modal.js}"></script>
 <script src="../static/rateModal.js "  th:src="@{/rateModal.js}"></script>
 <script src="../static/deleteModal.js "  th:src="@{/deleteModal.js}"></script>
@@ -572,40 +576,10 @@
 
 </script>
 
-<!--<script>-->
 
-    <!--function showModal() {-->
-<!--//        document.getElementById('selected_activity_id').value = activityId;-->
-        <!--document.getElementById('rate_modal').style.width = "100%";-->
-    <!--}-->
 
-    <!--document.getElementById("rate_close").onclick = function() {-->
-        <!--document.getElementById('rate_modal').style.width="0";-->
-    <!--}-->
 
-    <!--window.onclick = function(event) {-->
-        <!--if (event.target == modal) {-->
-            <!--document.getElementById('rate_modal').style.display = "none";-->
-        <!--}-->
-    <!--}-->
-<!--</script>-->
 
-<!--<script>-->
-    <!--function myFunction() {-->
-        <!--document.getElementById("titleChange").innerHTML = "Hello World";-->
-    <!--}-->
-<!--</script>-->
-
-<!--<script type="text/javascript" th:inline="javascript">-->
-
-    <!--var selector = '.nav li';-->
-
-    <!--$(selector).on('click', function(){-->
-        <!--$(selector).removeClass('actives');-->
-        <!--$(this).addClass('actives');-->
-    <!--});-->
-
-<!--</script>-->
 
 </body>
 </html>
