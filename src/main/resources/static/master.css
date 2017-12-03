@@ -51,7 +51,7 @@ body{
 }
 
 #userHolder{
-    width: 10%;
+    width: 20%;
     font-weight:600;
 
 }
@@ -78,11 +78,12 @@ body{
 }
 
 #pageTitle{
-    width:60%;
+    width:50%;
 }
 
 .pageTitle{
-    text-align: center;
+    text-align: left;
+    margin-left: 2%;
 }
 
 #titleChange{

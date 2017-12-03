@@ -52,7 +52,7 @@ public class PatientService {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> completedActivities = activityRepository.findActivitiesByPatientsAndIsCompleted(p, isCompleted);
+        List<Activities> completedActivities = activityRepository.findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(p, isCompleted);
 
         return completedActivities;
     }

@@ -40,8 +40,8 @@ $(document).ready(function(){
                         fill: false,
                         lineTension: 0,
                         // fontColor: 'white',
-                        backgroundColor: "red",
-                        borderColor: "red",
+                        backgroundColor: "#00b3b3",
+                        borderColor: "white",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
                         data: ratingAfter
