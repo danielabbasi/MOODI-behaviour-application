@@ -168,6 +168,7 @@
                 </div>
                 <h2 th:text="${upcomingActivities}"> # </h2>
                 <p> upcoming activities </p>
+                <div id="r"></div>
 
             </div>
         </div>
@@ -182,6 +183,8 @@
                 <h2 th:text="${avgRating}">    #
                 </h2>
                 <p> Average activity score</p>
+                <p id="demo"></p>
+
             </div>
         </div>
 
@@ -526,6 +529,7 @@
 </div>
 
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
+<script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>
 <script src="../static/modal.js "  th:src="@{/modal.js}"></script>
 <script src="../static/rateModal.js "  th:src="@{/rateModal.js}"></script>
 <script src="../static/deleteModal.js "  th:src="@{/deleteModal.js}"></script>
@@ -573,40 +577,56 @@
 
 </script>
 
-<!--<script>-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
 
-    <!--function showModal() {-->
-<!--//        document.getElementById('selected_activity_id').value = activityId;-->
-        <!--document.getElementById('rate_modal').style.width = "100%";-->
-    <!--}-->
 
-    <!--document.getElementById("rate_close").onclick = function() {-->
-        <!--document.getElementById('rate_modal').style.width="0";-->
-    <!--}-->
+    // Set the date we're counting down to
+    var countDownDate = new Date("[[${date}]]");
 
-    <!--window.onclick = function(event) {-->
-        <!--if (event.target == modal) {-->
-            <!--document.getElementById('rate_modal').style.display = "none";-->
-        <!--}-->
-    <!--}-->
-<!--</script>-->
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
-<!--<script>-->
-    <!--function myFunction() {-->
-        <!--document.getElementById("titleChange").innerHTML = "Hello World";-->
-    <!--}-->
-<!--</script>-->
+        // Get todays date and time
+        var now = new Date().getTime();
 
-<!--<script type="text/javascript" th:inline="javascript">-->
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
 
-    <!--var selector = '.nav li';-->
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <!--$(selector).on('click', function(){-->
-        <!--$(selector).removeClass('actives');-->
-        <!--$(this).addClass('actives');-->
-    <!--});-->
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
 
-<!--</script>-->
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+    /*]]>*/
+
+</script>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    time=[[${date}]].getTime,r=document.getElementById('r'),tmp=time;
+    setInterval(function(){
+        var c=tmp--,m=(c/60)>>0,s=(c-m*60)+'';
+        r.textContent='Registration closes in '+m+':'+(s.length>1?'':'0')+s
+        tmp!=0||(tmp=time);
+    },1000);
+
+    /*]]>*/
+
+</script>
 
 </body>
 </html>
