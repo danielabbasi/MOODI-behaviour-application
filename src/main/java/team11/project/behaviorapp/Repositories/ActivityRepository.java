@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
     List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
+    List<Activities> findByActivityDateGreaterThan(LocalDateTime aMoment);
 
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
