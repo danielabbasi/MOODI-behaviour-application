@@ -48,6 +48,8 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
 
 
+    @Query(value = "SELECT COUNT(activityDate) AS totals, name, function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
+    List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
 
 
 

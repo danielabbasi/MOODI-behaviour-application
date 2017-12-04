@@ -116,7 +116,14 @@ public class APIController {
 
 
 
+    @RequestMapping("{id}/activities/days")
+    public List<Activities> getActivitiesByDays(@PathVariable Long id){
 
+        List <Activities> activitiesByDays = patientService.getActivitiesByDay(id);
+
+        return activitiesByDays;
+
+    }
 
 
 

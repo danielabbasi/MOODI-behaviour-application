@@ -76,7 +76,14 @@ public class PatientService {
         return favouriteActivities;
     }
 
+    public List<Activities> getActivitiesByDay(Long id) {
 
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> activitiesByDay = activityRepository.getActivitiesByPatientsAndActivityDate_DayOfWeek(p);
+
+        return activitiesByDay;
+    }
 
 
 
