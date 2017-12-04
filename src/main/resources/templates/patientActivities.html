@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 
 
@@ -526,7 +528,7 @@
     @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
 </main>
 </div>
-
+<script src="../static/app.js" th:src="@{/app.js}"> </script>
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
 <script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>
 <script src="../static/modal.js "  th:src="@{/modal.js}"></script>
@@ -577,9 +579,21 @@
 </script>
 
 
+<div id="greetings" class="greetings">
+
+    Notifications.
 
 
+</div>
 
+<script>
+    $('#greetings').bind('DOMNodeInserted DOMNodeRemoved', function() {
+        document.getElementById('greetings').style.width = "100%";
+        document.getElementById('greetings').style.color = "#FFF";
+
+
+    });
+</script>
 
 </body>
 </html>
