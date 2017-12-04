@@ -1139,6 +1139,53 @@ background: #1affa3;
     margin-top:2%;
 }
 
+.boxContainer:hover{
+    cursor: pointer;
+    transition:  0.3s;
+    /*transition: all 0.3s ease-out;*/
+
+    width: 100%;
+}
+
+#indexModal .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+#indexModal table{
+    background: none;
+    box-shadow: none;
+    margin-top: 60px;
+}
+
+#indexModal td{
+    color: #FFFFFF;
+}
+
+#indexModalFavourites .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+#indexModalFavourites table{
+    background: none;
+    box-shadow: none;
+    margin-top: 60px;
+}
+
+#indexModalFavourites td{
+    color: #FFFFFF;
+}
+
+
 
 
 
