@@ -32,7 +32,7 @@
             function calendarLoaded() { // Overridden
                 $.getJSON('http://localhost:8080/api/patient/' + window.location.pathname.split('/')[3] + '/activities/calendar', {month: selectedMonth, year: selectedYear}, function(data) {
                     $.each(data, function(key, value) {
-                        addSchedule(value.activityDate.dayOfMonth, value.activityDate.hour + ':' + value.activityDate.minute, value.name);
+                        addSchedule(value.activityDate.dayOfMonth, value.activityDate.hour + ':' + value.activityDate.minute, value.name, value.completed);
                     });
                 });
             }

@@ -8,6 +8,7 @@ import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,8 +34,12 @@ public class ActivityCalendarService {
 
         //List<Activities> returnActivities = activityRepository.findActivitiesByPatientsAndIsCompletedAndIsDeleted(patient, false, false);
 
-        List<Activities> returnActivities = activityRepository.findActivitiesByPatientsAndIsCompletedAndIsDeleted(patient, false, false).stream().filter(a -> Month.valueOf(a.getActivityDate().getMonth().name()).getValue() == month && a.getActivityDate().getYear() == year).collect(Collectors.toList());
+        List<Activities> upcomingActivities = activityRepository.findActivitiesByPatientsAndIsCompletedAndIsDeleted(patient, false, false).stream().filter(a -> Month.valueOf(a.getActivityDate().getMonth().name()).getValue() == month && a.getActivityDate().getYear() == year).collect(Collectors.toList());
+        List<Activities> pastActivities = activityRepository.findActivitiesByPatientsAndIsCompletedAndIsDeleted(patient, true, false);
 
-        return returnActivities;
+        List<Activities> returnList = new ArrayList<Activities>(upcomingActivities);
+        returnList.addAll(pastActivities);
+
+        return returnList;
     }
 }
