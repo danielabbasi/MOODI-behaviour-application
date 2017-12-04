@@ -61,4 +61,10 @@ public class PatientActivities {
 
         return "patientActivities";
     }
+
+    @RequestMapping("/patient/activities/{id}/calendar")
+    public String getCalendar(@PathVariable long id, Model model) {
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+        return "calendar";
+    }
 }

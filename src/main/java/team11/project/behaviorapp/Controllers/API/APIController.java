@@ -42,6 +42,8 @@ public class APIController {
     ActivityFavouriteService activityFavouriteService;
     @Autowired
     ActivityUnFavouriteService activityUnFavouriteService;
+    @Autowired
+    ActivityCalendarService activityCalendarService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public ModelAndView createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -160,6 +162,11 @@ public class APIController {
 //
 //        return patientRepository.findOne(id);
 //    }
+
+    @RequestMapping("{id}/activities/calendar")
+    public List<Activities> getActivitiesForCalendar(@PathVariable long id, @RequestParam(name = "month", required = true) long month, @RequestParam(name = "year", required = true) long year){
+        return activityCalendarService.findAllByPatientIdAndDate(id, month, year);
+    }
 
 
 }
