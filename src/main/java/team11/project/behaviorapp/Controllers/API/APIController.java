@@ -1,4 +1,4 @@
-package team11.project.behaviorapp.Controllers;
+package team11.project.behaviorapp.Controllers.API;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
