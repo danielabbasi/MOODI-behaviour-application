@@ -116,6 +116,11 @@ public class APIController {
 
 
 
+
+
+
+
+
     @RequestMapping("test/{firstname}")
     public List<Patient> getPatientByName(@PathVariable String firstname){
         return patientService.getPatientByName(firstname);

@@ -76,6 +76,10 @@ public class PatientService {
         return favouriteActivities;
     }
 
+
+
+
+
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
     }

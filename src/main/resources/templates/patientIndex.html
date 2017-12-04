@@ -7,6 +7,8 @@
     <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../javascript/patientIndexGraph.js" th:href="@{/patientIndexGraph.js}"/>
+    <script src="../../javascript/patientIndexDaysGraph.js" th:href="@{/patientIndexDaysGraph.js}"/>
+
     <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
     <script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}" ></script >
 </head>
@@ -155,57 +157,59 @@
 
 <main class="main" id="main">
 
-    <div class="activityBoxes">
-        <div class="boxContainer">
-            <div class="activityUpcoming">
-                <div class="boxIcon">
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+    <div class="activityBoxes" id="activityBoxIndex">
 
+    <div class="boxContainer" id="boxContainerIndex" >
+        <div class="activityUpcoming">
+            <div class="boxIcon">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 
-                </div>
-                <h2 th:text="${upcomingActivities}"> # </h2>
-                <!--<h2 th:text="${patient}"> # </h2>-->
-
-                <p> upcoming activities </p>
 
             </div>
-        </div>
+            <h2  th:text="${upcomingActivities}"> # </h2>
+            <!--<h2 th:text="${patient}"> # </h2>-->
 
-        <div class="boxContainer">
-            <div class="activityAvg">
+            <p> upcoming activities </p>
+
+        </div>
+    </div>
+        <div class="boxContainer" id="boxContainerIndex" >
+            <div class="activityUpcoming">
                 <div class="boxIcon">
                     <i class="fa fa-bar-chart" aria-hidden="true"></i>
 
 
                 </div>
-                <h2 th:text="${avgRating}">    #
-                </h2>
-                <p> Average activity score</p>
+                <h2  th:text="${avgRating}"> # </h2>
+                <!--<h2 th:text="${patient}"> # </h2>-->
+
+                <p> average score </p>
+
             </div>
         </div>
+        <div class="activityBoxes" >
+            <div class="boxContainer" id="completionRateIndex">
+                <div class="completionRate" >
+                    <div class="boxIcon">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
 
-        <div class="boxContainer">
-            <div class="completionRate">
-                <div class="boxIcon">
-                    <i class="fa fa-pie-chart" aria-hidden="true"></i>
-
+                    </div>
+                    <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                    <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
+                    <p> completion rate</p>
                 </div>
-                <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
-                <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
-                <p> Completion rate</p>
             </div>
-        </div>
 
-        <div class="boxContainer">
-            <div class="avgTime">
-                <div class="boxIcon">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+            <div class="boxContainer" id="completedCountIndex">
+                <div class="completedCnt"  >
+                    <div class="boxIcon">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                    <h2 th:text="${completedCount}"> # </h2>
+
+                    <p> completed </p>
                 </div>
-                <h2 th:text="${completedCount}"> # </h2>
-
-                <p> Completed activities</p>
             </div>
-        </div>
 
 
             <div class="boxContainer" id="indexFav">
@@ -216,46 +220,30 @@
 
                     </div>
                     <h2 th:text="${favouriteCount}"> # </h2>
-                    <p> Activities favourited</p>
+                    <p> favourites </p>
 
                 </div>
 
-    </div>
-    </div>
-
-    <div class="graphToggleWrapper">
-        <div class="graphToggleHolder">
-            <i class="fa fa-bar-chart" aria-hidden="true" onclick="openFullScreenModalChart()"></i>
-        </div>
-    </div>
-
-    <!--<div class="container">-->
-        <!--<div class="box effect">-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<th>Activity Name</th>-->
-                    <!--<th>Date</th>-->
-                    <!--<th>Rating</th>-->
-                <!--</tr>-->
-                <!--<tr th:each="activities : ${activities}">-->
-                    <!--<td th:text="${activities.name}"> Test</td>-->
-                    <!--<td th:text="${activities.activityDate}">Test</td>-->
-                    <!--<td th:text="${activities.ratingAfter}">Test</td>-->
-
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <div class="fullScreenModal" id="chartOverlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalChart()">&times;</a>
-
-        <div class="chartWrapper">
-            <div class="chart-container">
-                <canvas id="indexGraph"></canvas>
             </div>
+
+        </div>
+</div>
+
+
+    <div class="infoWrapepr">
+
+    <div class="graphWrapperIndex">
+        <h1> Your last 3 activities </h1>
+    <canvas id="indexGraph"></canvas>
+    </div>
+
+        <div class="graphWrapperIndex">
+            <h1> Activities by day </h1>
+            <canvas id="indexGraphDays"></canvas>
+
         </div>
     </div>
+
 
 
 </main>

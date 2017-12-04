@@ -30,8 +30,7 @@ $(document).ready(function(){
                         fill: false,
                         lineTension: 0,
                         // fontColor: 'white',
-                        backgroundColor: "#FFFFFF",
-                        borderColor: "red",
+                        backgroundColor: "#4dc3ff",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
                         data: ratingBefore
@@ -40,8 +39,7 @@ $(document).ready(function(){
                         fill: false,
                         lineTension: 0,
                         // fontColor: 'white',
-                        backgroundColor: "red",
-                        borderColor: "red",
+                        backgroundColor: " #ff8080",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
                         data: ratingAfter
@@ -56,18 +54,30 @@ $(document).ready(function(){
                 type: 'bar',
                 data: chartdata,
                 options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
+                    legend:{
+                        labels: {
+                            fontColor: "#000"
+                        }
+                    },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontColor: "#000",
+
+                                }
 
 
+                        }],
+                            xAxes: [{
+                                ticks: {
+                                    fontColor: "#000",
 
-
-                        }]
+                                }
+                            }]
                     }
                 }
+
             });
         },
         error : function(data) {

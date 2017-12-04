@@ -363,7 +363,11 @@ body{
     font-weight: 600;
     text-align: center;
 
+}
 
+.container table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .upcomingTable tr:nth-child(2){
@@ -374,11 +378,11 @@ body{
 
 .container table th{
     font-size: 18px;
-    /*border-right: 1px solid #dddddd;*/
+    border-right: 1px solid white;
     padding-top: 1%;
     padding-bottom: 2%;
     color: black;
-    /*background: #35495d;*/
+    background:  #d9d9d9;
     font-weight: 900;
 }
 
@@ -861,12 +865,21 @@ body{
         margin-bottom:5%;
         display: flex;
         justify-content: center;
+        width: 100%;
+    }
+
+    #activityBoxIndex{
+        width:100%;
+    }
+    #boxContainerIndex h2{
+        font-size: 5em;
+        width: 50%;
     }
 
     .boxContainer{
-        display: inline-block;
+        /*display: inline-block;*/
         /*border-right:1px solid #dddddd;*/
-        width: 100%;
+        width: 50%;
         margin-left:10px;
         box-shadow:  2px 5px 4px 3px  #bfbfbf;
 
@@ -881,6 +894,8 @@ body{
     .boxContainer p{
         font-size: 15px;
         padding-top: 1px;
+        font-weight: 900;
+        bottom: 0px;
     }
 
     .boxIcon{
@@ -1041,7 +1056,7 @@ display:flex;
     background: #669999
 }
 
-#indexDistance{
+#completedCountIndex{
 background: #1affa3;
 }
 
@@ -1050,7 +1065,7 @@ background: #1affa3;
 
 }
 
-#indexDivorce{
+#completionRateIndex{
     background: #cc33ff;
 }
 
@@ -1104,6 +1119,26 @@ background: #1affa3;
 #rate_modal_button{
     color: #00e673;
 }
+.bigBoxesIndex{
+    font-size: 9em;
+    width:50%;
+}
+.infoWrapepr{
+    width:100%;
+}
+.graphWrapperIndex{
+    width:40%;
+    display: inline-block;
+}
+
+.graphWrapperIndex h1{
+    text-align: center;
+
+}
+.graphWrapperIndex canvas{
+    margin-top:2%;
+}
+
 
 
 
