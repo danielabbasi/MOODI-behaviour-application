@@ -46,11 +46,11 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT activityDate FROM Activities WHERE id = 1")
     LocalDateTime getActivitiesByActivityDate();
 
-
-
     @Query(value = "SELECT COUNT(activityDate), function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
     List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
 
+    @Query(value = "SELECT name FROM Activities WHERE ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
+    List <Activities> getActivitiesByRatingBeforeAndRatingAfter();
 
 
 
