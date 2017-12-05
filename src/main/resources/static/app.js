@@ -37,7 +37,7 @@ function disconnect() {
 
 
 function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message.body + "</td></tr>");
+    $("#greetings").append("<p>" + message.body + "</p>");
 }
 
 $(document).ready(function () {

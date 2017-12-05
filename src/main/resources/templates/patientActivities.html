@@ -578,21 +578,41 @@
 
 </script>
 
+<div id="modal" class="modal">
+    <div class="modal-content">
 
-<div id="greetings" class="greetings">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h1> <i class="fa fa-exclamation-circle" aria-hidden="true" id="notificationIcon"></i> Notification</h1>
+        </div>
+        <div class="modalBody">
+        <div id="greetings" class="greetings">
+        </div>
+            <p id="notificationSubText"> is in 10 minutes!</p>
 
-    Notifications.
+        </div>
 
-
+    </div>
 </div>
 
 <script>
-    $('#greetings').bind('DOMNodeInserted DOMNodeRemoved', function() {
-        document.getElementById('greetings').style.width = "100%";
-        document.getElementById('greetings').style.color = "#FFF";
+
+
+    $('#modal').bind('DOMNodeInserted DOMNodeRemoved', function() {
+        document.getElementById('modal').style.display = "block";
+        document.getElementById('greetings').style.color = "#00b3b3";
+        document.getElementById('greetings').style.textAlign = "center";
 
 
     });
+</script>
+
+<script>
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
 </script>
 
 </body>
