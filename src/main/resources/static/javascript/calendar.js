@@ -86,8 +86,8 @@ function setDates() {
 	calendarLoaded();
 }
 
-function addSchedule(scheduleDay, scheduleTime, text, history) {
-	document.getElementById('M' + (day + scheduleDay - 1)).children[1].innerHTML += '<div class="schedule' + ((history == true) ? " history" : "") + '"><span class="time">' + scheduleTime + '</span> ' + text + '</div>';
+function addSchedule(scheduleDay, scheduleTime, text, history, upcoming) {
+	document.getElementById('M' + (day + scheduleDay - 1)).children[1].innerHTML += '<div class="schedule' + ((history == true) ? " history" : (upcoming == true ? " upcoming" : "")) + '"><span class="time">' + scheduleTime + '</span> ' + text + '</div>';
 }
 
 function calendarLoaded() { } // this should be overridden

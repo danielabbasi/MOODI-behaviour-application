@@ -58,9 +58,15 @@ div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule {
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.history {
 	background-color: #A9A9A9;
 }
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming {
+	background-color: #DA532C;
+}
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule> span.time {
 	color: #D3D3D3;
 }
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.history> span.time {
 	 background-color: #A9A9A9;
- }
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming> span.time {
+	color: #FFB2AE;
+}

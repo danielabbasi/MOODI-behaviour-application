@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team11.project.behaviorapp.Entities.Activities;
+import team11.project.behaviorapp.Entities.CalendarActivity;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
@@ -165,7 +166,7 @@ public class APIController {
 //    }
 
     @RequestMapping("{id}/activities/calendar")
-    public List<Activities> getActivitiesForCalendar(@PathVariable long id, @RequestParam(name = "month", required = true) long month, @RequestParam(name = "year", required = true) long year){
+    public List<CalendarActivity> getActivitiesForCalendar(@PathVariable long id, @RequestParam(name = "month", required = true) long month, @RequestParam(name = "year", required = true) long year){
         return activityCalendarService.findAllByPatientIdAndDate(id, month, year);
     }
 
