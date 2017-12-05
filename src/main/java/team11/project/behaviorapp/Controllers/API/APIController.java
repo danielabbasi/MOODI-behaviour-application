@@ -1,14 +1,14 @@
 package team11.project.behaviorapp.Controllers.API;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
+import team11.project.behaviorapp.Entities.abc;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
+import team11.project.behaviorapp.Repositories.GraphRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 import team11.project.behaviorapp.Services.*;
 
@@ -16,13 +16,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/api/patient")
 public class APIController {
+
+    @Autowired
+    GraphRepository graphRepository;
 
     @Autowired
     ActivityRepository activityRepository;
@@ -153,6 +154,14 @@ public class APIController {
     @RequestMapping("activities/{activityId}/unfavourite")
     public void unFavouriteActivity(@PathVariable long activityId) {
         activityUnFavouriteService.UnFavouriteActivity(activityId);
+    }
+
+
+
+    @RequestMapping("activities/jamie")
+    public abc getCount(){
+
+        return graphRepository.graph();
     }
 //
 //    @RequestMapping("patient/{id}/patient")
