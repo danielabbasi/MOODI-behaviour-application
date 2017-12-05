@@ -30,7 +30,6 @@ public class ActivityCalendarService {
 
     public List<CalendarActivity> findAllByPatientIdAndDate(long patientId, long month, long year) {
         List<CalendarActivity>  a = activityCalendarRepository.getActivitiesForCalendar(patientId, month, year);
-        System.out.println(a.size());
         return a;
     }
 }

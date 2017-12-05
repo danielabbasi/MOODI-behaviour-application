@@ -59,6 +59,9 @@ div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.hist
 	background-color: #A9A9A9;
 }
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming {
+	background-color: #FFC40D;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.past {
 	background-color: #DA532C;
 }
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule> span.time {
@@ -68,5 +71,8 @@ div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.hist
 	 background-color: #A9A9A9;
 }
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming> span.time {
+	color: #FDFCBA;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.past> span.time {
 	color: #FFB2AE;
 }
