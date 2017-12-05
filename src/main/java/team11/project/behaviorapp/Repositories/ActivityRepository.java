@@ -21,7 +21,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
-    List<Activities> findByActivityDateBetween(LocalDateTime aMoment, LocalDateTime bMoment);
+    List<Activities> findActivitiesByActivityDateEquals(LocalDateTime aMoment);
     List<Activities>findActivitiesByPatientsAndIsFavouriteAndIsDeleted(Patient p, Boolean isFavourite, Boolean isDeleted);
     List<Activities> findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(Patient p, Boolean isCompleted);
 
@@ -48,8 +48,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
 
 
-    @Query(value = "SELECT COUNT(activityDate) AS totals, name, function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
+    @Query(value = "SELECT COUNT(activityDate), function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
     List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
+
 
 
 
