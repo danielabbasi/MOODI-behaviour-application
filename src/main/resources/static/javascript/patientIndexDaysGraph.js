@@ -14,15 +14,17 @@ $(document).ready(function(){
 
 
 
+            var count = [];
             var days = [];
 
     // PUSH INTO DAYS MY ARRAY OF NUMBERS
             for(var i in data) {
-                days.push(data[i].data);
+                days.push(data[i][1]);
+                count.push(data[i][0]);
             }
 
             var chartdata = {
-                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                labels: days,
                 datasets: [
                     {
                         label: "Peak",
@@ -32,7 +34,7 @@ $(document).ready(function(){
                         backgroundColor: "#4dc3ff",
                         pointHoverBackgroundColor: "#00b3b3",
                         pointHoverBorderColor: "pink",
-                        data: days
+                        data: count
                     }
 
                 ]

@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
-import team11.project.behaviorapp.Entities.abc;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
-import team11.project.behaviorapp.Repositories.GraphRepository;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 import team11.project.behaviorapp.Services.*;
 
@@ -22,8 +20,6 @@ import java.util.*;
 @RequestMapping(path = "/api/patient")
 public class APIController {
 
-    @Autowired
-    GraphRepository graphRepository;
 
     @Autowired
     ActivityRepository activityRepository;
@@ -158,11 +154,7 @@ public class APIController {
 
 
 
-    @RequestMapping("activities/jamie")
-    public abc getCount(){
 
-        return graphRepository.graph();
-    }
 //
 //    @RequestMapping("patient/{id}/patient")
 //    public Patient findOnePatient(@PathVariable Long id, Model model){
