@@ -23,7 +23,7 @@ public class ActivityCalendarRepository extends JdbcRepository implements IActiv
         try {
             connection = getDatabaseConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT activity_ID, activity_name, activity_date, is_completed, (NOW() - INTERVAL 10 MINUTE <= activity_date) AS upcoming, (IF((NOW() >= activity_date = TRUE) AND is_completed = TRUE, FALSE, TRUE)) AS past FROM activities WHERE patient_id = ? AND MONTH(activity_date) = ? AND YEAR(activity_date) = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT activity_ID, activity_name, activity_date, is_completed, IF((activity_date + INTERVAL 10 MINUTE >= NOW() AND activity_date < NOW() + INTERVAL 10 MINUTE AND NOW() <= activity_date) AND is_completed = FALSE, TRUE, FALSE) AS upcoming, (IF(activity_date < NOW() AND is_completed = FALSE, TRUE, FALSE)) AS past FROM activities WHERE patient_id = ? AND MONTH(activity_date) = ? AND YEAR(activity_date) = ?;");
 
             preparedStatement.setLong(1, patientId);
             preparedStatement.setLong(2, month);
