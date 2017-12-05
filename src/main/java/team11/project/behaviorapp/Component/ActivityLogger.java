@@ -8,10 +8,13 @@ import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by c1673218 on 03/12/2017.
@@ -29,21 +32,20 @@ public class ActivityLogger {
         template = aTemplate;
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     @Transactional
     public void logActivityReminder(){
-        LocalDateTime start = LocalDateTime.now().minus(10, ChronoUnit.MINUTES);
-        LocalDateTime finish = LocalDateTime.now();
+        LocalDateTime start = LocalDateTime.now().minus(10, ChronoUnit.MINUTES).withNano(0).withSecond(0);
 
-        System.out.println("Activities between " + start + " and " + finish );
-//        template.convertAndSend("/topic/greetings" );
-        for (Activities a : activityRepository.findByActivityDateBetween(start, finish) ){
+
+        System.out.println("Activities at " + start.withNano(0).withSecond(0));
+        for (Activities a : activityRepository.findActivitiesByActivityDateEquals(start)) {
+
+
             System.out.println(a.getName());
-            if (activityRepository.findByActivityDateBetween(start, finish) != null  ){
-                template.convertAndSend("/topic/greetings", a.getName());
-                break;
-            }
-            break;
+
+
+            template.convertAndSend("/topic/greetings", a.getName());
 
         }
     }
