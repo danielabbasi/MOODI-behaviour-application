@@ -39,6 +39,7 @@ public class ActivityLogger {
         LocalDateTime start = LocalDateTime.now().plus(10, ChronoUnit.MINUTES).withNano(0).withSecond(0);
 
 
+
         System.out.println("Activities at " + start.withNano(0).withSecond(0));
         for (Activities a : activityRepository.findActivitiesByActivityDateEquals(start)) {
 
@@ -49,6 +50,8 @@ public class ActivityLogger {
             template.convertAndSend("/topic/greetings", a.getName());
 
         }
+
+
     }
 
 }

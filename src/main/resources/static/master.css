@@ -1188,7 +1188,9 @@ background: #1affa3;
 
 
 
-.modal{
+
+
+.notificationModal{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -1203,7 +1205,7 @@ background: #1affa3;
 
 }
 
-.modal-content {
+.notificationModalContent {
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -1219,10 +1221,10 @@ background: #1affa3;
 
 }
 
-.modal-body {padding: 2px 16px;}
+.notificationBody {padding: 2px 16px;}
 
 
-.modal-body p{
+.notificationBody p{
     font-weight: 900;
 }
 
@@ -1233,21 +1235,21 @@ background: #1affa3;
     color: #000;
 }
 
-.close {
+.notificationClose {
     color: #000000;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.notificationClose:hover,
+.notificationClose:focus {
     color: grey;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modal-header {
+.notificationHeader {
     padding: 2px 16px;
     background-color:#888;
 }

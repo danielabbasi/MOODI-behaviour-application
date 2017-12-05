@@ -578,14 +578,14 @@
 
 </script>
 
-<div id="modal" class="modal">
-    <div class="modal-content">
+<div id="modal" class="notificationModal">
+    <div class="notificationModalContent">
 
-        <div class="modal-header">
-            <span class="close">&times;</span>
+        <div class="notificationHeader">
+            <span class="notificationClose">&times;</span>
             <h1> <i class="fa fa-exclamation-circle" aria-hidden="true" id="notificationIcon"></i> Notification</h1>
         </div>
-        <div class="modalBody">
+        <div class="notificationBody">
         <div id="greetings" class="greetings">
         </div>
             <p id="notificationSubText"> is in 10 minutes!</p>
@@ -608,7 +608,7 @@
 </script>
 
 <script>
-    var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("notificationClose")[0];
 
     span.onclick = function() {
         modal.style.display = "none";
