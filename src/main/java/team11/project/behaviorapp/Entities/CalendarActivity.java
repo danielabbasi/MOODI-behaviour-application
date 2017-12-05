@@ -9,14 +9,16 @@ import java.util.Calendar;
  */
 public class CalendarActivity {
 
-    public CalendarActivity() { }
+    public CalendarActivity() {
+    }
 
-    public CalendarActivity(long activityId, String name, LocalDateTime activityDate, boolean isCompleted, boolean upcoming) {
+    public CalendarActivity(long activityId, String name, LocalDateTime activityDate, boolean isCompleted, boolean upcoming, boolean past) {
         this.activityId = activityId;
         this.name = name;
         this.activityDate = activityDate;
         this.isCompleted = isCompleted;
         this.upcoming = upcoming;
+        this.past = past;
     }
 
     private long activityId;
@@ -28,6 +30,8 @@ public class CalendarActivity {
     private boolean isCompleted;
 
     private boolean upcoming;
+
+    private boolean past;
 
     public long getActivityId() {
         return activityId;
@@ -47,5 +51,9 @@ public class CalendarActivity {
 
     public boolean getUpcoming() {
         return upcoming;
+    }
+
+    public boolean getPast() {
+        return past;
     }
 }

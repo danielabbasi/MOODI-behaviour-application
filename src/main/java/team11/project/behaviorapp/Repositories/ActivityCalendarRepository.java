@@ -23,7 +23,7 @@ public class ActivityCalendarRepository extends JdbcRepository implements IActiv
         try {
             connection = getDatabaseConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT activity_ID, activity_name, activity_date, is_completed, (activity_date >= NOW() - INTERVAL 10 MINUTE) AS upcoming FROM activities WHERE patient_id = ? AND MONTH(activity_date) = ? AND YEAR(activity_date) = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT activity_ID, activity_name, activity_date, is_completed, (activity_date >= NOW() - INTERVAL 10 MINUTE AND activity_date <= NOW()) AS upcoming, (IF((NOW() >= activity_date = TRUE) AND is_completed = FALSE, TRUE, FALSE)) AS past FROM activities WHERE patient_id = ? AND MONTH(activity_date) = ? AND YEAR(activity_date) = ?;");
 
             preparedStatement.setLong(1, patientId);
             preparedStatement.setLong(2, month);
@@ -33,7 +33,7 @@ public class ActivityCalendarRepository extends JdbcRepository implements IActiv
             List<CalendarActivity> returnCalendarActivities = new ArrayList<>();
 
             while(resultSet.next()) {
-                returnCalendarActivities.add(new CalendarActivity(resultSet.getLong(1), resultSet.getString(2), resultSet.getTimestamp(3).toLocalDateTime(), resultSet.getBoolean(4), resultSet.getBoolean(5)));
+                returnCalendarActivities.add(new CalendarActivity(resultSet.getLong(1), resultSet.getString(2), resultSet.getTimestamp(3).toLocalDateTime(), resultSet.getBoolean(4), resultSet.getBoolean(5), resultSet.getBoolean(6)));
             }
 
             return returnCalendarActivities;
