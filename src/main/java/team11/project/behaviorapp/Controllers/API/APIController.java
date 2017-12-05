@@ -153,7 +153,10 @@ public class APIController {
         activityUnFavouriteService.UnFavouriteActivity(activityId);
     }
 
-
+    @RequestMapping("activities/testing")
+    public List<Activities> getActivitiesByRatingBeforeAndRatingAfter() {
+        return activityRepository.getActivitiesByRatingBeforeAndRatingAfter();
+    }
 
 
 //
