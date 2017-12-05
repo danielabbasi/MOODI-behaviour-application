@@ -36,7 +36,7 @@ public class ActivityLogger {
             cron = "0 0/1 * * * *")
     @Transactional
     public void logActivityReminder(){
-        LocalDateTime start = LocalDateTime.now().minus(10, ChronoUnit.MINUTES).withNano(0).withSecond(0);
+        LocalDateTime start = LocalDateTime.now().plus(10, ChronoUnit.MINUTES).withNano(0).withSecond(0);
 
 
         System.out.println("Activities at " + start.withNano(0).withSecond(0));
