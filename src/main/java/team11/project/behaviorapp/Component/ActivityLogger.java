@@ -32,7 +32,8 @@ public class ActivityLogger {
         template = aTemplate;
     }
 
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(
+            cron = "0 0/1 * * * *")
     @Transactional
     public void logActivityReminder(){
         LocalDateTime start = LocalDateTime.now().minus(10, ChronoUnit.MINUTES).withNano(0).withSecond(0);
