@@ -845,7 +845,7 @@ body{
     }
     .main{
         margin-top:5%;
-        width:70%;
+        width:90%;
 
     }
 
@@ -1126,10 +1126,13 @@ background: #1affa3;
 .infoWrapepr{
     width:100%;
 }
+
+.infoWrapepr h1{
+    text-align: center;
+}
 .graphWrapperIndex{
     width:40%;
-
-    display: inline-block;
+    margin-left:10%;
 }
 
 .graphWrapperIndex h1{
@@ -1281,6 +1284,9 @@ background: #1affa3;
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
+
+
+
 
 
 
