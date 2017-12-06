@@ -21,140 +21,10 @@
 <header>
     <div th:replace="fragments/header :: header"></div>
 
-    <!--<div class="topBar" th:fragment="header">-->
-        <!--<div class="holder" id="logoHolder">-->
-            <!--<div class="companyHolder">-->
-                <!--<p><i class="fa fa-heartbeat"></i>-->
-                    <!--MOODi </p>-->
-            <!--</div>-->
-
-
-        <!--</div>-->
-
-
-
-        <!--<div class="holder">-->
-            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="pageTitle">-->
-            <!--<div class="pageTitle">-->
-                <!--<h3 id="titleChange"> Activities-->
-                <!--</h3>-->
-            <!--</div>-->
-
-
-        <!--</div>-->
-
-        <!--<div class="holder" id="langHolder">-->
-            <!--<div class="languageSelect">-->
-
-                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
-                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
-                <!--</p>-->
-
-
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="userHolder">-->
-            <!--<div class="loggedInUser">-->
-                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
-
-                    <!--Jane Smith </p>-->
-
-
-
-            <!--</div>-->
-        <!--</div>-->
-
-
-    <!--</div>-->
 </header>
 
 <div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
 
-<!--<div id="sidenav" th:fragment="patientSideMenu">-->
-    <!--&lt;!&ndash;<div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">&ndash;&gt;-->
-        <!--&lt;!&ndash;<p class="welcome"> Welcome John Smith </p>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-    <!--<ul id="main-nav" class="nav">-->
-        <!--<div class="userSection">-->
-            <!--<div class="imageWrapper">-->
-                <!--<div class="userImageWrapper">-->
-                    <!--<img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>-->
-                <!--</div>-->
-                <!--<div class="userTitle">-->
-                    <!--<p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
-                        <!--Jane Smith</p>-->
-
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<li class="liSection">-->
-            <!--<p>-->
-                <!--MAIN-->
-            <!--</p>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="patientIndex.html" th:href="@{/patient/index}" >-->
-                <!--<i class="fa fa-th-large"></i>-->
-                <!--Dashboard-->
-            <!--</a>-->
-        <!--</li>-->
-
-
-
-        <!--<li>-->
-            <!--<a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">-->
-                <!--<i class="fa fa-heartbeat"></i>-->
-                <!--Activities-->
-                <!--<div class="notificationWrapper">-->
-                    <!--<div class="notificationNav">-->
-                        <!--<p>-->
-                            <!--3-->
-                        <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</a>-->
-        <!--</li>-->
-
-        <!--<li class="liSection">-->
-            <!--<p>-->
-                <!--EXTRAS-->
-            <!--</p>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="#">-->
-                <!--<i class="fa fa-wrench"></i>-->
-                <!--Settings-->
-            <!--</a>-->
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="#">-->
-                <!--<i class="fa fa-calendar"></i>-->
-                <!--Calendar-->
-                <!--<div class="notificationWrapper">-->
-                    <!--<div class="notificationNav">-->
-                    <!--<p id="calanderNotification">-->
-                        <!--5-->
-                    <!--</p>-->
-                <!--</div>-->
-                <!--</div>-->
-            <!--</a>-->
-
-        <!--</li>-->
-        <!--<li>-->
-            <!--<a href="#">-->
-                <!--<i class="fa fa-power-off"></i>-->
-                <!--Logout-->
-            <!--</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-
-<!--</div>-->
 
 <div class="activityContainer">
 
@@ -539,6 +409,8 @@
 <script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
 <script src="../static/functions "  th:src="@{/functions.js}"></script>
 <script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>
+<script src="../static/notification.js" th:src="@{/notification.js}"> </script>
+
 
 <script>
     function openFullScreenModalUpdate() {
@@ -591,11 +463,48 @@
             <p id="notificationSubText"> is in 10 minutes!</p>
 
         </div>
+    <!--Modal start-->
+
+        <div class="modal-content">
+            <div class="rateCloseHolder">
+                <span class="rate_close" id="rate_close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modalTitle">
+                    <p class="titleModal">Activity completion</p>
+                </div>
+                <div class="modalSubtitle">
+                    <p> How did you feel about this activity?</p>
+                </div>
+                <div class="formWrapper">
+
+                    <div class="formContainer">
+                        <div class="range-slider" id="range-slider-1">
+                            <span></span>
+                        </div>
+                        <div class="test-result" id="test-result">Very Happy</div>
+                        <div class="modal-wrapper result-emoji-wrapper">
+                            <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
+                        </div>
+                        <input type="hidden" name="selected_activity_id" id="selected_activity_id" value="" />
+                        <!--<div class="modal-wrapper">-->
+
+                        <div class="btnWrapper">
+                            <button id="complete_button" type="submit" onclick="sendRatingBefore()"><i class="fa fa-check-circle-o"></i></button>
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!--Modal end-->
+
 
     </div>
 </div>
+</div>
 
-<script>
+<script th:inline="javascript">
 
 
     $('#modal').bind('DOMNodeInserted DOMNodeRemoved', function() {
