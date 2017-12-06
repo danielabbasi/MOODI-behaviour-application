@@ -8,6 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../javascript/patientIndexGraph.js" th:href="@{/patientIndexGraph.js}"/>
     <script src="../../javascript/patientIndexDaysGraph.js" th:href="@{/patientIndexDaysGraph.js}"/>
+    <script src="../../javascript/patientIndexBeforeAfterAvgGraph.js" th:href="@{/patientIndexBeforeAfterAvgGraph.js}"/>
+
 
     <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
     <script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}" ></script >
@@ -102,15 +104,17 @@ canvas
 
 
     <div class="infoWrapepr">
-
+        <h1> Activities by day </h1>
+        <canvas id="indexGraphDays"></canvas>
     <div class="graphWrapperIndex">
-        <h1> Your last 3 activities </h1>
+        <h3> Your last 3 activities </h3>
     <canvas id="indexGraph"></canvas>
     </div>
 
         <div class="graphWrapperIndex">
-            <h1> Activities by day </h1>
-            <canvas id="indexGraphDays"></canvas>
+            <h3> How you generally feel before and after   </h3>
+
+            <canvas id="indexGraphAverage"></canvas>
 
         </div>
     </div>

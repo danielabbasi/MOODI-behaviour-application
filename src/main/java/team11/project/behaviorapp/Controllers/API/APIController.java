@@ -159,18 +159,16 @@ public class APIController {
     }
 
 
-//
-//    @RequestMapping("patient/{id}/patient")
-//    public Patient findOnePatient(@PathVariable Long id, Model model){
-//
-//        model.addAttribute("patient", patientRepository.findById(id));
-//
-//        return patientRepository.findOne(id);
-//    }
 
     @RequestMapping("{id}/activities/calendar")
     public List<CalendarActivity> getActivitiesForCalendar(@PathVariable long id, @RequestParam(name = "month", required = true) long month, @RequestParam(name = "year", required = true) long year){
         return activityCalendarService.findAllByPatientIdAndDate(id, month, year);
+    }
+
+    @RequestMapping("{id}/activities/average/before/after")
+    public List<Activities> activitiesBeforeAfter(@PathVariable Long id){
+
+        return patientService.getActivitiesByBeforeAndAfter(id);
     }
 
 

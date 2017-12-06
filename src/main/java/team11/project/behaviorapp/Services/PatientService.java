@@ -99,12 +99,16 @@ public class PatientService {
         return patientRepository.findPatientByFirstname(firstname);
     }
 
-//    public int countActivities(){
-//        return activityRepository.getActivitiesByName();
-//    }
+    public List<Activities> getActivitiesByBeforeAndAfter(@PathVariable Long id){
 
-//    public Activities getActivityCount(){
-//        return activityRepository.count();
-//    }
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> activitiesBeforeAfter = activityRepository.getActivitiesByPatientsAndRatingAfterAndRatingBefore(p);
+
+        return activitiesBeforeAfter;
+
+    }
+
+
 
 }

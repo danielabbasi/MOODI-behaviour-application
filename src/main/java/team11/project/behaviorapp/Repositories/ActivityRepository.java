@@ -52,6 +52,11 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT name FROM Activities WHERE ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
     List <Activities> getActivitiesByRatingBeforeAndRatingAfter();
 
+    @Query(value = "SELECT function('ROUND', AVG(ratingBefore)), function('ROUND', AVG(ratingAfter)) FROM Activities WHERE patients=?1")
+    List<Activities> getActivitiesByPatientsAndRatingAfterAndRatingBefore(Patient p);
+
+
+
 
 
 
