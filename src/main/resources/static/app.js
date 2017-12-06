@@ -37,7 +37,9 @@ function disconnect() {
 
 
 function showGreeting(message) {
-    $("#greetings").append("<p>" + message.body + "</p>");
+    $("#NotificationDom").append("<p>" + "hello" + "</p>");
+
+    $("#notificationId").val($('#notificationId').val() + message.body);
 }
 
 $(document).ready(function () {
