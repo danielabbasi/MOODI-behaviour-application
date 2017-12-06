@@ -136,6 +136,7 @@ public class APIController {
     @RequestMapping("/activities/{activityId}/rate")
     public void rateActivity(@PathVariable long activityId, @RequestParam(name = "ratingAfter", required = true) int ratingAfter) {
         activityRatingService.rateActivity(activityId, ratingAfter);
+//        return false;
     }
 
     @RequestMapping("activities/{activityId}/delete")

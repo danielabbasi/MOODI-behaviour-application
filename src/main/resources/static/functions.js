@@ -41,7 +41,8 @@ function sendRatingBefore() {
     var completeButton = document.getElementById("complete_button");
     completeButton.innerHTML = "Sending Score (please wait)...";
     completeButton.disabled = true;
-    var activityId = document.getElementById("greetings").value;
+    var activityId = document.getElementById("notificationId").value;
+    // console.log(activityId)
     var testResult = document.getElementById("test-result").innerHTML.toLowerCase();
     var testResultNumber = 0;
     if(testResult == "very happy") {
@@ -63,6 +64,8 @@ function sendRatingBefore() {
     }
     httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
     httpRequest.send();
+
+    return false;
 }
 
 function deleteActivity() {
