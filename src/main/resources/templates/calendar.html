@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width"/>
+		<title>Calendar</title>
+		<link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+		<link rel="stylesheet" href="../static/css/calendar.css" th:href="@{/css/calendar.css}"/>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<div th:replace="fragments/header :: header"></div>
+		</header>
+
+		<div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
+
+		<div class="activityContainer">
+			<main class="main" id="main">
+				<div id="calendar-wrapper">
+				</div>
+			</main>
+		</div>
+
+		<script src="/javascript/calendar.js" type="text/javascript"></script>
+		<script>
+            $(document).ready(function() {
+                initialiseCalendar('calendar-wrapper');
+            });
+
+            function calendarLoaded() { // Overridden
+                $.getJSON('http://localhost:8080/api/patient/' + window.location.pathname.split('/')[3] + '/activities/calendar', {month: selectedMonth, year: selectedYear}, function(data) {
+                    $.each(data, function(key, value) {
+                        addSchedule(value.activityDate.dayOfMonth, value.activityDate.hour + ':' + value.activityDate.minute, value.name, value.isCompleted, value.upcoming, value.past);
+                    });
+                });
+            }
+		</script>
+		<script>
+            function togNav() {
+                var nav = document.getElementById("sidenav");
+                var main = document.getElementById("main");
+
+                if (nav.style.width == '250px') {
+                    nav.style.width = '0';
+                    main.style.marginLeft = 0;
+
+                } else {
+                    nav.style.width = "250px";
+                    main.style.marginLeft = '250px';
+                }
+            }
+
+		</script>
+	</body>
+</html>

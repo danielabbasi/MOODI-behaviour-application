@@ -33,7 +33,7 @@ function markActivityAsComplete() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?rating=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
     httpRequest.send();
 }
 
@@ -49,6 +49,34 @@ function deleteActivity() {
     httpRequest.open("POST", "/api/patient/activities/" + activityId + "/delete")
     httpRequest.send();
 }
+
+
+function favouriteActivity() {
+    var completeButton = document.getElementById("favourite_button");
+    completeButton.innerHTML = "Favouriting (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_favourite_activity_id").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/favourite")
+    httpRequest.send();
+}
+
+function unFavouriteActivity() {
+    var completeButton = document.getElementById("unFavourite_button");
+    completeButton.innerHTML = "Removing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_unFavourite_activity_id").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/unfavourite")
+    httpRequest.send();
+}
+
 
 function refreshPage() {
     location.reload();

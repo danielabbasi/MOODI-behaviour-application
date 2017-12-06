@@ -78,11 +78,17 @@ body{
 }
 
 #pageTitle{
-    width:30%;
+    width:50%;
 }
 
 .pageTitle{
-    text-align: center;
+    text-align: left;
+    margin-left: 2%;
+}
+
+#titleChange{
+    font-weight: 900;
+
 }
 
 
@@ -357,7 +363,11 @@ body{
     font-weight: 600;
     text-align: center;
 
+}
 
+.container table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .upcomingTable tr:nth-child(2){
@@ -368,11 +378,11 @@ body{
 
 .container table th{
     font-size: 18px;
-    /*border-right: 1px solid #dddddd;*/
+    border-right: 1px solid white;
     padding-top: 1%;
     padding-bottom: 2%;
     color: black;
-    /*background: #35495d;*/
+    background:  #d9d9d9;
     font-weight: 900;
 }
 
@@ -568,7 +578,7 @@ body{
 
 
     .c-tabs-nav a {
-        margin-left: 17%;
+        margin-left: 10%;
     }
 
     .c-tabs-nav a i{
@@ -655,7 +665,43 @@ body{
     /*padding-top: 60px;*/
 }
 
+#favouriteIcon{
+    color: #ffd633;
+}
 
+.unFavourite_close{
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+
+.unFavourite_close:hover{
+    transition: all 0.3s ease-in-out;
+
+    color: #818181;
+    cursor: pointer;
+}
+
+.favourite_close{
+    position: absolute;
+    top: 50px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+
+.favourite_close:hover{
+    transition: all 0.3s ease-in-out;
+
+    color: #818181;
+    cursor: pointer;
+}
 
 .delete_close{
     position: absolute;
@@ -799,7 +845,7 @@ body{
     }
     .main{
         margin-top:5%;
-        width:70%;
+        width:90%;
 
     }
 
@@ -819,12 +865,21 @@ body{
         margin-bottom:5%;
         display: flex;
         justify-content: center;
+        width: 100%;
+    }
+
+    #activityBoxIndex{
+        width:100%;
+    }
+    #boxContainerIndex h2{
+        font-size: 5em;
+        width: 50%;
     }
 
     .boxContainer{
-        display: inline-block;
+        /*display: inline-block;*/
         /*border-right:1px solid #dddddd;*/
-        width: 100%;
+        width: 50%;
         margin-left:10px;
         box-shadow:  2px 5px 4px 3px  #bfbfbf;
 
@@ -839,6 +894,8 @@ body{
     .boxContainer p{
         font-size: 15px;
         padding-top: 1px;
+        font-weight: 900;
+        bottom: 0px;
     }
 
     .boxIcon{
@@ -999,7 +1056,7 @@ display:flex;
     background: #669999
 }
 
-#indexDistance{
+#completedCountIndex{
 background: #1affa3;
 }
 
@@ -1008,7 +1065,7 @@ background: #1affa3;
 
 }
 
-#indexDivorce{
+#completionRateIndex{
     background: #cc33ff;
 }
 
@@ -1037,6 +1094,201 @@ background: #1affa3;
 .chart-container{
    width: 80%;
 }
+
+/*START OF MOBILE RESOLUTION*/
+
+
+/*END OF MOBILE RESOLUTION*/
+
+.inline{
+    display: inline-block;
+}
+
+#ban{
+    color: red;
+}
+
+#trash{
+    color: red;
+}
+
+#cog{
+    color: grey;
+}
+
+#rate_modal_button{
+    color: #00e673;
+}
+.bigBoxesIndex{
+    font-size: 9em;
+    width:50%;
+}
+.infoWrapepr{
+    width:100%;
+}
+
+.infoWrapepr h1{
+    text-align: center;
+}
+.graphWrapperIndex{
+    width:40%;
+    margin-left:10%;
+}
+
+.graphWrapperIndex h1{
+    text-align: center;
+
+}
+.graphWrapperIndex canvas{
+    margin-top:2%;
+}
+
+.boxContainer:hover{
+    cursor: pointer;
+    transition:  0.3s;
+    /*transition: all 0.3s ease-out;*/
+
+    width: 100%;
+}
+
+#indexModal .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+#indexModal table{
+    background: none;
+    box-shadow: none;
+    margin-top: 60px;
+}
+
+#indexModal td{
+    color: #FFFFFF;
+}
+
+#indexModalFavourites .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 90px;
+    margin-left: 50px;
+    color: #FFFFFF;
+}
+
+#indexModalFavourites table{
+    background: none;
+    box-shadow: none;
+    margin-top: 60px;
+}
+
+#indexModalFavourites td{
+    color: #FFFFFF;
+}
+
+
+
+
+
+.notificationModal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.notificationModalContent {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    text-align: center;
+    width: 40%;
+
+}
+
+.notificationBody {padding: 2px 16px;}
+
+
+.notificationBody p{
+    font-weight: 900;
+}
+
+#notificationSubText{
+    font-weight:900;
+}
+#notificationIcon{
+    color: #000;
+}
+
+.notificationClose {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.notificationClose:hover,
+.notificationClose:focus {
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.notificationHeader {
+    padding: 2px 16px;
+    background-color:#888;
+}
+
+.greetings{
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.greetings td{
+    text-align: center;
+}
+
+.greetings p{
+    text-align: center;
+}
+
+
+.modal-content h1{
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+
+
+
 
 
 

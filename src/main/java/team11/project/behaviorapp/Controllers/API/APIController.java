@@ -1,10 +1,10 @@
-package team11.project.behaviorapp.Controllers;
+package team11.project.behaviorapp.Controllers.API;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team11.project.behaviorapp.Entities.Activities;
+import team11.project.behaviorapp.Entities.CalendarActivity;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
@@ -14,13 +14,13 @@ import team11.project.behaviorapp.Services.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/api/patient")
 public class APIController {
+
 
     @Autowired
     ActivityRepository activityRepository;
@@ -36,6 +36,12 @@ public class APIController {
     ActivityRatingService activityRatingService;
     @Autowired
     ActivityDeletionService activityDeletionService;
+    @Autowired
+    ActivityFavouriteService activityFavouriteService;
+    @Autowired
+    ActivityUnFavouriteService activityUnFavouriteService;
+    @Autowired
+    ActivityCalendarService activityCalendarService;
 
     @RequestMapping(path = "/activities/create", method = RequestMethod.POST)
     public ModelAndView createActivity(@RequestParam final String activityName, @RequestParam final String date) throws ParseException {
@@ -54,10 +60,12 @@ public class APIController {
         Activities activities = new Activities();
         activities.setId(1L);
         activities.setName(name);
-        activities.setActivityDate(dateFormat.parse(date));
-        activities.setIsCompleted(false);
-        activities.setIsDeleted(false);
-        activities.setRating(null);
+        activities.setActivityDate(LocalDateTime.parse(date));
+        activities.setCompleted(false);
+        activities.setDeleted(false);
+        activities.setFavourite(false);
+        activities.setRatingBefore(null);
+        activities.setRatingAfter(null);
         activityService.saveActivity(activities);
         return new ModelAndView("redirect:/patient/activities/1");
     }
@@ -98,6 +106,26 @@ public class APIController {
         return completedActivities;
     }
 
+    @RequestMapping("{id}/activities/patient/index")
+    public List<Activities> getPatientsLastActivities(@PathVariable Long id ) {
+
+        List<Activities> completedActivities = patientService.lastActivitiesOfPatient(id, true);
+
+        return completedActivities;
+    }
+
+
+
+    @RequestMapping("{id}/activities/days")
+    public List<Activities> getActivitiesByDays(@PathVariable Long id){
+
+        List <Activities> activitiesByDays = patientService.getActivitiesByDay(id);
+
+        return activitiesByDays;
+
+    }
+
+
 
 
     @RequestMapping("test/{firstname}")
@@ -106,13 +134,44 @@ public class APIController {
     }
 
     @RequestMapping("/activities/{activityId}/rate")
-    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "rating", required = true) int rating) {
-        activityRatingService.rateActivity(activityId, rating);
+    public void rateActivity(@PathVariable long activityId, @RequestParam(name = "ratingAfter", required = true) int ratingAfter) {
+        activityRatingService.rateActivity(activityId, ratingAfter);
     }
 
     @RequestMapping("activities/{activityId}/delete")
     public void deleteActivity(@PathVariable long activityId) {
         activityDeletionService.deleteActivity(activityId);
     }
+
+    @RequestMapping("activities/{activityId}/favourite")
+    public void favouriteActivity(@PathVariable long activityId) {
+        activityFavouriteService.favouriteActivity(activityId);
+    }
+
+    @RequestMapping("activities/{activityId}/unfavourite")
+    public void unFavouriteActivity(@PathVariable long activityId) {
+        activityUnFavouriteService.UnFavouriteActivity(activityId);
+    }
+
+    @RequestMapping("activities/testing")
+    public List<Activities> getActivitiesByRatingBeforeAndRatingAfter() {
+        return activityRepository.getActivitiesByRatingBeforeAndRatingAfter();
+    }
+
+
+
+    @RequestMapping("{id}/activities/calendar")
+    public List<CalendarActivity> getActivitiesForCalendar(@PathVariable long id, @RequestParam(name = "month", required = true) long month, @RequestParam(name = "year", required = true) long year){
+        return activityCalendarService.findAllByPatientIdAndDate(id, month, year);
+    }
+
+    @RequestMapping("{id}/activities/average/before/after")
+    public List<Activities> activitiesBeforeAfter(@PathVariable Long id){
+
+        return patientService.getActivitiesByBeforeAndAfter(id);
+    }
+
+
 }
+
 

@@ -14,57 +14,57 @@
 <body>
 
 <header>
-    <div th:replace="fragments/gpHeader :: gpHeader"></div>
+    <div th:replace="fragments/gpHeaderForActivitiesAndRecords :: gpHeaderForActivitiesAndRecords"></div>
 
-    <div class="topBar" th:fragment="header">
-        <div class="holder" id="logoHolder">
-            <div class="companyHolder">
-                <p><i class="fa fa-heartbeat"></i>
-                    MOODi </p>
-            </div>
-
-
-        </div>
+    <!--<div class="topBar" th:fragment="header">-->
+        <!--<div class="holder" id="logoHolder">-->
+            <!--<div class="companyHolder">-->
+                <!--<p><i class="fa fa-heartbeat"></i>-->
+                    <!--MOODi </p>-->
+            <!--</div>-->
 
 
-
-        <div class="holder">
-            <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
-        </div>
-
-        <div class="holder" id="pageTitle">
-            <div class="pageTitle">
-                <h3 id="titleChange"> Patients
-                </h3>
-            </div>
-
-
-        </div>
-
-        <div class="holder" id="langHolder">
-            <div class="languageSelect">
-
-                <p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>
-                    ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </p>
-
-
-            </div>
-        </div>
-
-        <div class="holder" id="userHolder">
-            <div class="loggedInUser">
-                <p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-
-                    Dr John Smith </p>
+        <!--</div>-->
 
 
 
-            </div>
-        </div>
+        <!--<div class="holder">-->
+            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="pageTitle">-->
+            <!--<div class="pageTitle">-->
+                <!--<h3 id="titleChange"> Patients-->
+                <!--</h3>-->
+            <!--</div>-->
 
 
-    </div>
+        <!--</div>-->
+
+        <!--<div class="holder" id="langHolder">-->
+            <!--<div class="languageSelect">-->
+
+                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
+                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                <!--</p>-->
+
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="userHolder">-->
+            <!--<div class="loggedInUser">-->
+                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
+
+                    <!--Dr John Smith </p>-->
+
+
+
+            <!--</div>-->
+        <!--</div>-->
+
+
+    <!--</div>-->
 </header>
 
 
@@ -160,12 +160,29 @@
                 <tr>
                     <th>Activity Name</th>
                     <th>Date</th>
-                    <th>Rating</th>
+                    <th>Rating Before</th>
+                    <th>Rating After</th>
                 </tr>
                 <tr th:each="activities : ${activities}">
                     <td th:text="${activities.name}"> Test</td>
                     <td th:text="${activities.activityDate}">Test</td>
-                    <td th:text="${activities.rating}">Test</td>
+
+                    <!-- <td th:text="${activities.ratingAfter}">Test</td> -->
+                    <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+
+
+                   <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+
 
                 </tr>
             </table>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 
 
@@ -19,140 +21,140 @@
 <header>
     <div th:replace="fragments/header :: header"></div>
 
-    <div class="topBar" th:fragment="header">
-        <div class="holder" id="logoHolder">
-            <div class="companyHolder">
-                <p><i class="fa fa-heartbeat"></i>
-                    MOODi </p>
-            </div>
+    <!--<div class="topBar" th:fragment="header">-->
+        <!--<div class="holder" id="logoHolder">-->
+            <!--<div class="companyHolder">-->
+                <!--<p><i class="fa fa-heartbeat"></i>-->
+                    <!--MOODi </p>-->
+            <!--</div>-->
 
 
-        </div>
-
-
-
-        <div class="holder">
-            <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
-        </div>
-
-        <div class="holder" id="pageTitle">
-            <div class="pageTitle">
-                <h3 id="titleChange"> Activities
-                </h3>
-            </div>
-
-
-        </div>
-
-        <div class="holder" id="langHolder">
-            <div class="languageSelect">
-
-                <p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>
-                    ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </p>
-
-
-            </div>
-        </div>
-
-        <div class="holder" id="userHolder">
-            <div class="loggedInUser">
-                <p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-
-                    Jane Smith </p>
+        <!--</div>-->
 
 
 
-            </div>
-        </div>
+        <!--<div class="holder">-->
+            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="pageTitle">-->
+            <!--<div class="pageTitle">-->
+                <!--<h3 id="titleChange"> Activities-->
+                <!--</h3>-->
+            <!--</div>-->
 
 
-    </div>
+        <!--</div>-->
+
+        <!--<div class="holder" id="langHolder">-->
+            <!--<div class="languageSelect">-->
+
+                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
+                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
+                <!--</p>-->
+
+
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="holder" id="userHolder">-->
+            <!--<div class="loggedInUser">-->
+                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
+
+                    <!--Jane Smith </p>-->
+
+
+
+            <!--</div>-->
+        <!--</div>-->
+
+
+    <!--</div>-->
 </header>
 
 <div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
 
-<div id="sidenav" th:fragment="patientSideMenu">
-    <!--<div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">-->
-        <!--<p class="welcome"> Welcome John Smith </p>-->
-    <!--</div>-->
+<!--<div id="sidenav" th:fragment="patientSideMenu">-->
+    <!--&lt;!&ndash;<div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="welcome"> Welcome John Smith </p>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-    <ul id="main-nav" class="nav">
-        <div class="userSection">
-            <div class="imageWrapper">
-                <div class="userImageWrapper">
-                    <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>
-                </div>
-                <div class="userTitle">
-                    <p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                        Jane Smith</p>
+    <!--<ul id="main-nav" class="nav">-->
+        <!--<div class="userSection">-->
+            <!--<div class="imageWrapper">-->
+                <!--<div class="userImageWrapper">-->
+                    <!--<img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>-->
+                <!--</div>-->
+                <!--<div class="userTitle">-->
+                    <!--<p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
+                        <!--Jane Smith</p>-->
 
-                </div>
-            </div>
-        </div>
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <li class="liSection">
-            <p>
-                MAIN
-            </p>
-        </li>
-        <li>
-            <a href="patientIndex.html" th:href="@{/patient/index}" >
-                <i class="fa fa-th-large"></i>
-                Dashboard
-            </a>
-        </li>
+        <!--<li class="liSection">-->
+            <!--<p>-->
+                <!--MAIN-->
+            <!--</p>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="patientIndex.html" th:href="@{/patient/index}" >-->
+                <!--<i class="fa fa-th-large"></i>-->
+                <!--Dashboard-->
+            <!--</a>-->
+        <!--</li>-->
 
 
 
-        <li>
-            <a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">
-                <i class="fa fa-heartbeat"></i>
-                Activities
-                <div class="notificationWrapper">
-                    <div class="notificationNav">
-                        <p>
-                            3
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </li>
+        <!--<li>-->
+            <!--<a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">-->
+                <!--<i class="fa fa-heartbeat"></i>-->
+                <!--Activities-->
+                <!--<div class="notificationWrapper">-->
+                    <!--<div class="notificationNav">-->
+                        <!--<p>-->
+                            <!--3-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
 
-        <li class="liSection">
-            <p>
-                EXTRAS
-            </p>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-wrench"></i>
-                Settings
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-calendar"></i>
-                Calendar
-                <div class="notificationWrapper">
-                    <div class="notificationNav">
-                    <p id="calanderNotification">
-                        5
-                    </p>
-                </div>
-                </div>
-            </a>
+        <!--<li class="liSection">-->
+            <!--<p>-->
+                <!--EXTRAS-->
+            <!--</p>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-wrench"></i>-->
+                <!--Settings-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-calendar"></i>-->
+                <!--Calendar-->
+                <!--<div class="notificationWrapper">-->
+                    <!--<div class="notificationNav">-->
+                    <!--<p id="calanderNotification">-->
+                        <!--5-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
 
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-power-off"></i>
-                Logout
-            </a>
-        </li>
-    </ul>
+        <!--</li>-->
+        <!--<li>-->
+            <!--<a href="#">-->
+                <!--<i class="fa fa-power-off"></i>-->
+                <!--Logout-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
 
-</div>
+<!--</div>-->
 
 <div class="activityContainer">
 
@@ -160,14 +162,15 @@
 
     <div class="activityBoxes">
         <div class="boxContainer">
-            <div class="activityCount">
+            <div class="activityUpcoming">
                 <div class="boxIcon">
-                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 
 
                 </div>
-                <h2> 52 </h2>
-                <p> Activities completed</p>
+                <h2 th:text="${upcomingActivities}"> # </h2>
+                <p> upcoming activities </p>
+                <div id="r"></div>
 
             </div>
         </div>
@@ -179,9 +182,11 @@
 
 
                 </div>
-                <h2>                     <i class="fa fa-smile-o" aria-hidden="true"></i>
+                <h2 th:text="${avgRating}">    #
                 </h2>
                 <p> Average activity score</p>
+                <p id="demo"></p>
+
             </div>
         </div>
 
@@ -191,7 +196,8 @@
                     <i class="fa fa-pie-chart" aria-hidden="true"></i>
 
                 </div>
-                <h2> 65% </h2>
+                <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
                 <p> Completion rate</p>
             </div>
         </div>
@@ -199,12 +205,11 @@
             <div class="boxContainer">
                 <div class="avgTime">
                     <div class="boxIcon">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-
+                        <i class="fa fa-check" aria-hidden="true"></i>
                     </div>
-                    <h2> 1:34:22 </h2>
+                    <h2 th:text="${completedCount}"> # </h2>
 
-                    <p> Average completion time</p>
+                    <p> Completed activities</p>
                 </div>
             </div>
         </div>
@@ -219,6 +224,8 @@
             <!--th:href="@{'/patient/history' + ${patient.id}}"-->
             <a href="#"   class="c-tabs-nav__link is-active"><i class="fa fa-clock-o" aria-hidden="true"></i>
                 Upcoming</a>
+            <a href="#"   class="c-tabs-nav__link"><i class="fa fa-star" aria-hidden="true"></i>
+                Favourites</a>
             <a href="#" class="c-tabs-nav__link"><i class="fa fa-plus-circle" aria-hidden="true"></i>
                 Create</a>
             <a href="#" class="c-tabs-nav__link"><i class="fa fa-history" aria-hidden="true"></i> History</a>
@@ -236,6 +243,8 @@
                     <tr>
                         <th>Activity Name</th>
                         <th>Date</th>
+                        <th>Before rating</th>
+                        <th> Favourite</th>
                         <th>Mark as completed</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -244,9 +253,12 @@
                     <tr th:each="activities : ${upcoming}">
                         <td th:text="${activities.name}"> Test</td>
                         <td th:text="${activities.activityDate}">Test</td>
+                        <td th:text="${activities.ratingBefore}">Test</td>
+                        <td class="iconHolder"><a href="#" onclick="showFavouriteModal()" th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-star" id="favouriteIcon" aria-hidden="true"></i></a></td>
+
                         <td class="iconHolder"><a href="#" onclick="showModal()" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
-                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog"  aria-hidden="true" onclick="openFullScreenModalUpdate()"></i></a></td>
-                        <td class="iconHolder"><a href="#" onclick="showDeleteModal()" th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog" id="cog"  aria-hidden="true" onclick="openFullScreenModalUpdate()"></i></a></td>
+                        <td class="iconHolder"><a href="#" onclick="showDeleteModal()" th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-trash" id="trash" aria-hidden="true"></i></a></td>
                         <!--<td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>-->
 
                     </tr>
@@ -260,6 +272,36 @@
                 </div>
             </div>
         </div>
+
+            <div class="c-tab">
+                <div class="c-tab__content">
+                    <div class="container">
+                        <table class="upcomingTable">
+                            <tr>
+                                <th>Activity Name</th>
+
+                                <th> Remove</th>
+
+
+                            </tr>
+                            <tr th:each="activities : ${favourite}">
+                                <td th:text="${activities.name}"> Test</td>
+                                <td class="iconHolder"><a href="#" onclick="showUnFavouriteModal()" th:onclick="'javascript:showUnFavouriteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-ban" id="ban" aria-hidden="true"></i></a></td>
+
+
+
+
+                            </tr>
+
+
+
+
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         <div class="c-tab">
             <div class="c-tab__content">
@@ -287,12 +329,14 @@
                         <tr>
                             <th>Activity Name</th>
                             <th>Date</th>
-                            <th>Rating</th>
+                            <th>Rating Before</th>
+                            <th>Rating After</th>
                         </tr>
                         <tr  th:each="activities : ${history}">
                             <td th:text="${activities.name}"> Test</td>
                             <td th:text="${activities.activityDate}">Test</td>
-                            <td th:text="${activities.rating}">Test</td>
+                            <td th:text="${activities.ratingBefore}">Test</td>
+                            <td th:text="${activities.ratingAfter}">Test</td>
 
                         </tr>
 
@@ -308,6 +352,69 @@
 
         </div>
     </div>
+
+    <div id="favourite_modal" class="deleteModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="deleteCloseHolder">
+                <span class="delete_close" id="favourite_close">&times;</span>
+            </div>
+            <div class="modal-body">
+
+                <div class="modalSubtitle">
+                    <p> Are you sure?</p>
+                </div>
+                <div class="formWrapper">
+
+                    <div class="formContainer">
+                        <!--<div class="modal-wrapper result-emoji-wrapper">-->
+                        <!--Are you sure you want to delete this activity?-->
+                        <!--</div>-->
+                        <input type="hidden" name="selected_favourite_activity_id" id="selected_favourite_activity_id" value="" />
+                        <div class="btnWrapper">
+                            <button id="favourite_button" type="submit" onclick="favouriteActivity()">Favourite Activity</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+
+    <div id="unFavourite_modal" class="deleteModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="deleteCloseHolder">
+                <span class="delete_close" id="unFavourite_close">&times;</span>
+            </div>
+            <div class="modal-body">
+
+                <div class="modalSubtitle">
+                    <p> Are you sure?</p>
+                </div>
+                <div class="formWrapper">
+
+                    <div class="formContainer">
+                        <!--<div class="modal-wrapper result-emoji-wrapper">-->
+                        <!--Are you sure you want to delete this activity?-->
+                        <!--</div>-->
+                        <input type="hidden" name="selected_unFavourite_activity_id" id="selected_unFavourite_activity_id" value="" />
+                        <div class="btnWrapper">
+                            <button id="unFavourite_button" type="submit" onclick="unFavouriteActivity()">Un-Favourite Activity</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+
 
     <div id="rate_modal" class="modal">
 
@@ -421,11 +528,14 @@
     @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
 </main>
 </div>
-
+<script src="../static/app.js" th:src="@{/app.js}"> </script>
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
+<script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>
 <script src="../static/modal.js "  th:src="@{/modal.js}"></script>
 <script src="../static/rateModal.js "  th:src="@{/rateModal.js}"></script>
 <script src="../static/deleteModal.js "  th:src="@{/deleteModal.js}"></script>
+<script src="../static/favouriteModal.js "  th:src="@{/favouriteModal.js}"></script>
+<script src="../static/unFavouriteModal.js "  th:src="@{/unFavouriteModal.js}"></script>
 <script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
 <script src="../static/functions "  th:src="@{/functions.js}"></script>
 <script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>
@@ -468,40 +578,42 @@
 
 </script>
 
-<!--<script>-->
+<div id="modal" class="notificationModal">
+    <div class="notificationModalContent">
 
-    <!--function showModal() {-->
-<!--//        document.getElementById('selected_activity_id').value = activityId;-->
-        <!--document.getElementById('rate_modal').style.width = "100%";-->
-    <!--}-->
+        <div class="notificationHeader">
+            <span class="notificationClose">&times;</span>
+            <h1> <i class="fa fa-exclamation-circle" aria-hidden="true" id="notificationIcon"></i> Notification</h1>
+        </div>
+        <div class="notificationBody">
+        <div id="greetings" class="greetings">
+        </div>
+            <p id="notificationSubText"> is in 10 minutes!</p>
 
-    <!--document.getElementById("rate_close").onclick = function() {-->
-        <!--document.getElementById('rate_modal').style.width="0";-->
-    <!--}-->
+        </div>
 
-    <!--window.onclick = function(event) {-->
-        <!--if (event.target == modal) {-->
-            <!--document.getElementById('rate_modal').style.display = "none";-->
-        <!--}-->
-    <!--}-->
-<!--</script>-->
+    </div>
+</div>
 
-<!--<script>-->
-    <!--function myFunction() {-->
-        <!--document.getElementById("titleChange").innerHTML = "Hello World";-->
-    <!--}-->
-<!--</script>-->
+<script>
 
-<!--<script type="text/javascript" th:inline="javascript">-->
 
-    <!--var selector = '.nav li';-->
+    $('#modal').bind('DOMNodeInserted DOMNodeRemoved', function() {
+        document.getElementById('modal').style.display = "block";
+        document.getElementById('greetings').style.color = "#00b3b3";
+        document.getElementById('greetings').style.textAlign = "center";
 
-    <!--$(selector).on('click', function(){-->
-        <!--$(selector).removeClass('actives');-->
-        <!--$(this).addClass('actives');-->
-    <!--});-->
 
-<!--</script>-->
+    });
+</script>
+
+<script>
+    var span = document.getElementsByClassName("notificationClose")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+</script>
 
 </body>
 </html>

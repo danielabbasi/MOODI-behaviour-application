@@ -52,18 +52,63 @@ public class PatientService {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> completedActivities = activityRepository.findActivitiesByPatientsAndIsCompleted(p, isCompleted);
+        List<Activities> completedActivities = activityRepository.findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(p, isCompleted);
 
         return completedActivities;
     }
 
+    public List<Activities> lastActivitiesOfPatient(Long id, Boolean isCompleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> lastActivities = activityRepository.findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(p, isCompleted);
+
+        return lastActivities;
+    }
+
+
+    public List<Activities> getFavouritedActivities(Long id, Boolean isFavourite,Boolean isDeleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> favouriteActivities = activityRepository.findActivitiesByPatientsAndIsFavouriteAndIsDeleted(p, isFavourite, isDeleted);
+
+        return favouriteActivities;
+    }
+
+    public List<Activities> getActivitiesByDay(Long id) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> activitiesByDay = activityRepository.getActivitiesByPatientsAndActivityDate_DayOfWeek(p);
+
+        return activitiesByDay;
+    }
+
+
+
     public Patient getSpecificRecord(@PathVariable Long id){
         return patientRepository.findOne(id);
+    }
 
+    public Patient getPatientFirstLastName(@PathVariable Long id){
+        return patientRepository.findOne(id);
     }
 
     public List<Patient> getPatientByName(@PathVariable String firstname){
         return patientRepository.findPatientByFirstname(firstname);
     }
+
+    public List<Activities> getActivitiesByBeforeAndAfter(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> activitiesBeforeAfter = activityRepository.getActivitiesByPatientsAndRatingAfterAndRatingBefore(p);
+
+        return activitiesBeforeAfter;
+
+    }
+
+
 
 }

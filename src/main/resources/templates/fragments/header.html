@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 
@@ -26,29 +26,18 @@
 
     <div class="holder" id="pageTitle">
         <div class="pageTitle">
-            <h3 id="titleChange"> Activities
-            </h3>
-        </div>
-
-
-    </div>
-
-    <div class="holder" id="langHolder">
-        <div class="languageSelect">
-
-            <p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>
-                ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </p>
-
-
+            <h1  th:text="${topBarTitle}"    id="titleChange"> Test
+            </h1>
         </div>
     </div>
+
+
 
     <div class="holder" id="userHolder">
         <div class="loggedInUser">
-            <p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <p  th:text="|${patientName.firstname} ${patientName.lastname}|"></p>
+            <!--<p class="inline" th:text="${patientName.lastname}"></p>-->
 
-                Jane Smith </p>
 
 
 
