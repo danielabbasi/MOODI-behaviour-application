@@ -62,7 +62,7 @@ function sendRatingBefore() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/before/rate?ratingBefore=" + testResultNumber)
     httpRequest.send();
 
     return false;
