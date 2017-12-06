@@ -215,7 +215,7 @@
 
                     </table>
 
-            </div>
+                </div>
             </div>
         </div>
 
@@ -458,24 +458,27 @@
             <h1> <i class="fa fa-exclamation-circle" aria-hidden="true" id="notificationIcon"></i> Notification</h1>
         </div>
         <div class="notificationBody">
-        <div id="greetings" class="greetings">
-        </div>
-            <p id="notificationSubText"> is in 10 minutes!</p>
+        <!--<div id="greetings" class="greetings">         </div>-->
 
-        </div>
+            <!--</div>-->
+            <!--<p id="notificationSubText"> is in 10 minutes!</p>-->
+
+        <!--</div>-->
     <!--Modal start-->
 
         <div class="modal-content">
-            <div class="rateCloseHolder">
-                <span class="rate_close" id="rate_close">&times;</span>
-            </div>
+            <!--<div class="rateCloseHolder">-->
+                <!--<span class="rate_close" id="rate_close">&times;</span>-->
+            <!--</div>-->
             <div class="modal-body">
-                <div class="modalTitle">
-                    <p class="titleModal">Activity completion</p>
-                </div>
-                <div class="modalSubtitle">
-                    <p> How did you feel about this activity?</p>
-                </div>
+                <div id="NotificationDom">
+                    </div>
+                <!--<div class="modalTitle">-->
+                    <!--<p class="titleModal">Activity completion</p>-->
+                <!--</div>-->
+                <!--<div class="modalSubtitle">-->
+                    <!--<p> How did you feel about this activity?</p>-->
+                <!--</div>-->
                 <div class="formWrapper">
 
                     <div class="formContainer">
@@ -486,7 +489,7 @@
                         <div class="modal-wrapper result-emoji-wrapper">
                             <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
                         </div>
-                        <input type="hidden" name="selected_activity_id" id="selected_activity_id" value="" />
+                        <input type="hidden" name="notificationId" id="notificationId" value="" />
                         <!--<div class="modal-wrapper">-->
 
                         <div class="btnWrapper">
@@ -496,6 +499,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
         <!--Modal end-->
 
