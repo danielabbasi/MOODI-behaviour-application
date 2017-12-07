@@ -109,6 +109,16 @@ public class PatientService {
 
     }
 
+    public int getActivitiesByName(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countCompletedActivities = activityRepository.getActivitiesByName(p);
+
+        return countCompletedActivities;
+
+    }
+
 
 
 }
