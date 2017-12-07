@@ -38,12 +38,12 @@ function markActivityAsComplete() {
 }
 
 function sendRatingBefore() {
-    var completeButton = document.getElementById("complete_button");
+    var completeButton = document.getElementById("completeButton");
     completeButton.innerHTML = "Sending Score (please wait)...";
     completeButton.disabled = true;
     var activityId = document.getElementById("notificationId").value;
     // console.log(activityId)
-    var testResult = document.getElementById("test-result").innerHTML.toLowerCase();
+    var testResult = document.getElementById("test-result-x").innerHTML.toLowerCase();
     var testResultNumber = 0;
     if(testResult == "very happy") {
         testResultNumber = 1;
