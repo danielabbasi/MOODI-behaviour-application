@@ -159,19 +159,28 @@ public class PatientService {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> positiveMoodChangeActivities = activityRepository.getActivitiesByHighestPositiveMoodChange(p);
+        List<Activities> positiveMoodChangeActivities = activityRepository.queryFirstByActivitiesByHighestPositiveMoodChange(p);
 
         return positiveMoodChangeActivities;
     }
     // This will be used to list activities that have provided the highest negative mood change (for the GP states)
 
-    public List<Activities> getActivitiesByHighestNegatativeMoodChange(@PathVariable Long id){
+    public List<Activities> getActivitiesByHighestNegativeMoodChange(@PathVariable Long id){
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> negatativeMoodChangeActivities = activityRepository.getActivitiesByHighestNegativeMoodChange(p);
+        List<Activities> negativeMoodChangeActivities = activityRepository.queryFirstByActivitiesByHighestNegativeMoodChange(p);
 
-        return negatativeMoodChangeActivities;
+        return negativeMoodChangeActivities;
+    }
+
+    public int getActivitiesByIsDeleted(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countDeletedActivities = activityRepository.getActivitiesByIsDeleted(p);
+
+        return countDeletedActivities;
     }
 
 
