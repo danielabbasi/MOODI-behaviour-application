@@ -1193,36 +1193,7 @@ background: #1affa3;
 
 
 
-.notificationModal{
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
-}
-
-.notificationModalContent {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    text-align: center;
-    width: 40%;
-
-}
 
 .notificationBody {padding: 2px 16px;}
 
@@ -1276,14 +1247,133 @@ background: #1affa3;
 }
 
 @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
+    from {top:-200px; opacity:0}
     to {top:0; opacity:1}
 }
 
 @keyframes animatetop {
-    from {top:-300px; opacity:0}
+    from {top:-200px; opacity:0}
     to {top:0; opacity:1}
 }
+
+.notificationModalClassX{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    overflow-x: hidden;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.notificationHeader h1{
+    text-align: center;
+}
+
+.activityHolder h2{
+    margin-top: 1%;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 200;
+}
+.notificationSubTitle h3{
+    margin-top: 5%;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 200;
+
+}
+
+/* Modal Content */
+.notificationModalContentX {
+    position: relative;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.range-slider-x {
+    width:400px;
+    height:40px;
+    margin:0 auto 1em;
+    /*border-radius: 50%;*/
+    position:relative;
+    cursor:e-resize;
+}
+.range-slider-x:before {
+    content:"";
+    display:block;
+    position:absolute;
+    top:9px;
+    left:0;
+    width:100%;
+    height:40px;
+    box-shadow:  1px 1px 1px 1px  #000000;
+
+    /*background-color:black;*/
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url("https://1.bp.blogspot.com/-fcCvGS8VBWo/VQzRw5LI0cI/AAAAAAAADFs/v2niIm8FJ_Q/s1600/spectrum.png")
+}
+.range-slider-x span {
+    display:block;
+    /*height:inherit;*/
+    height: 50px;
+    width: 90px;
+    position:relative;
+    border-radius: 50%;
+    z-index:2;
+    background-color:#FFFFFF;
+    cursor:inherit;
+    box-shadow:  1px 1px 1px 1px  #000000;
+
+}
+
+.test-result-x {
+    width: 100%;
+    text-align:center;
+    color: #ffffff;
+    font-size:2em;
+}
+.modal-wrapper-x {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.modal-wrapper-x img{
+    width: 100px;
+}
+
+.modal-wrapper-x .fa{
+    background: #00b3b3;
+}
+
+.modal-wrapper-x button{
+    background: #00b3b3;
+    font-size: 5em;
+
+}
+.result-emoji-wrapper-x {
+    /*height: 32px;*/
+}
+#result-emoji-x {
+    width: 100px;
+    height: 100px;
+}
+
+
 
 
 

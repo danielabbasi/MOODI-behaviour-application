@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <!--<link rel="stylesheet" href="../static/test.css" th:href="@{/test.css}"/>-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
@@ -108,6 +109,8 @@
 
         <div class="c-tab is-active">
             <div class="c-tab__content">
+
+                <button onclick="openModal()" th:onclick="'javascript:openModal()'"> Open</button>
                 <div class="container">
                 <table class="upcomingTable">
                     <tr>
@@ -393,24 +396,78 @@
 
 
 
+
+
+
+
+
+
 <!--Credit to W3schools @ https://www.w3schools.com/howto/howto_css_modals.asp-->
     <!--Reference & Credit to Felix Franzen, Open Source CodePen
     @ https://codepen.io/Felixfranzen/pen/VjByqr?q=Tab+slider&limit=all&type=type-pens-->
 </main>
+
+    <div id="notificationModalX" class="notificationModalClassX">
+
+        <div class="notificationModalContentX">
+            <div class="notificationHeader">
+            <h1> Notification!</h1>
+            </div>
+
+            <div id="NotificationDom"></div>
+
+            <div class="activityHolder">
+                <h2> is in 10 minutes</h2>
+            </div>
+
+            <div class="notificationSubTitle">
+                <h3> How do you feel right now?</h3>
+            </div>
+            <div class="formWrapper">
+
+                <div class="formContainer">
+
+                    <div class="range-slider-x" id="range-slider-x">
+                        <span></span>
+                    </div>
+                    <div class="test-result-x" id="test-result-x">Very Happy</div>
+                    <div class="modal-wrapper-x result-emoji-wrapper-x">
+                        <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji-x"/>
+                    </div>
+                    <input type="hidden" name="ratingBefore" id="notificationId" value="" />
+
+
+                    <div class="btnWrapper">
+                        <button id="completeButton" type="submit" onclick="sendRatingBefore()"><i class="fa fa-check-circle-o"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+<script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
+
 <script src="../static/app.js" th:src="@{/app.js}"> </script>
 <script src="../static/tabs.js "  th:src="@{/tabs.js}"></script>
-<script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>
-<script src="../static/modal.js "  th:src="@{/modal.js}"></script>
+<!--<script src="../static/countdown.js "  th:src="@{/countdown.js}"></script>-->
+<!--<script src="../static/modal.js "  th:src="@{/modal.js}"></script>-->
 <script src="../static/rateModal.js "  th:src="@{/rateModal.js}"></script>
 <script src="../static/deleteModal.js "  th:src="@{/deleteModal.js}"></script>
 <script src="../static/favouriteModal.js "  th:src="@{/favouriteModal.js}"></script>
 <script src="../static/unFavouriteModal.js "  th:src="@{/unFavouriteModal.js}"></script>
 <script src="../static/javascript/slider.js "  th:src="@{/javascript/slider.js}"></script>
-<script src="../static/functions "  th:src="@{/functions.js}"></script>
-<script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>
-<script src="../static/notification.js" th:src="@{/notification.js}"> </script>
+<script src="../static/functions.js "  th:src="@{/functions.js}"></script>
+<!--<script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>-->
+<!--<script src="../static/notification.js" th:src="@{/notification.js}"> </script>-->
+<script src="../static/javascript/sliderNotification.js " th:src="@{/javascript/sliderNotification.js}"></script>
 
+<script th:inline="javascript">
+    function openModal() {
+
+        document.getElementById('notificationModalX').style.display ="block";
+    }
+</script>
 
 <script>
     function openFullScreenModalUpdate() {
@@ -450,71 +507,14 @@
 
 </script>
 
-<div id="modal" class="notificationModal">
-    <div class="notificationModalContent">
-
-        <div class="notificationHeader">
-            <span class="notificationClose">&times;</span>
-            <h1> <i class="fa fa-exclamation-circle" aria-hidden="true" id="notificationIcon"></i> Notification</h1>
-        </div>
-        <div class="notificationBody">
-        <!--<div id="greetings" class="greetings">         </div>-->
-
-            <!--</div>-->
-            <!--<p id="notificationSubText"> is in 10 minutes!</p>-->
-
-        <!--</div>-->
-    <!--Modal start-->
-
-        <div class="modal-content">
-            <!--<div class="rateCloseHolder">-->
-                <!--<span class="rate_close" id="rate_close">&times;</span>-->
-            <!--</div>-->
-            <div class="modal-body">
-                <div id="NotificationDom">
-                    </div>
-                <!--<div class="modalTitle">-->
-                    <!--<p class="titleModal">Activity completion</p>-->
-                <!--</div>-->
-                <!--<div class="modalSubtitle">-->
-                    <!--<p> How did you feel about this activity?</p>-->
-                <!--</div>-->
-                <div class="formWrapper">
-
-                    <div class="formContainer">
-                        <div class="range-slider" id="range-slider-1">
-                            <span></span>
-                        </div>
-                        <div class="test-result" id="test-result">Very Happy</div>
-                        <div class="modal-wrapper result-emoji-wrapper">
-                            <img src="../static/images/emojis/happy.png" th:src="@{/images/emojis/Happy.png}" id="result-emoji"/>
-                        </div>
-                        <input type="hidden" name="ratingBefore" id="notificationId" value="" />
-                        <!--<div class="modal-wrapper">-->
-
-                        <div class="btnWrapper">
-                            <button id="complete_button" type="submit" onclick="sendRatingBefore()"><i class="fa fa-check-circle-o"></i></button>
-                            <!--</div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Modal end-->
-
-
-    </div>
-</div>
-</div>
 
 <script th:inline="javascript">
 
 
-    $('#modal').bind('DOMNodeInserted DOMNodeRemoved', function() {
-        document.getElementById('modal').style.display = "block";
-        document.getElementById('greetings').style.color = "#00b3b3";
-        document.getElementById('greetings').style.textAlign = "center";
+    $('#notificationModalX').bind('DOMNodeInserted DOMNodeRemoved', function() {
+        document.getElementById('notificationModalX').style.display = "block";
+//        document.getElementById('greetings').style.color = "#00b3b3";
+//        document.getElementById('greetings').style.textAlign = "center";
 
 
     });
