@@ -119,6 +119,15 @@ public class PatientService {
 
     }
 
+    public int getActivitiesByRatingAfter(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int avgRatingAfter = activityRepository.getActivitiesByRatingAfter(p);
+
+        return avgRatingAfter;
+    }
+
 
 
 }
