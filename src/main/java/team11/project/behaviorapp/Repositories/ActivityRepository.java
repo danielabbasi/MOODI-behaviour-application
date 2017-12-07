@@ -28,8 +28,8 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isCompleted = 1")
-    int getActivitiesByName();
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isCompleted = 1 AND patients=?1")
+    int getActivitiesByName(Patient p);
 
     @Query(value = "SELECT AVG(ratingAfter) FROM Activities")
     int getActivitiesByRatingAfter();
