@@ -47,7 +47,7 @@ public class ActivityLogger {
             System.out.println(a.getName());
 
 
-            template.convertAndSend("/topic/greetings", a.getName());
+            template.convertAndSend("/topic/greetings", a.getId());
 
         }
 
