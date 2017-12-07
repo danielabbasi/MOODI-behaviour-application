@@ -54,7 +54,7 @@ public class PatientActivitiesAPI {
         //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
-        activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
+        activityCreationService.createActivity(2, activityName, dateFormat.parse(date));
 
         return new ModelAndView("redirect:/patient/activities/1");
     }
