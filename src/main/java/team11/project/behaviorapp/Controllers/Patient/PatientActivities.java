@@ -27,8 +27,8 @@ public class PatientActivities {
 
 
     @RequestMapping("/patient/sidemenu")
-    public String sideMenuView(Model model){
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+    public String sideMenuView(Model model, Long id){
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
         return "patientSideMenu";
     }
@@ -56,7 +56,7 @@ public class PatientActivities {
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
 
         return "patientActivities";

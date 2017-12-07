@@ -50,7 +50,7 @@ public class PatientIndex {
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
 
         return "patientIndex";

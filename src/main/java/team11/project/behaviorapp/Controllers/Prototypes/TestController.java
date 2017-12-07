@@ -45,7 +45,7 @@ public class TestController {
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", patientService.getActivitiesByNameAndIsDeleted(id));
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
 
 

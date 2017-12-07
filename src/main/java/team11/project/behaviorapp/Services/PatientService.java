@@ -137,6 +137,15 @@ public class PatientService {
         return total;
     }
 
+    public int getActivitiesByNameAndIsDeletedAndIsCompleted(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int upcomingActivities = activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted(p);
+
+        return upcomingActivities;
+    }
+
 
 
 
