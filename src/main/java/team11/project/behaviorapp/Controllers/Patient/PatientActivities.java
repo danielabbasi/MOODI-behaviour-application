@@ -54,7 +54,7 @@ public class PatientActivities {
         model.addAttribute("topBarTitle", topBarTitleForActivities);
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
+        model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 

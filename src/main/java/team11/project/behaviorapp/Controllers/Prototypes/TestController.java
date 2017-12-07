@@ -43,7 +43,7 @@ public class TestController {
     @RequestMapping("/patient/stats/template")
     public String statTemplate(Model model, Long id){
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
+        model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 
