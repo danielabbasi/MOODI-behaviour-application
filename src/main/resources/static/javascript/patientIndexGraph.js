@@ -5,7 +5,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/patient/" + id + "/activities/patient/index",
+        url : "http://localhost:8080/api/patient/" + id + "/statistics/last-activities",
         type : "GET",
         success : function(data){
             console.log(data);

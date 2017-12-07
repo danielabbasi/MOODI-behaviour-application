@@ -28,20 +28,20 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
     Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isCompleted = 1")
-    int getActivitiesByName();
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isCompleted = 1 AND patients=?1")
+    int getActivitiesByName(Patient p);
 
-    @Query(value = "SELECT AVG(ratingAfter) FROM Activities")
-    int getActivitiesByRatingAfter();
+    @Query(value = "SELECT AVG(ratingAfter) FROM Activities WHERE patients=?1")
+    int getActivitiesByRatingAfter(Patient p);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isDeleted = 0")
-    int getActivitiesByNameAndIsDeleted();
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isDeleted = 0 AND patients=?1")
+    int getActivitiesByNameAndIsDeleted(Patient p);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities  WHERE isDeleted = 0 AND isCompleted = 0")
-    int getActivitiesByNameAndIsDeletedAndIsCompleted();
+    @Query(value = "SELECT COUNT(name) FROM Activities  WHERE isDeleted = 0 AND isCompleted = 0 AND patients=?1")
+    int getActivitiesByNameAndIsDeletedAndIsCompleted(Patient p);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isFavourite = 1")
-    int getActivitiesByNameAndIsFavourite();
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isFavourite = 1 AND patients=?1")
+    int getActivitiesByNameAndIsFavourite(Patient p);
 
     @Query(value = "SELECT activityDate FROM Activities WHERE id = 1")
     LocalDateTime getActivitiesByActivityDate();
@@ -49,8 +49,11 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT COUNT(activityDate), function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
     List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
 
-    @Query(value = "SELECT name FROM Activities WHERE ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
-    List <Activities> getActivitiesByRatingBeforeAndRatingAfter();
+    @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
+    List <Activities> getActivitiesByHighestPositiveMoodChange(Patient p);
+
+    @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MIN',ratingAfter-ratingBefore) FROM Activities )")
+    List <Activities> getActivitiesByHighestNegativeMoodChange(Patient p);
 
     @Query(value = "SELECT function('ROUND', AVG(ratingBefore)), function('ROUND', AVG(ratingAfter)) FROM Activities WHERE patients=?1")
     List<Activities> getActivitiesByPatientsAndRatingAfterAndRatingBefore(Patient p);

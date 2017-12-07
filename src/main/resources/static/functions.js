@@ -33,7 +33,7 @@ function markActivityAsComplete() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
     httpRequest.send();
 }
 
@@ -62,7 +62,7 @@ function sendRatingBefore() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/before/rate?ratingBefore=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/before/rate?ratingBefore=" + testResultNumber)
     httpRequest.send();
 
     return false;
@@ -77,7 +77,7 @@ function deleteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/delete")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/delete")
     httpRequest.send();
 }
 
@@ -91,7 +91,7 @@ function favouriteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/favourite")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/favourite")
     httpRequest.send();
 }
 
@@ -104,7 +104,7 @@ function unFavouriteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/unfavourite")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/unfavourite")
     httpRequest.send();
 }
 

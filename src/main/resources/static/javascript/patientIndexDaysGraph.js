@@ -6,7 +6,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/patient/" + id + "/activities/days",
+        url : "http://localhost:8080/api/patient/" + id + "/statistics/activities-by-days",
         type : "GET",
         dataType: "json",
         success : function(data){

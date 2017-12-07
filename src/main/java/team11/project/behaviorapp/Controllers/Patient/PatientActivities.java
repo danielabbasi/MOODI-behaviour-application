@@ -27,8 +27,8 @@ public class PatientActivities {
 
 
     @RequestMapping("/patient/sidemenu")
-    public String sideMenuView(Model model){
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+    public String sideMenuView(Model model, Long id){
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
         return "patientSideMenu";
     }
@@ -40,8 +40,8 @@ public class PatientActivities {
 
         String topBarTitleForActivities = "Activities";
 
-        double numCompleted = activityRepository.getActivitiesByName();
-        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        double numCompleted = patientService.getActivitiesByName(id);
+        double total = patientService.getActivitiesByNameAndIsDeleted(id);
         int percent = (int) Math.round((numCompleted / total) * 100);
 
         model.addAttribute("favourite", patientService.getFavouritedActivities(id, true, false));
@@ -50,13 +50,13 @@ public class PatientActivities {
 
         // stats
         model.addAttribute("date", activityRepository.getActivitiesByActivityDate());
-        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("favouriteCount", patientService.getActivitiesByNameAndIsFavourite(id));
         model.addAttribute("topBarTitle", topBarTitleForActivities);
         model.addAttribute("percent", percent);
-        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
+        model.addAttribute("completedCount", patientService.getActivitiesByName(id));
+        model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
 
         return "patientActivities";

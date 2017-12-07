@@ -12,8 +12,6 @@ import team11.project.behaviorapp.Repositories.PatientRepository;
 import java.util.Collection;
 import java.util.List;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 /**
  * Created by c1443907 on 17/11/2017.
  */
@@ -108,6 +106,75 @@ public class PatientService {
         return activitiesBeforeAfter;
 
     }
+
+    public int getActivitiesByName(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countCompletedActivities = activityRepository.getActivitiesByName(p);
+
+        return countCompletedActivities;
+
+    }
+
+    public int getActivitiesByRatingAfter(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int avgRatingAfter = activityRepository.getActivitiesByRatingAfter(p);
+
+        return avgRatingAfter;
+    }
+
+    public int getActivitiesByNameAndIsDeleted(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int total = activityRepository.getActivitiesByNameAndIsDeleted(p);
+
+        return total;
+    }
+
+    public int getActivitiesByNameAndIsDeletedAndIsCompleted(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int upcomingActivities = activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted(p);
+
+        return upcomingActivities;
+    }
+
+    public int getActivitiesByNameAndIsFavourite(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countFavoritedActivities = activityRepository.getActivitiesByNameAndIsFavourite(p);
+
+        return countFavoritedActivities;
+    }
+
+    // This will be used to list activities that have provided the highest positive mood change (for the GP states)
+
+    public List<Activities> getActivitiesByHighestPositiveMoodChange(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> positiveMoodChangeActivities = activityRepository.getActivitiesByHighestPositiveMoodChange(p);
+
+        return positiveMoodChangeActivities;
+    }
+    // This will be used to list activities that have provided the highest negative mood change (for the GP states)
+
+    public List<Activities> getActivitiesByHighestNegatativeMoodChange(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> negatativeMoodChangeActivities = activityRepository.getActivitiesByHighestNegativeMoodChange(p);
+
+        return negatativeMoodChangeActivities;
+    }
+
+
 
 
 

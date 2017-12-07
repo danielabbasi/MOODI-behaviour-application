@@ -181,7 +181,7 @@
                 <div class="formWrapper">
 
                 <div class="formContainer">
-                    <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/activities/create">
+                    <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/1/activities/create">
                         <div class="form-group">
                             <input type="text" name="activityName" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
                         </div>
@@ -374,7 +374,7 @@
         <div class="formWrapper">
 
         <div class="formContainer">
-            <form  class="activityForm" action="http://localhost:8080/api/patient/one/update"       th:method="put">
+            <form  class="activityForm" action="http://localhost:8080/api/patient/1/activities/update" th:method="put">
                 <div class="form-group">
                     <input type="text" name="name" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
                     <input type="hidden" name="_method" value="put"/>
