@@ -34,7 +34,7 @@ public class PatientIndex {
 
         model.addAttribute("activities", patientService.getActivityList(id));
 
-        double numCompleted = activityRepository.getActivitiesByName();
+        double numCompleted = patientService.getActivitiesByName(id);
         double total = activityRepository.getActivitiesByNameAndIsDeleted();
         int percent = (int) Math.round((numCompleted / total) * 100);
 
@@ -47,7 +47,7 @@ public class PatientIndex {
         // stats
         model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
         model.addAttribute("percent", percent);
-        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
+        model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
         model.addAttribute("totalCreated", total);
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
