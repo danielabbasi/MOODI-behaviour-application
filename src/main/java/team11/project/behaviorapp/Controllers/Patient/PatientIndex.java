@@ -45,7 +45,7 @@ public class PatientIndex {
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
 
         // stats
-        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("favouriteCount", patientService.getActivitiesByNameAndIsFavourite(id));
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));

@@ -50,7 +50,7 @@ public class PatientActivities {
 
         // stats
         model.addAttribute("date", activityRepository.getActivitiesByActivityDate());
-        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("favouriteCount", patientService.getActivitiesByNameAndIsFavourite(id));
         model.addAttribute("topBarTitle", topBarTitleForActivities);
         model.addAttribute("percent", percent);
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));

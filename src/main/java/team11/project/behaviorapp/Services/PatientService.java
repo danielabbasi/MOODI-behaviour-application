@@ -146,6 +146,15 @@ public class PatientService {
         return upcomingActivities;
     }
 
+    public int getActivitiesByNameAndIsFavourite(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countFavoritedActivities = activityRepository.getActivitiesByNameAndIsFavourite(p);
+
+        return countFavoritedActivities;
+    }
+
 
 
 
