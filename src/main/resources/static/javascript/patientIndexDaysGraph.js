@@ -67,6 +67,8 @@ $(document).ready(function(){
                 data: chartdata,
                 options: {
                     legend:{
+                        display: true,
+                        position: 'right',
                         labels: {
                             fontColor: "#000"
                         }
