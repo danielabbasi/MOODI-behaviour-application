@@ -44,7 +44,7 @@ public class TestController {
     public String statTemplate(Model model, Long id){
         model.addAttribute("completedCount", patientService.getActivitiesByName(id));
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
-        model.addAttribute("totalCreated", activityRepository.getActivitiesByNameAndIsDeleted());
+        model.addAttribute("totalCreated", patientService.getActivitiesByNameAndIsDeleted(id));
         model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
 
 

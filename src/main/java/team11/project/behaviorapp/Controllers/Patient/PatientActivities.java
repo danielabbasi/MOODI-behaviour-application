@@ -41,7 +41,7 @@ public class PatientActivities {
         String topBarTitleForActivities = "Activities";
 
         double numCompleted = patientService.getActivitiesByName(id);
-        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        double total = patientService.getActivitiesByNameAndIsDeleted(id);
         int percent = (int) Math.round((numCompleted / total) * 100);
 
         model.addAttribute("favourite", patientService.getFavouritedActivities(id, true, false));

@@ -35,7 +35,7 @@ public class PatientIndex {
         model.addAttribute("activities", patientService.getActivityList(id));
 
         double numCompleted = patientService.getActivitiesByName(id);
-        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        double total = patientService.getActivitiesByNameAndIsDeleted(id);
         int percent = (int) Math.round((numCompleted / total) * 100);
 
         model.addAttribute("topBarTitle", topBarTitleForIndex);

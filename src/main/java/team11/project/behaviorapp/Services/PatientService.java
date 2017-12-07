@@ -128,6 +128,17 @@ public class PatientService {
         return avgRatingAfter;
     }
 
+    public int getActivitiesByNameAndIsDeleted(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int total = activityRepository.getActivitiesByNameAndIsDeleted(p);
+
+        return total;
+    }
+
+
+
 
 
 }

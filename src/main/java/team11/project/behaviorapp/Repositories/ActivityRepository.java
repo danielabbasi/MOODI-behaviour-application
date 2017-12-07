@@ -34,8 +34,8 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT AVG(ratingAfter) FROM Activities WHERE patients=?1")
     int getActivitiesByRatingAfter(Patient p);
 
-    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isDeleted = 0")
-    int getActivitiesByNameAndIsDeleted();
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE isDeleted = 0 AND patients=?1")
+    int getActivitiesByNameAndIsDeleted(Patient p);
 
     @Query(value = "SELECT COUNT(name) FROM Activities  WHERE isDeleted = 0 AND isCompleted = 0")
     int getActivitiesByNameAndIsDeletedAndIsCompleted();
