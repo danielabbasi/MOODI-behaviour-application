@@ -51,6 +51,11 @@ public class PatientIndex {
         model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
         model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
+        model.addAttribute("positiveActivity", patientService.getActivitiesByHighestPositiveMoodChange(id));
+        model.addAttribute("negativeActivity", patientService.getActivitiesByHighestNegativeMoodChange(id));
+        model.addAttribute("totalDeleted", patientService.getActivitiesByIsDeleted(id));
+
+
 
 
         return "patientIndex";

@@ -41,7 +41,7 @@
             </div>
             <h2  th:text="${upcomingActivities}"> # </h2>
             <!--<h2 th:text="${patient}"> # </h2>-->
-canvas
+
             <p> upcoming activities </p>
 
         </div>
@@ -72,6 +72,44 @@ canvas
                     <p> completion rate</p>
                 </div>
             </div>
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+            <div class="boxContainer" id="positiveActivityIndex">
+                <div class="completionRate" >
+                    <div class="boxIcon">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                    </div>
+                    <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                    <h2 class="inline" th:text="${positiveActivity}"> </h2> <h2 class="inline"></h2>
+                    <p> activity with highest positive mood change</p>
+                </div>
+            </div>
+            <div class="boxContainer" id="negativeActivityIndex">
+                <div class="completionRate" >
+                    <div class="boxIcon">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                    </div>
+                    <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                    <h2 class="inline" th:text="${negativeActivity}"> </h2> <h2 class="inline"></h2>
+                    <p> activity with highest negative mood change</p>
+                </div>
+            </div>
+            <div class="boxContainer" id="completionRateIndex">
+                <div class="completionRate" >
+                    <div class="boxIcon">
+                        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                    </div>
+                    <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                    <h2 class="inline" th:text="${totalDeleted}"> </h2> <h2 class="inline"></h2>
+                    <p> deleted activities</p>
+                </div>
+            </div>
+
+            <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
 
             <div class="boxContainer" id="completedCountIndex">
                 <div class="completedCnt"  >
