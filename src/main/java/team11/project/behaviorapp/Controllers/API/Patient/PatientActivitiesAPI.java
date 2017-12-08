@@ -21,7 +21,7 @@ import java.util.Collection;
 public class PatientActivitiesAPI {
 
     @Autowired
-    public PatientActivitiesAPI(PatientService patientService, ActivityCreationService activityCreationService, ActivityService activityService, ActivityRatingService activityRatingService, ActivityDeletionService activityDeletionService, ActivityFavouriteService activityFavouriteService, ActivityUnFavouriteService activityUnFavouriteService, ActivityRatingBeforeService activityRatingBeforeService) {
+    public PatientActivitiesAPI(ActivityEditService activityEditService, PatientService patientService, ActivityCreationService activityCreationService, ActivityService activityService, ActivityRatingService activityRatingService, ActivityDeletionService activityDeletionService, ActivityFavouriteService activityFavouriteService, ActivityUnFavouriteService activityUnFavouriteService, ActivityRatingBeforeService activityRatingBeforeService) {
         this.patientService = patientService;
         this.activityCreationService = activityCreationService;
         this.activityService = activityService;
@@ -30,7 +30,10 @@ public class PatientActivitiesAPI {
         this.activityFavouriteService = activityFavouriteService;
         this.activityUnFavouriteService = activityUnFavouriteService;
         this.activityRatingBeforeService = activityRatingBeforeService;
+        this.activityEditService = activityEditService;
     }
+
+    private ActivityEditService activityEditService;
 
     private PatientService patientService;
 
@@ -59,23 +62,24 @@ public class PatientActivitiesAPI {
         return new ModelAndView("redirect:/patient/activities/1");
     }
 
-    //not sure
-    @RequestMapping(value = "{id}/activities/update", method = RequestMethod.PUT)
-    public ModelAndView updateOneActivity(@RequestParam  String name, @RequestParam String date)throws ParseException{
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
 
-        Activities activities = new Activities();
-        activities.setId(1L);
-        activities.setName(name);
-        activities.setActivityDate(LocalDateTime.parse(date));
-        activities.setCompleted(false);
-        activities.setDeleted(false);
-        activities.setFavourite(false);
-        activities.setRatingBefore(null);
-        activities.setRatingAfter(null);
-        activityService.saveActivity(activities);
-        return new ModelAndView("redirect:/patient/activities/1");
-    }
+    //not sure
+//    @RequestMapping(value = "{id}/activities/update", method = RequestMethod.PUT)
+//    public ModelAndView updateOneActivity(@RequestParam  String name, @RequestParam String date)throws ParseException{
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+//
+//        Activities activities = new Activities();
+//        activities.setId(1L);
+//        activities.setName(name);
+//        activities.setActivityDate(LocalDateTime.parse(date));
+//        activities.setCompleted(false);
+//        activities.setDeleted(false);
+//        activities.setFavourite(false);
+//        activities.setRatingBefore(null);
+//        activities.setRatingAfter(null);
+//        activityService.saveActivity(activities);
+//        return new ModelAndView("redirect:/patient/activities/1");
+//    }
 
     //Done
     @RequestMapping(path = "{id}/activities")
@@ -114,5 +118,19 @@ public class PatientActivitiesAPI {
     @RequestMapping("{id}/activities/{activityId}/unfavourite")
     public void unFavouriteActivity(@PathVariable long id, @PathVariable long activityId) {
         activityUnFavouriteService.UnFavouriteActivity(activityId);
+    }
+
+    @RequestMapping("{id}/activities/{activityId}/update")
+    public ModelAndView editActivity(@PathVariable long id, @PathVariable long activityId,
+//                             @RequestParam(name = "activityName", required = true) String activityName,
+                             @RequestParam(name = "date", required = true) String date) throws ParseException{
+
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+
+
+        activityEditService.editActivity(activityId, dateFormat.parse(date));
+
+        return new ModelAndView("redirect:/patient/activities/1");
+
     }
 }
