@@ -91,6 +91,7 @@
 
         <div id="tabs" class="c-tabs">
         <div class="c-tabs-nav">
+            <div id="testor"></div>
             <!--/patient/test/test/{id}/test/{isCompleted}-->
             <!--th:href="@{'/patient/history' + ${patient.id}}"-->
             <a href="#"   class="c-tabs-nav__link is-active"><i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -130,7 +131,7 @@
                         <td class="iconHolder"><a href="#" onclick="showFavouriteModal()" th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-star" id="favouriteIcon" aria-hidden="true"></i></a></td>
 
                         <td class="iconHolder"><a href="#" onclick="showModal()" th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-check" aria-hidden="true" id="rate_modal_button"></i></a></td>
-                        <td class="iconHolder"><a href="#"> <i class="fa fa-cog" id="cog"  aria-hidden="true" onclick="openFullScreenModalUpdate()"></i></a></td>
+                        <td class="iconHolder"><a href="#" onclick="showEditModal()" th:onclick="'javascript:showEditModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-cog" id="cog"  aria-hidden="true"></i></a></td>
                         <td class="iconHolder"><a href="#" onclick="showDeleteModal()" th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'"> <i class="fa fa-trash" id="trash" aria-hidden="true"></i></a></td>
                         <!--<td class="goTo" id="activityButton"><a href="#" th:href="@{'/patient/' + ${patient.id} + '/activityList' }"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>                    </a></td>-->
 
@@ -188,7 +189,7 @@
                         <div class="form-group">
                             <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time" value="" />
                         </div>
-                        <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>
+                        <button id="edit_button" type="submit" class="btn btn-primary">Create Activity</button>
                     </form>
                 </div>
             </div>
@@ -363,7 +364,7 @@
 
 
     <div class="fullScreenModal" id="fullScreenUpdate">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalUpdate()">&times;</a>
+        <a href="javascript:void(0)" id="closeBtnEdit"    class="closebtn" >&times;</a>
         <div class="modalTitle">
         <p class="titleModal">Editing Activity 1</p>
         </div>
@@ -374,18 +375,19 @@
         <div class="formWrapper">
 
         <div class="formContainer">
-            <form  class="activityForm" action="http://localhost:8080/api/patient/1/activities/update" th:method="put">
+            <form  class="activityForm">
                 <div class="form-group">
-                    <input type="text" name="name" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
-                    <input type="hidden" name="_method" value="put"/>
+                    <!--<input type="text" name="activityName" id="activity_name" class="form-control" placeholder="Activity Name" value="" />-->
+                    <!--<input type="hidden" name="_method" value="put"/>-->
                 </div>
                 <div class="form-group">
-                    <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
-                    <input type="hidden" name="_method" value="put"/>
+                    <input type="text" name="date" id="activityDate" class="form-control" placeholder="Date and Time" value="" />
+                    <!--<input type="hidden" name="_method" value="put"/>-->
 
                 </div>
                 <div class="btnWrapper">
-                <button id="activitySubmitBtn" type="submit" class="btn btn-primary"><i class="fa fa-check-circle-o"></i>
+                    <input type="hidden" name="selected_edit_activity_id" id="selected_edit_activity_id"/>
+                <button id="editActivityBtn" type="submit" class="btn btn-primary" onclick="editActivity()"><i class="fa fa-check-circle-o"></i>
                 </button>
                 </div>
             </form>
@@ -461,6 +463,8 @@
 <!--<script src="../static/activeLi.js" th:src="@{/activeLi.js}"> </script>-->
 <!--<script src="../static/notification.js" th:src="@{/notification.js}"> </script>-->
 <script src="../static/javascript/sliderNotification.js " th:src="@{/javascript/sliderNotification.js}"></script>
+<script src="../static/editModal.js"  th:src="@{/editModal.js}"></script>
+
 
 <script th:inline="javascript">
     function openModal() {
@@ -469,15 +473,15 @@
     }
 </script>
 
-<script>
-    function openFullScreenModalUpdate() {
-        document.getElementById("fullScreenUpdate").style.width = "100%";
-    }
+<!--<script>-->
+    <!--function openFullScreenModalUpdate() {-->
+        <!--document.getElementById("fullScreenUpdate").style.width = "100%";-->
+    <!--}-->
 
-    function closeFullScreenModalUpdate() {
-        document.getElementById("fullScreenUpdate").style.width = "0";
-    }
-</script>
+    <!--function closeFullScreenModalUpdate() {-->
+        <!--document.getElementById("fullScreenUpdate").style.width = "0";-->
+    <!--}-->
+<!--</script>-->
 
 <script>
     function openFullScreenModalRate() {

@@ -108,6 +108,43 @@ function unFavouriteActivity() {
     httpRequest.send();
 }
 
+function editActivity() {
+    var completeButton = document.getElementById("editActivityBtn");
+    completeButton.innerHTML = "Editing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_edit_activity_id").value;
+    // var activityName = document.getElementById("activityName").value;
+    // var activityDate = document.getElementById("activityDate").value;
+    // var d = new Date(activityDate);
+    console.log();
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url:"http://localhost:8080/api/patient/1/activities/" + activityId + "/update",
+        data: "date=" + encodeURIComponent($('#activityDate').val()),
+        dataType: "HTML",
+        success: function (data) {
+
+            window.location.href = "1";
+
+        },
+        error : function(data){
+
+        }
+
+
+});
+
+}
+
+
+
+
 
 function refreshPage() {
     location.reload();
