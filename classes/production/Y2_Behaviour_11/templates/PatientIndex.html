@@ -9,6 +9,8 @@
     <script src="../../javascript/patientIndexGraph.js" th:href="@{/patientIndexGraph.js}"/>
     <script src="../../javascript/patientIndexDaysGraph.js" th:href="@{/patientIndexDaysGraph.js}"/>
     <script src="../../javascript/patientIndexBeforeAfterAvgGraph.js" th:href="@{/patientIndexBeforeAfterAvgGraph.js}"/>
+    <script src="../../javascript/differenceGraph.js" th:href="@{/differenceGraph.js}"/>
+
 
 
     <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
@@ -163,6 +165,11 @@
             <canvas id="indexGraphAverage"></canvas>
 
         </div>
+    </div>
+
+    <div class="graphWrapperIndex">
+        <h3> relative mood change graph over activities </h3>
+        <canvas id="differenceGraph"></canvas>
     </div>
 
     <div class="fullScreenModal" id="indexModal">
