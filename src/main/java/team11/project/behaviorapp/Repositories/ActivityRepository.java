@@ -68,6 +68,9 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT COUNT(name) FROM Activities WHERE isDeleted = 1 AND patients=?1")
     int getActivitiesByIsDeleted(Patient p);
 
+    @Query(value = "SELECT ratingAfter-ratingBefore as difference, name FROM Activities WHERE patients=?1 AND isCompleted = 1")
+    List<Activities> differenceGraph(Patient p);
+
 
 
 
