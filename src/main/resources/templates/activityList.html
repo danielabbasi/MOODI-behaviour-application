@@ -16,55 +16,6 @@
 <header>
     <div th:replace="fragments/gpHeaderForActivitiesAndRecords :: gpHeaderForActivitiesAndRecords"></div>
 
-    <!--<div class="topBar" th:fragment="header">-->
-        <!--<div class="holder" id="logoHolder">-->
-            <!--<div class="companyHolder">-->
-                <!--<p><i class="fa fa-heartbeat"></i>-->
-                    <!--MOODi </p>-->
-            <!--</div>-->
-
-
-        <!--</div>-->
-
-
-
-        <!--<div class="holder">-->
-            <!--<i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="pageTitle">-->
-            <!--<div class="pageTitle">-->
-                <!--<h3 id="titleChange"> Patients-->
-                <!--</h3>-->
-            <!--</div>-->
-
-
-        <!--</div>-->
-
-        <!--<div class="holder" id="langHolder">-->
-            <!--<div class="languageSelect">-->
-
-                <!--<p><img src="https://cdn4.iconfinder.com/data/icons/world-flags-5-1/100/Britain-128.png"/>-->
-                    <!--ENG                 <i class="fa fa-caret-down" aria-hidden="true"></i>-->
-                <!--</p>-->
-
-
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="holder" id="userHolder">-->
-            <!--<div class="loggedInUser">-->
-                <!--<p>                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
-
-                    <!--Dr John Smith </p>-->
-
-
-
-            <!--</div>-->
-        <!--</div>-->
-
-
-    <!--</div>-->
 </header>
 
 
@@ -152,6 +103,120 @@
         <div class="graphToggleHolder">
             <i class="fa fa-bar-chart" aria-hidden="true" onclick="openFullScreenModalChart()"></i>
         </div>
+    </div>
+
+    <div class="activityContainer">
+
+
+            <div class="activityBoxes" id="activityBoxIndex">
+
+                <div class="boxContainer" id="boxContainerIndex" >
+                    <div class="activityUpcoming" onclick="openIndexModal()">
+                        <div class="boxIcon">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+
+                        </div>
+                        <h2  th:text="${upcomingActivities}"> # </h2>
+                        <!--<h2 th:text="${patient}"> # </h2>-->
+
+                        <p> upcoming activities </p>
+
+                    </div>
+                </div>
+                <div class="boxContainer" id="boxContainerIndex" >
+                    <div class="activityUpcoming">
+                        <div class="boxIcon">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+
+
+                        </div>
+                        <h2  th:text="${avgRating}"> # </h2>
+                        <!--<h2 th:text="${patient}"> # </h2>-->
+
+                        <p> average score </p>
+
+                    </div>
+                </div>
+                <div class="activityBoxes" >
+                    <div class="boxContainer" id="completionRateIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
+                            <p> completion rate</p>
+                        </div>
+                    </div>
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                    <div class="boxContainer" id="positiveActivityIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${positiveActivity}"> </h2> <h2 class="inline"></h2>
+                            <p> activities with highest positive mood change</p>
+                        </div>
+                    </div>
+                    <div class="boxContainer" id="negativeActivityIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${negativeActivity}"> </h2> <h2 class="inline"></h2>
+                            <p> activities with highest negative mood change</p>
+                        </div>
+                    </div>
+                    <div class="boxContainer" id="completionRateIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${totalDeleted}"> </h2> <h2 class="inline"></h2>
+                            <p> deleted activities</p>
+                        </div>
+                    </div>
+
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+
+                    <div class="boxContainer" id="completedCountIndex">
+                        <div class="completedCnt"  >
+                            <div class="boxIcon">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <h2 th:text="${completedCount}"> # </h2>
+
+                            <p> completed </p>
+                        </div>
+                    </div>
+
+
+                    <div class="boxContainer" id="indexFav" onclick="openIndexModalFavourites()">
+                        <div class="activityCount">
+                            <div class="boxIcon">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+
+
+                            </div>
+                            <h2 th:text="${favouriteCount}"> # </h2>
+                            <p> favourites </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
     </div>
 
     <div class="container">
