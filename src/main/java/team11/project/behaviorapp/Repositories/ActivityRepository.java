@@ -51,10 +51,16 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
 
     @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
-    List <Activities> queryFirstByActivitiesByHighestPositiveMoodChange(Patient p);
+    List <Activities> findFirstByActivitiesByHighestPositiveMoodChange(Patient p);
 
     @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MIN',ratingAfter-ratingBefore) FROM Activities )")
-    List <Activities> queryFirstByActivitiesByHighestNegativeMoodChange(Patient p);
+    List <Activities> findFirstByActivitiesByHighestNegativeMoodChange(Patient p);
+
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
+    int countActivitiesByHighestPositiveMoodChange(Patient p);
+
+    @Query(value = "SELECT COUNT(name) FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MIN',ratingAfter-ratingBefore) FROM Activities )")
+    int countActivitiesByHighestNegativeMoodChange(Patient p);
 
     @Query(value = "SELECT function('ROUND', AVG(ratingBefore)), function('ROUND', AVG(ratingAfter)) FROM Activities WHERE patients=?1")
     List<Activities> getActivitiesByPatientsAndRatingAfterAndRatingBefore(Patient p);
