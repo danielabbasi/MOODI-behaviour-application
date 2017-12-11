@@ -159,7 +159,7 @@ public class PatientService {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> positiveMoodChangeActivities = activityRepository.queryFirstByActivitiesByHighestPositiveMoodChange(p);
+        List<Activities> positiveMoodChangeActivities = activityRepository.findFirstByActivitiesByHighestPositiveMoodChange(p);
 
         return positiveMoodChangeActivities;
     }
@@ -169,9 +169,27 @@ public class PatientService {
 
         Patient p = patientRepository.findById(id);
 
-        List<Activities> negativeMoodChangeActivities = activityRepository.queryFirstByActivitiesByHighestNegativeMoodChange(p);
+        List<Activities> negativeMoodChangeActivities = activityRepository.findFirstByActivitiesByHighestNegativeMoodChange(p);
 
         return negativeMoodChangeActivities;
+    }
+
+    public int countActivitiesByHighestPositiveMoodChange(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countPositiveActivities = activityRepository.countActivitiesByHighestPositiveMoodChange(p);
+
+        return countPositiveActivities;
+    }
+
+    public int countActivitiesByHighestNegativeMoodChange(@PathVariable Long id){
+
+        Patient p = patientRepository.findById(id);
+
+        int countNegativeActivities = activityRepository.countActivitiesByHighestNegativeMoodChange(p);
+
+        return countNegativeActivities;
     }
 
     public int getActivitiesByIsDeleted(@PathVariable Long id){
