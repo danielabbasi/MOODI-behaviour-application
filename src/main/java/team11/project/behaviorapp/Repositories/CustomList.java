@@ -10,4 +10,5 @@ public interface CustomList {
     LocalDateTime getActivityDate();
     Integer getRatingBefore();
     Integer getRatingAfter();
+    //boolean getIsDeleted();
 }

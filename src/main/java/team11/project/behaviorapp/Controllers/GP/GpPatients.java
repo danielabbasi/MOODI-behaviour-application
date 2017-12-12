@@ -55,4 +55,16 @@ public class GpPatients {
         model.addAttribute("activities", patientService.getActivityList(id));
         return "activityList";
     }
+
+    @RequestMapping("/patient/{id}/DeletionList")
+    public String listDeletion(@PathVariable Long id, Model model){
+
+        String topBarForGpPatientActivities = "Activities For ";
+
+        model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
+        model.addAttribute("topBarTitle", topBarForGpPatientActivities);
+        model.addAttribute("activities", patientService.getActivityList(id));
+        model.addAttribute("deletion", patientService.getActivitiesByPatientsAndIsDeleted(id,true));
+        return "deletionGP";
+    }
 }

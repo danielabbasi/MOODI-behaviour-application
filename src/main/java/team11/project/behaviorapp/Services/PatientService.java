@@ -7,6 +7,7 @@ import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 import team11.project.behaviorapp.Repositories.ActivityRepository;
 import team11.project.behaviorapp.Repositories.CustomList;
+import team11.project.behaviorapp.Repositories.DeletionList;
 import team11.project.behaviorapp.Repositories.PatientRepository;
 
 import java.util.Collection;
@@ -182,6 +183,16 @@ public class PatientService {
 
         return countDeletedActivities;
     }
+
+    public List<Activities> getActivitiesByPatientsAndIsDeleted(Long id, Boolean isDeleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> deletedActivities = activityRepository.findActivitiesByPatientsAndIsDeleted(p, isDeleted);
+
+        return deletedActivities;
+    }
+
 
 
 

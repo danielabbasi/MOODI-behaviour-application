@@ -167,21 +167,22 @@
                     <td th:text="${activities.name}"> Test</td>
                     <td th:text="${activities.activityDate}">Test</td>
 
+
                     <!-- <td th:text="${activities.ratingAfter}">Test</td> -->
-                    <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VeryHappy.png" title="6" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Happy.png" title="5" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Neutral.png" title="4" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Upset.png" title="3" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Sad.png" title="2" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VerySad.png" title="1" style="width: 32px; height: 32px;" /></td>
 
 
-                   <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
-                    <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                   <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VeryHappy.png" title="6" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Happy.png" title="5" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Neutral.png" title="4" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Upset.png" title="3" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Sad.png" title="2" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VerySad.png" title="1" style="width: 32px; height: 32px;" /></td>
 
 
                 </tr>
