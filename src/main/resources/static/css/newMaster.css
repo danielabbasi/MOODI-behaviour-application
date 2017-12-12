@@ -1,0 +1,268 @@
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+}
+
+
+.panel-heading{
+    background: hsl(0, 0%, 21%)	;
+    color: #FFF;
+}
+
+.modal-card-foot{
+    background: #FFFFFF;
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-200px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-200px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.modal-card{
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+}
+#upcomingTab .iconHolder a {
+    font-size: 70px;
+
+
+}
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 100;
+    padding-top: 50px;
+    padding-right: 10%;
+    overflow-x: hidden;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+td .fa {
+    width: 32px;
+    height: 32px;
+}
+
+#upcomingBox:hover{
+    cursor: pointer;
+
+}
+
+#favouritesBox:hover{
+    cursor: pointer;
+}
+
+#tabs.span.active {
+    background-color: #000;
+}
+
+.tabContent{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+/*https://css-tricks.com/responsive-data-tables/*/
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    #upcomingTable table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #upcomingTable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #upcomingTable tr { border: 1px solid #ccc; }
+
+    #upcomingTable td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        /*padding-left: 50%;*/
+    }
+
+    #upcomingTable  td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        right: 0;
+        /*width: 90%;*/
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    #upcomingTable td:nth-of-type(1):before { content: "Activity"; }
+    #upcomingTable td:nth-of-type(2):before { content: "Date"; }
+    #upcomingTable td:nth-of-type(3):before { content: "Favourite"; }
+    #upcomingTable  td:nth-of-type(4):before { content: "Mark Complete"; }
+    #upcomingTable  td:nth-of-type(5):before { content: "Edit"; }
+    #upcomingTable  td:nth-of-type(6):before { content: "Delete"; }
+    #upcomingTable td:nth-of-type(7):before { content: "Current Rating"; }
+    /*td:nth-of-type(8):before { content: "Dream Vacation City"; }*/
+    /*td:nth-of-type(9):before { content: "GPA"; }*/
+    /*td:nth-of-type(10):before { content: "Arbitrary Data"; }*/
+
+    /* Force table to not be like tables anymore */
+    #favouritesTable table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #favouritesTable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #favouritesTable tr { border: 1px solid #ccc; }
+
+    #favouritesTable td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        /*padding-left: 50%;*/
+    }
+
+    #favouritesTable  td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        right: 0;
+        /*width: 90%;*/
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    #favouritesTable td:nth-of-type(1):before { content: "Activity"; }
+    #favouritesTable td:nth-of-type(2):before { content: "Remove"; }
+
+    #historyTable table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #historyTable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+
+    }
+
+    #historyTable tr { border: 1px solid #ccc;
+    }
+
+    #historyTable td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        /*padding-left: 50%;*/
+    }
+
+    #historyTable  td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        right: 0;
+        /*width: 90%;*/
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    #historyTable td:nth-of-type(1):before { content: "Activity"; }
+    #historyTable td:nth-of-type(2):before { content: "Date"; }
+    #historyTable td:nth-of-type(3):before { content: "Before"; }
+    #historyTable td:nth-of-type(4):before { content: "After"; }
+
+    /* Force table to not be like tables anymore */
+    #upcomingModalTable table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #upcomingModalTable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #upcomingModalTable tr { border: 1px solid #ccc; }
+
+    #upcomingModalTable td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        /*padding-left: 50%;*/
+    }
+
+    #upcomingModalTable  td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        right: 0;
+        /*width: 90%;*/
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    #upcomingTable td:nth-of-type(1):before { content: "Activity"; }
+    #upcomingTable td:nth-of-type(2):before { content: "Date"; }
+
+
+
+    #desktopTrOnly{
+        display: none;
+    }
+}
+
+
+.hidden {
+    display: none;
+
+}
+
+
+.table th, td, tr{
+    text-align: center;
+}

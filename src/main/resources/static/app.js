@@ -22,10 +22,29 @@ function connect() {
         setConnected(true);
         console.log('CONNECTED TO FRAME : ' + frame);
         stompClient.subscribe('/topic/greetings', function (message) {
+            console.log(message)
             showGreeting(message);
         });
+
+        stompClient.subscribe('/topic/missed', function (missedMessage) {
+            console.log(missedMessage)
+            showMissedMessage(missedMessage);
+        });
+
     });
 }
+//
+// function connectTwo() {
+//     var socket = new SockJS('/gs-guide-MissedActivityNotifier');
+//     stompClient = Stomp.over(socket);
+//     stompClient.connect({}, function (frame) {
+//         setConnected(true);
+//         console.log('CONNECTED TO FRAME : ' + frame);
+//         stompClient.subscribe('/topic/greetings', function (messageMissed) {
+//             showMissed(messageMissed);
+//         });
+//     });
+// }
 
 function disconnect() {
     if (stompClient !== null) {
@@ -40,6 +59,16 @@ function showGreeting(message) {
     $("#NotificationDom").append("<p>" + "hello" + "</p>");
 
     $("#notificationId").val($('#notificationId').val() + message.body);
+}
+
+function showMissedMessage(missedMessage) {
+    $("#NotificationDomTwo").append("<p>" + "hello" + "</p>");
+
+
+    $("#notificationIdMissed").val($('#notificationIdMissed').val() + missedMessage.body);
+
+
+
 }
 
 $(document).ready(function () {

@@ -1,13 +1,13 @@
 /**
  * Created by c1443907 on 02/12/2017.
  */
-$(document).ready(function(){
+$(document).ready(function () {
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/patient/" + id + "/activities/patient/index",
-        type : "GET",
-        success : function(data){
+        url: "/api/patient/" + id + "/statistics/last-activities",
+        type: "GET",
+        success: function (data) {
             console.log(data);
 
             var name = [];
@@ -15,7 +15,7 @@ $(document).ready(function(){
             var ratingAfter = [];
 
 
-            for(var i in data) {
+            for (var i in data) {
                 name.push(data[i].name);
                 ratingBefore.push(data[i].ratingBefore);
                 ratingAfter.push(data[i].ratingAfter);
@@ -27,60 +27,71 @@ $(document).ready(function(){
                 datasets: [
                     {
                         label: "Before",
-                        fill: false,
-                        lineTension: 0,
-                        // fontColor: 'white',
-                        backgroundColor: "#4dc3ff",
-                        pointHoverBackgroundColor: "#00b3b3",
-                        pointHoverBorderColor: "pink",
+                        backgroundColor: "rgba(255,99,132,0.2)",
+                        borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(255,99,132,0.8)",
+                        hoverBorderColor: "#000",
                         data: ratingBefore
                     }, {
                         label: "After",
-                        fill: false,
-                        lineTension: 0,
-                        // fontColor: 'white',
-                        backgroundColor: " #ff8080",
-                        pointHoverBackgroundColor: "#00b3b3",
-                        pointHoverBorderColor: "pink",
+                        backgroundColor: "rgba(51, 187, 255, 0.2)",
+                        borderColor: "#00b3b3",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(51, 187, 255, 0.8)",
+                        hoverBorderColor: "#000",
                         data: ratingAfter
                     }
 
                 ]
             };
-
             var ctx = $("#indexGraph");
 
             var BarGraph = new Chart(ctx, {
                 type: 'bar',
                 data: chartdata,
-                options: {
-                    legend:{
+                options:
+                    {
+                        maintainAspectRatio: false,
+
+                        legend: {
                         labels: {
                             fontColor: "#000"
                         }
                     },
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                    fontColor: "#000",
+                    scales: {
+                        yAxes: [{
+                            display:false,
+                            gridLines: {
+                                display: true,
+                                color: "rgba(255,99,132,0.2)"
+                            },
+                                                        ticks: {
+                                                            beginAtZero: true,
+                                                            fontColor: "#000",
 
                                 }
 
 
-                        }],
-                            xAxes: [{
-                                ticks: {
-                                    fontColor: "#000",
+                            }],
+                        xAxes: [{
+                            gridLines: {
+                                display: false,
+                                color: "rgba(255,99,132,0.2)"
+                            },
 
-                                }
-                            }]
+                            ticks: {
+                                display:true,
+                                fontColor: "#000",
+
+                            }
+                        }]
                     }
                 }
 
             });
         },
-        error : function(data) {
+        error: function (data) {
 
         }
     });

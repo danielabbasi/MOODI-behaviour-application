@@ -2,15 +2,10 @@
 
 function showModal(activityId) {
     document.getElementById('selected_activity_id').value = activityId;
-    document.getElementById('rate_modal').style.width = "100%";
+    document.getElementById('rateModal').style.display = "block";
 }
 
-document.getElementById("rate_close").onclick = function() {
-    document.getElementById('rate_modal').style.width="0";
+document.getElementById("rateModalClose").onclick = function() {
+    document.getElementById('rateModal').style.display="none";
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        document.getElementById('rate_modal').style.display = "none";
-    }
-}

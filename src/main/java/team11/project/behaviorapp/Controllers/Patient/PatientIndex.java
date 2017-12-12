@@ -34,8 +34,8 @@ public class PatientIndex {
 
         model.addAttribute("activities", patientService.getActivityList(id));
 
-        double numCompleted = activityRepository.getActivitiesByName();
-        double total = activityRepository.getActivitiesByNameAndIsDeleted();
+        double numCompleted = patientService.getActivitiesByName(id);
+        double total = patientService.getActivitiesByNameAndIsDeleted(id);
         int percent = (int) Math.round((numCompleted / total) * 100);
 
         model.addAttribute("topBarTitle", topBarTitleForIndex);
@@ -45,14 +45,19 @@ public class PatientIndex {
         model.addAttribute("history", patientService.getUpcomingActivities(id, true, false));
 
         // stats
-        model.addAttribute("favouriteCount", activityRepository.getActivitiesByNameAndIsFavourite());
+        model.addAttribute("favouriteCount", patientService.getActivitiesByNameAndIsFavourite(id));
         model.addAttribute("percent", percent);
-        model.addAttribute("completedCount", activityRepository.getActivitiesByName());
-        model.addAttribute("avgRating", activityRepository.getActivitiesByRatingAfter());
+        model.addAttribute("completedCount", patientService.getActivitiesByName(id));
+        model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
         model.addAttribute("totalCreated", total);
-        model.addAttribute("upcomingActivities", activityRepository.getActivitiesByNameAndIsDeletedAndIsCompleted());
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
+        model.addAttribute("positiveActivity", patientService.countActivitiesByHighestPositiveMoodChange(id));
+        model.addAttribute("negativeActivity", patientService.countActivitiesByHighestNegativeMoodChange(id));
+        model.addAttribute("totalDeleted", patientService.getActivitiesByIsDeleted(id));
 
 
-        return "patientIndex";
+
+
+        return "newPatientIndex";
     }
 }

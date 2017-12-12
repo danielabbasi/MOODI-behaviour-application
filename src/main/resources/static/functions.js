@@ -33,7 +33,7 @@ function markActivityAsComplete() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/rate?ratingAfter=" + testResultNumber)
     httpRequest.send();
 }
 
@@ -62,7 +62,7 @@ function sendRatingBefore() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/before/rate?ratingBefore=" + testResultNumber)
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/before/rate?ratingBefore=" + testResultNumber)
     httpRequest.send();
 
     return false;
@@ -77,7 +77,7 @@ function deleteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/delete")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/delete")
     httpRequest.send();
 }
 
@@ -91,7 +91,7 @@ function favouriteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/favourite")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/favourite")
     httpRequest.send();
 }
 
@@ -104,9 +104,91 @@ function unFavouriteActivity() {
     httpRequest.onreadystatechange = function() {
         window.setTimeout(refreshPage,1000);
     }
-    httpRequest.open("POST", "/api/patient/activities/" + activityId + "/unfavourite")
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/unfavourite")
     httpRequest.send();
 }
+
+function editActivity() {
+    var completeButton = document.getElementById("editActivityBtn");
+    completeButton.innerHTML = "Editing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("selected_edit_activity_id").value;
+    // var activityName = document.getElementById("activityName").value;
+    // var activityDate = document.getElementById("activityDate").value;
+    // var d = new Date(activityDate);
+    console.log();
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url:"/api/patient/1/activities/" + activityId + "/update",
+        data: "date=" + encodeURIComponent($('#activityDate').val()),
+        dataType: "HTML",
+        success: function (data) {
+
+            window.location.href = "1";
+
+        },
+        error : function(data){
+
+        }
+
+
+});
+
+}
+
+
+function editActivityMissed() {
+    var completeButton = document.getElementById("editActivityBtnMissed");
+    completeButton.innerHTML = "Editing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("notificationIdMissed").value;
+    console.log();
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url:"/api/patient/1/activities/" + activityId + "/update",
+        data: "date=" + encodeURIComponent($('#activDate').val()),
+        dataType: "HTML",
+        success: function (data) {
+
+            window.location.href = "1";
+
+        },
+        error : function(data){
+
+        }
+
+
+    });
+
+}
+
+function deleteActivityMissed() {
+    var completeButton = document.getElementById("deleteActivityMissedBtn");
+    completeButton.innerHTML = "Deleting Activity (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("notificationIdMissed").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/delete")
+    httpRequest.send();
+}
+
+
+
 
 
 function refreshPage() {
