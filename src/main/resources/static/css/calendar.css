@@ -1,0 +1,78 @@
+html, body {
+	margin: 0px auto;
+}
+div#calendar-wrapper {
+	width: calc(100% - 30px);
+	margin: 15px;
+}
+
+
+div.calendar-container {
+	width: 100%;
+	border: 1px solid #A9A9A9;
+	border-radius: 4px;
+	font-family: "Open Sans";
+}
+
+div.calendar-container> .calendar-row {
+	width: 100%;
+	min-height: 25px;
+	display: flex;
+}
+div.calendar-container> .calendar-row> .calendar-header {
+    flex: 1;
+	padding: 5px;
+	background-color: #A9A9A9;
+	color: #FFF;
+}
+div.calendar-container> .calendar-row> .calendar-data {
+	min-height: 75px;
+	flex: 1;
+	padding: 5px;
+	background-color: #FFF;
+	border: 1px solid #A9A9A9;
+}
+div.calendar-container> .calendar-row> .calendar-data.disabled {
+	background-color: #C8C8C8;
+}
+div.calendar-container> .calendar-row> .calendar-data> .date {
+	width: 100%;
+	min-height: 25px;
+	color: #A9A9A9;
+	margin-bottom: 5px;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents {
+	width: 100%;
+	min-height: 25px;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule {
+	width: calc(100% - 10px);
+	min-height: 20px;
+	background-color: #2D89EF;
+	color: #FFF;
+	border-radius: 4px;
+	font-size: 13px;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.history {
+	background-color: #A9A9A9;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming {
+	background-color: #FFC40D;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.past {
+	background-color: #DA532C;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule> span.time {
+	color: #D3D3D3;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.history> span.time {
+	 background-color: #A9A9A9;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upcoming> span.time {
+	color: #FDFCBA;
+}
+div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.past> span.time {
+	color: #FFB2AE;
+}

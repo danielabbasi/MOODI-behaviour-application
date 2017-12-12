@@ -4,38 +4,60 @@
     <meta name="viewport" content="width=device-width"/>
     <title>Slide</title>
     <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 
 <div id="sidenav" th:fragment="patientSideMenu">
-    <div class="logo" th:style="'background:url('+ @{/static/bg2.jpg} +');'">
-        <p class="welcome"> Welcome John Smith </p>
-    </div>
 
-    <ul id="main-nav">
-        <li class="active">
-            <a href="patientIndex.html" th:href="@{/patient/index}">
+
+    <ul id="main-nav" class="nav">
+        <div class="userSection">
+            <div class="imageWrapper">
+                <div class="userImageWrapper">
+                    <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"/>
+                </div>
+                <div class="userTitle">
+                    <p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        Jane Smith</p>
+
+                </div>
+            </div>
+        </div>
+
+        <li class="liSection">
+            <p>
+                MAIN
+            </p>
+        </li>
+        <li>
+            <a href="patientIndex.html" th:href="@{/patient/1/index}" >
                 <i class="fa fa-th-large"></i>
                 Dashboard
             </a>
         </li>
 
 
-        <li>
-            <a href="#">
-                <i class="fa fa-history"></i>
-                Activities
 
+        <li>
+            <a href="patientActivities.html" th:href="@{/patient/activities/1}" onclick="myFunction()">
+                <i class="fa fa-heartbeat"></i>
+                Activities
+                <div class="notificationWrapper">
+                    <div class="notificationNav">
+                        <p th:text="${upcomingActivities}">
+                            #
+                        </p>
+                    </div>
+                </div>
             </a>
         </li>
-        <li>
-            <a href="createActivity" th:href="@{/patient/activities/create}">
-                <i class="fa fa-heartbeat"></i>
-                Create Activity
 
-            </a>
+        <li class="liSection">
+            <p>
+                EXTRAS
+            </p>
         </li>
         <li>
             <a href="#">
@@ -44,10 +66,18 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="/patient/activities/1/calendar">
                 <i class="fa fa-calendar"></i>
                 Calendar
+                <div class="notificationWrapper">
+                    <div class="notificationNav">
+                        <p id="calanderNotification">
+                            5
+                        </p>
+                    </div>
+                </div>
             </a>
+
         </li>
         <li>
             <a href="#">
