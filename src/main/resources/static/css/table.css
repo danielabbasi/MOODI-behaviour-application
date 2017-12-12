@@ -1,0 +1,16 @@
+
+.iconHolder a {
+    font-size: 70px;
+
+
+}
+
+#sliderDown{
+    display: none;
+
+}
+
+#upcomingTab img{
+    height: 60px;
+    width: 60px;
+}

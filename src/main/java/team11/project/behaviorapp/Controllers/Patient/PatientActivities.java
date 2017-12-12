@@ -59,12 +59,19 @@ public class PatientActivities {
         model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
 
 
-        return "patientActivities";
+        return "newPatientActivities";
     }
+
+
 
     @RequestMapping("/patient/activities/{id}/calendar")
     public String getCalendar(@PathVariable long id, Model model) {
         model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
         return "calendar";
     }
+
+
+
+
+
 }

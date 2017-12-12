@@ -7,7 +7,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/patient/" + id + "/statistics/average",
+        url : "/api/patient/" + id + "/statistics/average",
         type : "GET",
         success : function(data){
             console.log(data);
@@ -27,15 +27,19 @@ $(document).ready(function(){
                 datasets: [
                     {
                         label: "Before",
-                        fill: false,
-                        lineTension: 0,
-                        backgroundColor: "#4dc3ff",
+                        backgroundColor: "rgba(255,99,132,0.2)",
+                        borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(255,99,132,0.8)",
+                        hoverBorderColor: "#000",
                         data: before
                     }, {
                         label: "After",
-                        fill: true,
-                        lineTension: 0,
-                        backgroundColor: " #ff8080",
+                        backgroundColor: "rgba(51, 187, 255, 0.2)",
+                        borderColor: "#00b3b3",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(51, 187, 255, 0.8)",
+                        hoverBorderColor: "#000",
                         data: after
                     }
 
@@ -47,30 +51,44 @@ $(document).ready(function(){
             var BarGraph = new Chart(ctx, {
                 type: 'bar',
                 data: chartdata,
-                options: {
-                    legend:{
-                        labels: {
-                            fontColor: "#000"
-                        }
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
+                options:
+                    {
+                        maintainAspectRatio: false,
+
+                        legend: {
+                            labels: {
+                                fontColor: "#000"
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                display:false,
+                                gridLines: {
+                                    display: true,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
+                                ticks: {
+                                    beginAtZero: true,
                                     fontColor: "#000",
 
-                            }
+                                }
 
 
-                        }],
-                        xAxes: [{
-                            ticks: {
-                                fontColor: "#000",
+                            }],
+                            xAxes: [{
+                                gridLines: {
+                                    display: false,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
 
-                            }
-                        }]
+                                ticks: {
+                                    display:true,
+                                    fontColor: "#000",
+
+                                }
+                            }]
+                        }
                     }
-                }
 
             });
         },

@@ -58,6 +58,6 @@ public class PatientIndex {
 
 
 
-        return "patientIndex";
+        return "newPatientIndex";
     }
 }

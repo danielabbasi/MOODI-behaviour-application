@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import team11.project.behaviorapp.Entities.Activities;
 import team11.project.behaviorapp.Entities.Patient;
 
+import java.awt.print.Pageable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -47,11 +48,12 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     @Query(value = "SELECT activityDate FROM Activities WHERE id = 1")
     LocalDateTime getActivitiesByActivityDate();
 
-    @Query(value = "SELECT COUNT(activityDate), function('DAYNAME', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ")
+    @Query(value = "SELECT COUNT(activityDate), function('DAYNAME', activityDate), function('DAYOFWEEK', activityDate) AS days FROM Activities WHERE patients =?1 GROUP BY(function('DAYNAME', activityDate) ) ORDER BY days ASC ")
     List <Activities> getActivitiesByPatientsAndActivityDate_DayOfWeek(Patient p);
 
-    @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities )")
+    @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MAX',ratingAfter-ratingBefore) FROM Activities ) ")
     List <Activities> queryFirstByActivitiesByHighestPositiveMoodChange(Patient p);
+
 
     @Query(value = "SELECT name FROM Activities WHERE patients=?1 AND ratingAfter-ratingBefore= (SELECT function('MIN',ratingAfter-ratingBefore) FROM Activities )")
     List <Activities> queryFirstByActivitiesByHighestNegativeMoodChange(Patient p);

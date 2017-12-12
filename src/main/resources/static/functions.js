@@ -125,7 +125,7 @@ function editActivity() {
     $.ajax({
 
         type: "POST",
-        url:"http://localhost:8080/api/patient/1/activities/" + activityId + "/update",
+        url:"/api/patient/1/activities/" + activityId + "/update",
         data: "date=" + encodeURIComponent($('#activityDate').val()),
         dataType: "HTML",
         success: function (data) {
@@ -140,6 +140,51 @@ function editActivity() {
 
 });
 
+}
+
+
+function editActivityMissed() {
+    var completeButton = document.getElementById("editActivityBtnMissed");
+    completeButton.innerHTML = "Editing (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("notificationIdMissed").value;
+    console.log();
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+
+    $.ajax({
+
+        type: "POST",
+        url:"/api/patient/1/activities/" + activityId + "/update",
+        data: "date=" + encodeURIComponent($('#activDate').val()),
+        dataType: "HTML",
+        success: function (data) {
+
+            window.location.href = "1";
+
+        },
+        error : function(data){
+
+        }
+
+
+    });
+
+}
+
+function deleteActivityMissed() {
+    var completeButton = document.getElementById("deleteActivityMissedBtn");
+    completeButton.innerHTML = "Deleting Activity (please wait)...";
+    completeButton.disabled = true;
+    var activityId = document.getElementById("notificationIdMissed").value;
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function() {
+        window.setTimeout(refreshPage,1000);
+    }
+    httpRequest.open("POST", "/api/patient/1/activities/" + activityId + "/delete")
+    httpRequest.send();
 }
 
 

@@ -62,7 +62,11 @@ function showGreeting(message) {
 }
 
 function showMissedMessage(missedMessage) {
-    $("#testor").append("<p>" + missedMessage.body + "</p>");
+    $("#NotificationDomTwo").append("<p>" + "hello" + "</p>");
+
+
+    $("#notificationIdMissed").val($('#notificationIdMissed').val() + missedMessage.body);
+
 
 
 }
