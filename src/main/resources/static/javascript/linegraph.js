@@ -5,7 +5,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/gp/1/patients/" + id + "/activities/statistics/completed",
+        url : "/api/gp/1/patients/" + id + "/activities/statistics/completed",
         type : "GET",
         success : function(data){
             console.log(data);
@@ -27,23 +27,19 @@ $(document).ready(function(){
                 datasets: [
                     {
                         label: "Before",
-                        fill: false,
-                        lineTension: 0,
-                        // fontColor: 'white',
-                        backgroundColor: "#FFFFFF",
-                        borderColor: "red",
-                        pointHoverBackgroundColor: "#00b3b3",
-                        pointHoverBorderColor: "pink",
+                        backgroundColor: "rgba(255,99,132,0.2)",
+                        borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(255,99,132,0.8)",
+                        hoverBorderColor: "#000",
                         data: ratingBefore
                     }, {
                         label: "After",
-                        fill: false,
-                        lineTension: 0,
-                        // fontColor: 'white',
-                        backgroundColor: "#00b3b3",
-                        borderColor: "white",
-                        pointHoverBackgroundColor: "#00b3b3",
-                        pointHoverBorderColor: "pink",
+                        backgroundColor: "rgba(51, 187, 255, 0.2)",
+                        borderColor: "#00b3b3",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(51, 187, 255, 0.8)",
+                        hoverBorderColor: "#000",
                         data: ratingAfter
                     }
 
@@ -55,19 +51,44 @@ $(document).ready(function(){
             var BarGraph = new Chart(ctx, {
                 type: 'bar',
                 data: chartdata,
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
+                options:
+                    {
+                        maintainAspectRatio: false,
+
+                        legend: {
+                            labels: {
+                                fontColor: "#000"
                             }
+                        },
+                        scales: {
+                            yAxes: [{
+                                display:true,
+                                gridLines: {
+                                    display: true,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontColor: "#000",
+
+                                }
 
 
+                            }],
+                            xAxes: [{
+                                gridLines: {
+                                    display: true,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
 
+                                ticks: {
+                                    display:true,
+                                    fontColor: "#000",
 
-                        }]
+                                }
+                            }]
+                        }
                     }
-                }
             });
         },
         error : function(data) {

@@ -209,6 +209,14 @@ public class PatientService {
         return differenceActivities;
     }
 
+    public List<Activities> getActivitiesByPatientsAndIsDeleted(Long id, Boolean isDeleted) {
+
+        Patient p = patientRepository.findById(id);
+
+        List<Activities> deletedActivities = activityRepository.findActivitiesByPatientsAndIsDeleted(p, isDeleted);
+
+        return deletedActivities;
+    }
 
 
 

@@ -6,6 +6,13 @@
     width: 80vw;
 }
 
+.indexChartGP{
+    position: relative;
+    margin: auto;
+    height: 50vh;
+    width: 100%;
+}
+
 
 .panel-heading{
     background: hsl(0, 0%, 21%)	;
@@ -33,6 +40,8 @@
     animation-duration: 0.4s;
 
 }
+
+
 #upcomingTab .iconHolder a {
     font-size: 70px;
 

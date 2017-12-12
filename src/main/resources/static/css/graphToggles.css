@@ -1,0 +1,12 @@
+#graphToggleBtns button{
+
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    /*border-color: #000;*/
+    border: 5px solid #000;
+}
+
+#graphToggleBtns i{
+    padding-right: 2px;
+}
