@@ -50,4 +50,12 @@ public class PatientIndexAPI {
 
         return patientService.getActivitiesByBeforeAndAfter(id);
     }
+
+    @RequestMapping("{id}/statistics/difference")//activities/average/before/after")
+    public List<Activities> differenceGraph(@PathVariable Long id){
+
+        return patientService.differenceGraph(id);
+    }
+
+
 }

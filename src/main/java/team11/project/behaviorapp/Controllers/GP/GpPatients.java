@@ -53,6 +53,20 @@ public class GpPatients {
         model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
         model.addAttribute("topBarTitle", topBarForGpPatientActivities);
         model.addAttribute("activities", patientService.getActivityList(id));
+
+        double numCompleted = patientService.getActivitiesByName(id);
+        double total = patientService.getActivitiesByNameAndIsDeleted(id);
+        int percent = (int) Math.round((numCompleted / total) * 100);
+        // stats
+        model.addAttribute("favouriteCount", patientService.getActivitiesByNameAndIsFavourite(id));
+        model.addAttribute("percent", percent);
+        model.addAttribute("completedCount", patientService.getActivitiesByName(id));
+        model.addAttribute("avgRating", patientService.getActivitiesByRatingAfter(id));
+        model.addAttribute("totalCreated", total);
+        model.addAttribute("upcomingActivities", patientService.getActivitiesByNameAndIsDeletedAndIsCompleted(id));
+        model.addAttribute("positiveActivity", patientService.countActivitiesByHighestPositiveMoodChange(id));
+        model.addAttribute("negativeActivity", patientService.countActivitiesByHighestNegativeMoodChange(id));
+        model.addAttribute("totalDeleted", patientService.getActivitiesByIsDeleted(id));
         return "activityList";
     }
 }
