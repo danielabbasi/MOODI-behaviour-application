@@ -18,6 +18,7 @@ div.calendar-container> .calendar-row {
 	width: 100%;
 	min-height: 25px;
 	display: flex;
+	flex-wrap: wrap;
 }
 div.calendar-container> .calendar-row> .calendar-header {
     flex: 1;
@@ -75,4 +76,19 @@ div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.upco
 }
 div.calendar-container> .calendar-row> .calendar-data> .contents> .schedule.past> span.time {
 	color: #FFB2AE;
+}
+@media screen and (max-width: 730px) {
+	div.calendar-container> .calendar-row {
+		display: block;
+		flex-wrap: initial;
+	}
+	div.calendar-container> .calendar-row> .calendar-header {
+		display: none;
+	}
+	div.calendar-container> .calendar-row> .calendar-data {
+		width: 100%;
+	}
+	div.calendar-container> .calendar-row> .calendar-data.disabled {
+		display: none;
+	}
 }

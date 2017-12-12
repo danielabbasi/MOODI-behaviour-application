@@ -15,6 +15,7 @@
 
 
     <link rel="stylesheet" href="../static/css/newMaster.css" th:href="@{/css/newMaster.css}"/>
+    <link rel="stylesheet" href="../static/css/small_calendar.css" th:href="@{/css/small_calendar.css}"/>
     <!--<link rel="stylesheet" href="../static/css/slidercss.css" th:href="@{/css/slidercss.css}"/>-->
 
     <link rel="stylesheet" href="../static/css/newSlider.css" th:href="@{/css/newSlider.css}"/>
@@ -25,6 +26,7 @@
     <script src="../../javascript/mobile.js" th:href="@{/mobile.js}"/>
     <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
     <script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}"></script>
+    <script src="../../javascript/small_calendar.js" th:href="@{/small_calendar.js}"></script>
 
 
 </head>
@@ -206,7 +208,19 @@
             </div>
             <div class="field">
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" name="date" id="activity_date" placeholder="Date and Time"
+                    <input class="input date-calenddar" type="date" name="date" id="activity_date" placeholder="Date and Time"
+                           value=""/>
+                    <span class="icon is-left">
+                        <i class="fa fa-calendar"></i>
+                        </span>
+                    <span class="icon is-right">
+                          <i class="fa fa-check"></i>
+                        </span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="time" name="time" id="activity_time" placeholder="00:00"
                            value=""/>
                     <span class="icon is-left">
                         <i class="fa fa-calendar"></i>
@@ -565,7 +579,12 @@
         </footer>
     </div>
 </div>
-
+<div id="calendar-wrapper"></div>
+<script>
+    $(document).ready(function() {
+        initialiseCalendar('calendar-wrapper');
+    });
+</script>
 <script>
 
     function switchToEdit() {

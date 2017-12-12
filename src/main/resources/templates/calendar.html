@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta name="viewport" content="width=device-width"/>
-		<title>Calendar</title>
-		<link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+		<!--<meta name="viewport" content="width=device-width"/>-->
+		<!--<title>Calendar</title>-->
+		<!--<link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>-->
+		<!--<link rel="stylesheet" href="../static/css/calendar.css" th:href="@{/css/calendar.css}"/>-->
+		<!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />-->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>MOODi</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css"/>
+
+
+		<link rel="stylesheet" href="../static/css/newMaster.css" th:href="@{/css/newMaster.css}"/>
 		<link rel="stylesheet" href="../static/css/calendar.css" th:href="@{/css/calendar.css}"/>
-		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		<script src="../../javascript/mobile.js" th:href="@{/mobile.js}"/>
+		<script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
+		<script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}"></script>
 	</head>
 	<body>
-		<header>
-			<div th:replace="fragments/header :: header"></div>
-		</header>
+		<section class="hero is-medium is-primary is-bold is-fixed-top">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title">
+					<span class="icon">
+					<i class="fa fa-heartbeat" aria-hidden="true"></i>
+			</span>
+						MOODi
+					</h1>
+					<h2 class="subtitle">
+						Helping you feel better
+					</h2>
+				</div>
+			</div>
+		</section>
 
-		<div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
+		<nav class="navbar has-shadow " role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+
+
+				<button class="button navbar-burger" data-target="navMenu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+			<div class="navbar-menu is-centered" id="navMenu">
+				<a class="navbar-item" th:href="@{/patient/1/index}">
+					<span class="icon">
+						<i class="fa fa-home" aria-hidden="true"></i>
+					</span>
+					Dashboard
+				</a>
+				<a class="navbar-item" th:href="@{/patient/activities/1}">
+             <span class="icon">
+                <i class="fa fa-heartbeat" aria-hidden="true"></i>
+        </span>
+					Activities
+				</a>
+				<a class="navbar-item">
+            <span class="icon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+
+        </span>
+					Calendar
+				</a>
+				<div class="navbar-end">
+
+					<a class="navbar-item">
+                <span class="icon">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+
+        </span>
+
+						Settings
+					</a>
+
+					<a class="navbar-item">
+						<img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"
+							 width="28" height="28"/>
+
+						User
+					</a>
+				</div>
+
+
+				<!-- navbar-start, navbar-end... -->
+			</div>
+		</nav>
 
 		<div class="activityContainer">
 			<main class="main" id="main">
@@ -30,7 +110,7 @@
             });
 
             function calendarLoaded() { // Overridden
-                $.getJSON('http://localhost:8080/api/patient/' + window.location.pathname.split('/')[3] + '/activities/calendar', {month: selectedMonth, year: selectedYear}, function(data) {
+                $.getJSON('/api/patient/' + window.location.pathname.split('/')[2] + '/activities/calendar', {month: selectedMonth, year: selectedYear}, function(data) {
                     $.each(data, function(key, value) {
                         addSchedule(value.activityDate.dayOfMonth, value.activityDate.hour + ':' + value.activityDate.minute, value.name, value.isCompleted, value.upcoming, value.past);
                     });
@@ -52,6 +132,33 @@
                 }
             }
 
+		</script>
+		<script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                // Get all "navbar-burger" elements
+                var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+                // Check if there are any navbar burgers
+                if ($navbarBurgers.length > 0) {
+
+                    // Add a click event on each of them
+                    $navbarBurgers.forEach(function ($el) {
+                        $el.addEventListener('click', function () {
+
+                            // Get the target from the "data-target" attribute
+                            var target = $el.dataset.target;
+                            var $target = document.getElementById(target);
+
+                            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                            $el.classList.toggle('is-active');
+                            $target.classList.toggle('is-active');
+
+                        });
+                    });
+                }
+
+            });
 		</script>
 	</body>
 </html>
