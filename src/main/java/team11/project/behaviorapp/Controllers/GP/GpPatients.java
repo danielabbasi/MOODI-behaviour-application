@@ -31,7 +31,7 @@ public class GpPatients {
         model.addAttribute("topBarTitle", topBarTitleForGpPatientList);
         model.addAttribute("patients", patientService.getAllPatients());
 
-        return "patientsList";
+        return "newGpPatientList";
     }
 
     @RequestMapping("/gp/patients/record/{id}")
@@ -42,7 +42,7 @@ public class GpPatients {
         model.addAttribute("patientName", patientService.getPatientFirstLastName(id));
         model.addAttribute("topBarTitle", topBarTitleForGpRecords);
         model.addAttribute("records", patientService.getSpecificRecord(id));
-        return "patientRecord";
+        return "newGpPatientRecord";
     }
 
     @RequestMapping("/patient/{id}/activityList")
@@ -67,6 +67,8 @@ public class GpPatients {
         model.addAttribute("positiveActivity", patientService.countActivitiesByHighestPositiveMoodChange(id));
         model.addAttribute("negativeActivity", patientService.countActivitiesByHighestNegativeMoodChange(id));
         model.addAttribute("totalDeleted", patientService.getActivitiesByIsDeleted(id));
-        return "activityList";
+        model.addAttribute("deletion", patientService.getActivitiesByPatientsAndIsDeleted(id,true));
+
+        return "newGpPatientActivities";
     }
 }

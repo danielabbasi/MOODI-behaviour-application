@@ -5,7 +5,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "http://localhost:8080/api/patient/" + id + "/statistics/difference",
+        url : "/api/patient/" + id + "/statistics/difference",
         type : "GET",
         dataType: "json",
         success : function(data){
@@ -24,12 +24,10 @@ $(document).ready(function(){
                 datasets: [
                     {
                         label: "relative mood change",
+                        backgroundColor: "rgba(255,99,132,0.2)",
+                        borderColor: "rgba(255,99,132,1)",
+                        hoverBorderColor: "#000",
                         fill: false,
-                        lineTension: 0.1,
-                        backgroundColor: "rgba(59, 89, 152, 0.75)",
-                        borderColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBorderColor: "rgba(59, 89, 152, 1)",
                         data: difference
                     }
                 ]
@@ -39,7 +37,46 @@ $(document).ready(function(){
 
             var LineGraph = new Chart(ctx, {
                 type: 'line',
-                data: chartdata
+                data: chartdata,
+                options:
+                    {
+                        maintainAspectRatio: false,
+
+                        legend: {
+                            labels: {
+                                fontColor: "#000"
+                            }
+                        },
+                        scales: {
+                            yAxes: [{
+                                display:false,
+                                gridLines: {
+                                    display: true,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontColor: "#000",
+
+                                }
+
+
+                            }],
+                            xAxes: [{
+                                gridLines: {
+                                    display: false,
+                                    color: "rgba(255,99,132,0.2)"
+                                },
+
+                                ticks: {
+                                    display:true,
+                                    fontColor: "#000",
+
+                                }
+                            }]
+                        }
+                    }
+
             });
         },
         error : function(data) {

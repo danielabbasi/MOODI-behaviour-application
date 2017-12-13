@@ -67,21 +67,6 @@
         </a>
         <div class="navbar-end">
 
-            <a class="navbar-item">
-                <span class="icon">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-
-        </span>
-
-                Settings
-            </a>
-
-            <a class="navbar-item">
-                <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"
-                     width="28" height="28"/>
-
-                User
-            </a>
         </div>
 
 
@@ -106,7 +91,6 @@
                 <div class="level-right">
                     <div class="level-item">
                         <button type="button" class="button is-small">
-                            March 8, 2017 - April 6, 2017
                         </button>
                     </div>
                 </div>
@@ -186,7 +170,7 @@
                         </span>
                         </div>
                         <div class="heading is-right">Positive Activities</div>
-                        <div class="title is-1">#</div>
+                        <div class="title is-1" th:text="${positiveActivity}">#</div>
 
                     </div>
                 </div>
@@ -198,7 +182,7 @@
                         </span>
                         </div>
                         <div class="heading is-right">Negative Activities</div>
-                        <div class="title is-1">#</div>
+                        <div class="title is-1" th:text="${negativeActivity}">#</div>
 
                     </div>
                 </div>
@@ -259,10 +243,12 @@
                 <div class="column is-6">
                     <div class="panel">
                         <p class="panel-heading has-text-centered	is-uppercase	">
-                            random graph
+                            Mood change
                         </p>
                         <div class="panel-block">
-                            <canvas id="chartScatter" width="400" height="400"></canvas>
+                            <div class="chart-container">
+                            <canvas id="differenceGraph"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -317,12 +303,7 @@
                 </tr>
             </table>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button is-primary" th:onclick="'javascript:favouritesModalClose()'"
-                    onclick="favouritesModalClose()">Ok
-            </button>
 
-        </footer>
     </div>
 </div>
 <script>
@@ -374,7 +355,7 @@
     });
 </script>
 
-
+<script src="../../javascript/differenceGraph.js" th:href="@{/differenceGraph.js}"/>
 <script src="../../javascript/patientIndexGraph.js" th:href="@{/patientIndexGraph.js}"/>
 <script src="../../javascript/patientIndexDaysGraph.js" th:href="@{/patientIndexDaysGraph.js}"/>
 <script src="../../javascript/patientIndexBeforeAfterAvgGraph.js" th:href="@{/patientIndexBeforeAfterAvgGraph.js}"/>

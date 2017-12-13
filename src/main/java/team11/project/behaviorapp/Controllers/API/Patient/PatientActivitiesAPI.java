@@ -53,11 +53,11 @@ public class PatientActivitiesAPI {
 
     //Done
     @RequestMapping(path = "{id}/activities/create", method = RequestMethod.POST)
-    public ModelAndView createActivity(@PathVariable long id, @RequestParam final String activityName, @RequestParam final String date) throws ParseException {
+    public ModelAndView createActivity(@PathVariable long id, @RequestParam final String activityName, @RequestParam final String date, @RequestParam final String time) throws ParseException {
         //Source adapted from https://stackoverflow.com/questions/4496359/how-to-parse-date-string-to-date
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy kk:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm");
 
-        activityCreationService.createActivity(1, activityName, dateFormat.parse(date));
+        activityCreationService.createActivity(1, activityName, dateFormat.parse(date + " " + time));
 
         return new ModelAndView("redirect:/patient/activities/1");
     }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>MOODi</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/css/intro.css" th:href="@{/css/intro.css}"/>
+
+
+</head>
+<body>
+<body>
+<div id="carouselHacked" class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <section class="hero is-primary is-fullheight has-text-centered">
+                <div class="hero-body">
+                    <div class="container">
+                        <span class="icon is-large" id="activityIcon"><i class="fa fa-question-circle"></i></span>
+
+                        <h1 class="title">
+                            MOODi
+                        </h1>
+                        <h2 class="subtitle is-size-3-mobile">
+                            MOODi is a new medical application for people that suffer from different forms of depression and mental illnesses. It allows patients to create different types of activities for themselves and tracks their mood before and after. MOODI generates graphs and statistics for the patient and the GP and helps
+                            see what activities positively affect their mood providing help along the way.
+                        </h2>
+                    </div>
+                </div>
+                <!--<div class="carousel-caption">-->
+                    <!--MOODi is a new medical application for people that suffer from different forms of depression and mental illnesses. It allows patients to create different types of activities for themselves and tracks their mood before and after. MOODI generates graphs and statistics for the patient and the GP and helps-->
+                    <!--see what activities positively affect their mood providing help along the way.-->
+                <!--</div>-->
+            </section>
+
+        </div>
+
+        <div class="item">
+
+            <section class="hero is-warning is-fullheight has-text-centered">
+                <div class="hero-body">
+                    <div class="container">
+                        <span class="icon is-large" id="activityIcon"><i class="fa fa-heartbeat"></i></span>
+
+                        <h1 class="title">
+                            Activities
+                        </h1>
+                        <h2 class="subtitle is-size-3-mobile">
+                            Activities are what make this app. You can create activities with no restrictions. They can be anything you want and there is no category for it.
+                            You'll always be notified when an activity is coming up, this is where you will rate how you feel currently. Then when you've done the activity you simply go back
+                            and mark it as complete! and don't worry, if you miss an activity we got your back!
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+            <div class="level">
+                <div class="level-item">
+                    <button class="button is-size-1 is-danger"> OK</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="item">
+            <section class="hero is-danger is-fullheight has-text-centered">
+                <div class="hero-body">
+                    <div class="container">
+                        <span class="icon is-large" id="activityIcon"><i class="fa fa-home"></i></span>
+
+                        <h1 class="title">
+                            Dashboard
+                        </h1>
+                        <h2 class="subtitle is-size-3-mobile">
+                            Your dashboard will hold all of the statistics gathered from your activities. It has been designed
+                            to provide you with accurate yet minimalistic data to let you know where you are and where you are going. We'll track your information for you
+                            so that you can see your daily improvements in a matter of seconds.
+                        </h2>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="item">
+            <section class="hero is-info is-fullheight has-text-centered">
+                <div class="hero-body">
+                    <div class="container">
+                        <span class="icon is-large" id="activityIcon"><i class="fa fa-calendar"></i></span>
+
+                        <h1 class="title" id="calendarTitle">
+                            Calendar
+                        </h1>
+                        <h2 class="subtitle is-size-3-mobile">
+                            All of your activities will be recorded on your calendar. So if you ever forget what's coming up or whats going on you can simply pop your
+                            calendar open and remind yourself!
+                        </h2>
+                    </div>
+                </div>
+            </section>
+            <div class="carousel-caption">
+                <a class="button is-size-3 is-primary"  th:href="@{/patient/1/index}"> Start </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carouselHacked" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carouselHacked" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+</body>
+
+
+
+
+
+<script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
+<script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}" ></script >
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</body>
+</html>

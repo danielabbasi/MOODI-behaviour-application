@@ -56,13 +56,13 @@ function disconnect() {
 
 
 function showGreeting(message) {
-    $("#NotificationDom").append("<p>" + "hello" + "</p>");
+    $("#NotificationDom").append("<p>" + "." + "</p>");
 
     $("#notificationId").val($('#notificationId').val() + message.body);
 }
 
 function showMissedMessage(missedMessage) {
-    $("#NotificationDomTwo").append("<p>" + "hello" + "</p>");
+    $("#NotificationDomTwo").append("<p>" + "." + "</p>");
 
 
     $("#notificationIdMissed").val($('#notificationIdMissed').val() + missedMessage.body);
