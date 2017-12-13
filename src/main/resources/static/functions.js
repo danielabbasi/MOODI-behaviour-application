@@ -16,15 +16,15 @@ function markActivityAsComplete() {
     var activityId = document.getElementById("selected_activity_id").value;
     var testResult = document.getElementById("test-result").innerHTML.toLowerCase();
     var testResultNumber = 0;
-    if(testResult == "very happy") {
+    if(testResult == "very sad") {
         testResultNumber = 1;
-    } else if(testResult == "happy") {
-        testResultNumber = 2;
-    } else if(testResult == "neutral") {
-        testResultNumber = 3;
-    } else if(testResult == "sad") {
-        testResultNumber = 4;
     } else if(testResult == "upset") {
+        testResultNumber = 2;
+    } else if(testResult == "sad") {
+        testResultNumber = 3;
+    } else if(testResult == "neutral") {
+        testResultNumber = 4;
+    } else if(testResult == "happy") {
         testResultNumber = 5;
     } else {
         testResultNumber = 6;
@@ -45,15 +45,15 @@ function sendRatingBefore() {
     // console.log(activityId)
     var testResult = document.getElementById("test-result-x").innerHTML.toLowerCase();
     var testResultNumber = 0;
-    if(testResult == "very happy") {
+    if(testResult == "very sad") {
         testResultNumber = 1;
-    } else if(testResult == "happy") {
-        testResultNumber = 2;
-    } else if(testResult == "neutral") {
-        testResultNumber = 3;
-    } else if(testResult == "sad") {
-        testResultNumber = 4;
     } else if(testResult == "upset") {
+        testResultNumber = 2;
+    } else if(testResult == "sad") {
+        testResultNumber = 3;
+    } else if(testResult == "neutral") {
+        testResultNumber = 4;
+    } else if(testResult == "happy") {
         testResultNumber = 5;
     } else {
         testResultNumber = 6;
