@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<section class="hero is-medium is-link is-bold is-fixed-top">
+<section class="hero is-small is-link is-bold is-fixed-top">
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
@@ -68,222 +68,248 @@
         <!-- navbar-start, navbar-end... -->
     </div>
 </nav>
-<div class="section">
-    <div class="container" id="graphToggleBtns">
-        <div class="level">
-            <div class="level-item">
 
-                <button class="button is-info has-shadow box-shadow" th:onclick="'javascript:lastThreeOpen()'"
-                        onclick="lastThreeOpen()"> Last 3 Activities </button>
+<div class="tile is-ancestor" id="tileWrapper">
+    <div class="tile is-parent">
+        <div class="tile is-child box">
+            <div class="tabs is-fullwidth">
+                <ul>
+                    <li id="activities-tab">
+                        <a onClick="switchToActivities()">
+                            <span class="icon is-size-1"><i class="fa fa fa-heartbeat"></i></span>
+                            <span class="is-size-1">Activities</span>
+                        </a>
+                    </li>
+                    <li id="deleted-tab">
+                        <a onClick="switchToDeleted()">
+                            <span class="icon is-size-1"><i class="fa fa-trash"></i></span>
+                            <span class="span is-size-1">Deleted</span>
+                        </a>
+                    </li>
+                    <li id="stats-tab">
+                        <a onClick="switchToStats()">
+                            <span class="icon is-size-1"><i class="fa fa-bar-chart"></i></span>
+                            <span class="span is-size-1">Stats</span>
+                        </a>
+                    </li>
+
+
+                </ul>
             </div>
 
-            <div class="level-item">
+            <!--<div class="container">-->
+                <div class="hidden" id="activities-tab-content">
+                    <table class="table is-fullwidth is-bordered">
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>Date</th>
+                            <th>Rating Before</th>
+                            <th>Rating After</th>
+                        </tr>
+                        <tr th:each="activities : ${activities}">
+                            <td th:text="${activities.name}"> Test</td>
+                            <td th:text="${activities.activityDate}">Test</td>
 
-                <button class="button is-info" th:onclick="'javascript:overallOpen()'"
-                        onclick="overallOpen()"> Overall </button>
-            </div>
-            <div class="level-item">
-
-                <button class="button is-info" th:onclick="'javascript:byDayOpen()'"
-                        onclick="byDayOpen()"> Activities By Day </button>
-            </div>
-            <div class="level-item">
-                <button class="button is-info" th:onclick="'javascript:beforeAfterOpen()'"
-                        onclick="beforeAfterOpen()"> Before and After</button>
-            </div>
-            <div class="level-item">
-                <button class="button is-info" th:onclick="'javascript:differenceOpen()'"
-                        onclick="differenceOpen()"> Difference </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="tabs is-fullwidth">
-    <ul>
-        <li id="activities-tab">
-            <a onClick="switchToActivities()">
-                <span class="icon is-size-1"><i class="fa fa fa-heartbeat"></i></span>
-                <span class="is-size-1">Activities</span>
-            </a>
-        </li>
-        <li id="deleted-tab">
-            <a onClick="switchToDeleted()">
-                <span class="icon is-size-1"><i class="fa fa-trash"></i></span>
-                <span class="span is-size-1">Deleted</span>
-            </a>
-        </li>
-        <li id="stats-tab">
-            <a onClick="switchToStats()">
-                <span class="icon is-size-1"><i class="fa fa-bar-chart"></i></span>
-                <span class="span is-size-1">Stats</span>
-            </a>
-        </li>
+                            <!-- <td th:text="${activities.ratingAfter}">Test</td> -->
+                            <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
 
 
-    </ul>
-</div>
-
-<div class="container">
-    <div class="hidden" id="activities-tab-content">
-        <table class="table is-fullwidth is-bordered">
-            <tr>
-                <th>Activity Name</th>
-                <th>Date</th>
-                <th>Rating Before</th>
-                <th>Rating After</th>
-            </tr>
-            <tr th:each="activities : ${activities}">
-                <td th:text="${activities.name}"> Test</td>
-                <td th:text="${activities.activityDate}">Test</td>
-
-                <!-- <td th:text="${activities.ratingAfter}">Test</td> -->
-                <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                            <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
 
 
-                <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
-                <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                        </tr>
+                    </table>
 
+                </div>
+                <div class="hidden" id="deleted-tab-content">
+                    <table class="table is-fullwidth is-bordered">
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>Date</th>
+                            <th>Deleted</th>
 
-            </tr>
-        </table>
+                        </tr>
+                        <tr th:each="deletion : ${deletion}">
+                            <td th:text="${deletion.name}"> Test</td>
+                            <td th:text="${deletion.activityDate}">Test</td>
+                            <!--<td th:text="${deletion.isDeleted}">Test</td>-->
 
-    </div>
-    <div class="hidden" id="deleted-tab-content">
-        <table class="table is-fullwidth is-bordered">
-            <tr>
-                <th>Activity Name</th>
-                <th>Date</th>
-                <th>Deleted</th>
+                            <td th:if="${deletion.isDeleted == true}"><i class="fa fa-trash has-text-dark	" aria-hidden="true"></i></td>
+                        </tr>
+                    </table>
 
-            </tr>
-            <tr th:each="deletion : ${deletion}">
-                <td th:text="${deletion.name}"> Test</td>
-                <td th:text="${deletion.activityDate}">Test</td>
-                <!--<td th:text="${deletion.isDeleted}">Test</td>-->
+                </div>
+                <div class="hidden" id="stats-tab-content">
+                    <div class="section">
 
-                <td th:if="${deletion.isDeleted == true}"><i class="fa fa-trash has-text-dark	" aria-hidden="true"></i></td>
-            </tr>
-        </table>
-
-    </div>
-    <div class="hidden" id="stats-tab-content">
-        <div class="section">
-
-            <div class="columns is-multiline">
-                <div class="column">
-                    <div class="box notification" id="upcomingBox" onclick="upcomingModalOpen()"
-                         th:onclick="'javascript:upcomingModalOpen()'">
-                        <div class="title is-1 has-text-right	">
+                        <div class="columns is-multiline">
+                            <div class="column">
+                                <div class="box notification" id="upcomingBox" onclick="upcomingModalOpen()"
+                                     th:onclick="'javascript:upcomingModalOpen()'">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-exclamation-circle has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Coming Up</div>
-                        <div class="title is-1" th:text="${upcomingActivities}">#</div>
+                                    </div>
+                                    <div class="heading is-right">Coming Up</div>
+                                    <div class="title is-1" th:text="${upcomingActivities}">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification ">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification ">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-bar-chart has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Average Score</div>
-                        <div class="title is-1" th:text="${avgRating} ">#</div>
+                                    </div>
+                                    <div class="heading is-right">Average Score</div>
+                                    <div class="title is-1" th:text="${avgRating} ">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification ">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification ">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-pie-chart has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Completion Rate</div>
-                        <div class="title is-1" th:text="|${percent} %|">#</div>
+                                    </div>
+                                    <div class="heading is-right">Completion Rate</div>
+                                    <div class="title is-1" th:text="|${percent} %|">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification" id="favouritesBox" onclick="favouritesModalOpen()"
-                         th:onclick="'javascript:favouritesModalOpen()'">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification" id="favouritesBox" onclick="favouritesModalOpen()"
+                                     th:onclick="'javascript:favouritesModalOpen()'">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-heart has-text-dark	" aria-hidden="true"></i>
                         </span>
+                                    </div>
+                                    <div class="heading is-right">Favourites</div>
+                                    <div class="title is-1" th:text="${favouriteCount}">#</div>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="heading is-right">Favourites</div>
-                        <div class="title is-1" th:text="${favouriteCount}">#</div>
 
-                    </div>
-                </div>
-            </div>
-
-            <div class="columns is-multiline">
-                <div class="column">
-                    <div class="box notification ">
-                        <div class="title is-1 has-text-right	">
+                        <div class="columns is-multiline">
+                            <div class="column">
+                                <div class="box notification ">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-check has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Completed</div>
-                        <div class="title is-1" th:text="${completedCount}">#</div>
+                                    </div>
+                                    <div class="heading is-right">Completed</div>
+                                    <div class="title is-1" th:text="${completedCount}">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification ">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification ">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-thumbs-up has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Positive Activities</div>
-                        <div class="title is-1" th:text="${positiveActivity}">#</div>
+                                    </div>
+                                    <div class="heading is-right">Positive </div>
+                                    <div class="title is-1" th:text="${positiveActivity}">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification ">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification ">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-thumbs-down has-text-dark	" aria-hidden="true"></i>
                         </span>
-                        </div>
-                        <div class="heading is-right">Negative Activities</div>
-                        <div class="title is-1" th:text="${negativeActivity}">#</div>
+                                    </div>
+                                    <div class="heading is-right">Negative </div>
+                                    <div class="title is-1" th:text="${negativeActivity}">#</div>
 
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box notification">
-                        <div class="title is-1 has-text-right	">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box notification">
+                                    <div class="title is-1 has-text-right	">
                         <span class="icon">
                             <i class="fa fa-trash has-text-dark	" aria-hidden="true"></i>
                         </span>
+                                    </div>
+                                    <div class="heading is-right">Deleted</div>
+                                    <div class="title is-1" th:text="${totalDeleted}">#</div>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="heading is-right">Deleted</div>
-                        <div class="title is-1" th:text="${totalDeleted}">#</div>
 
                     </div>
                 </div>
-            </div>
+
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="tile is-4 is-vertical is-parent" id="ButtonTile">
+        <div class="tile is-child box">
+
+            <ul class="menu-list has-text-centered" id="button-list">
+                <li>
+                    <button class="button is-primary " th:onclick="'javascript:lastThreeOpen()'"
+                            onclick="lastThreeOpen()">
+                        Last 3 Activities </button>
+
+                </li>
+                <li>
+                    <button class="button is-primary" th:onclick="'javascript:overallOpen()'"
+                            onclick="overallOpen()"> Overall </button>
+                </li>
+                <li>
+                    <button class="button is-primary" th:onclick="'javascript:byDayOpen()'"
+                            onclick="byDayOpen()"> Activities By Day </button>
+                </li>
+                <li>
+                    <button class="button is-primary" th:onclick="'javascript:beforeAfterOpen()'"
+                            onclick="beforeAfterOpen()"> Before and After</button>
+
+                </li>
+                <li>
+                    <button class="button is-primary" th:onclick="'javascript:differenceOpen()'"
+                            onclick="differenceOpen()"> Difference </button>
+
+                </li>
+            </ul>
+
+
+            <!--<button class="button is-info has-shadow box-shadow" th:onclick="'javascript:lastThreeOpen()'"-->
+            <!--onclick="lastThreeOpen()"> Last 3 Activities </button>-->
+
+
+            <!--<button class="button is-info" th:onclick="'javascript:overallOpen()'"-->
+            <!--onclick="overallOpen()"> Overall </button>-->
+
+            <!--<button class="button is-info" th:onclick="'javascript:byDayOpen()'"-->
+            <!--onclick="byDayOpen()"> Activities By Day </button>-->
+            <!--<button class="button is-info" th:onclick="'javascript:beforeAfterOpen()'"-->
+            <!--onclick="beforeAfterOpen()"> Before and After</button>-->
+            <!--<button class="button is-info" th:onclick="'javascript:differenceOpen()'"-->
+            <!--onclick="differenceOpen()"> Difference </button>-->
+
 
         </div>
+
     </div>
 
 </div>
