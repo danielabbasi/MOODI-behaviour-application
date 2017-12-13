@@ -47,6 +47,11 @@
 
 
 }
+
+#upcomingTab img{
+    width: 80px;
+    height: 80px;
+}
 .modal{
     display: none;
     position: fixed;
