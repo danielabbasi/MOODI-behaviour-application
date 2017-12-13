@@ -60,4 +60,9 @@ public class PatientIndex {
 
         return "newPatientIndex";
     }
+
+    @RequestMapping("/patient/intro")
+    public String intro() {
+        return "introSlider";
+    }
 }
