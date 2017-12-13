@@ -528,5 +528,32 @@
     };
 </script>
 
+
+<tr>
+    <!--<td th:text="${activities.activityDate}">data</td>-->
+    <th class="iconHolder"><a href="#" onclick="showFavouriteModal()"
+                              th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'">
+        <i class="fa fa-star has-text-warning" id="favouriteIcon" aria-hidden="true"></i></a></th>
+    <th class="iconHolder"><a href="#" onclick="showModal()"
+                              th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i
+            class="fa fa-check has-text-primary" aria-hidden="true" id="rate_modal_button"></i></a>
+    </th>
+    <th class="iconHolder"><a href="#" onclick="showEditModal()"
+                              th:onclick="'javascript:showEditModal(\'' + ${activities.id} + '\');'">
+        <i class="fa fa-cog has-text-dark" id="cog" aria-hidden="true"></i></a></th>
+    <th class="iconHolder"><a href="#" onclick="showDeleteModal()"
+                              th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'">
+        <i class="fa fa-trash has-text-danger" id="trash" aria-hidden="true"></i></a></th>
+
+
+    <th th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VerySad.png"  /></th>
+    <th th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Upset.png"  /></th>
+    <th th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Sad.png"  /></th>
+    <th th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Neutral.png"  /></th>
+    <th th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Happy.png"  /></th>
+    <th th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VeryHappy.png" /></th>
+
+</tr>
+
 </body>
 </html>

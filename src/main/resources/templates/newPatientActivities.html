@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../static/css/newMaster.css" th:href="@{/css/newMaster.css}"/>
     <link rel="stylesheet" href="../static/css/small_calendar.css" th:href="@{/css/small_calendar.css}"/>
     <!--<link rel="stylesheet" href="../static/css/slidercss.css" th:href="@{/css/slidercss.css}"/>-->
+    <link rel="stylesheet" href="../static/css/table.css" th:href="@{/css/table.css}"/>
 
     <link rel="stylesheet" href="../static/css/newSlider.css" th:href="@{/css/newSlider.css}"/>
     <link rel="stylesheet" href="../static/css/notificationSlider.css" th:href="@{/css/notificationSlider.css}"/>
@@ -120,44 +121,97 @@
 </div>
 
 <div class="container">
+
+</div>
+
+<div class="container">
     <div id="all-tab-content">
-        <table class="table is-fullwidth  " id="upcomingTab" th:each="activities : ${upcoming}">
+        <!--<table class="table is-fullwidth  " id="upcomingTab" th:each="activities : ${upcoming}">-->
+            <!--<tbody>-->
+            <!--<tr class="accordion is-primary">-->
+                <!--<td class="is-size-1" th:text="${activities.name} " id="upcomingTabRow">This is the header</td>-->
+                <!--&lt;!&ndash;<td class="is-size-1"    th:text="${activities.activityDate}"> </td>&ndash;&gt;-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th><span><i class="fa fa-clock-o has-text-danger" aria-hidden="true"></i> </span>-->
+                    <!--<span th:text="${activities.activityDate} "> </span>-->
+                <!--</th>-->
+            <!--</tr>-->
+
+            <!--<tr>-->
+                <!--&lt;!&ndash;<td th:text="${activities.activityDate}">data</td>&ndash;&gt;-->
+                <!--<th class="iconHolder"><a href="#" onclick="showFavouriteModal()"-->
+                                          <!--th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'">-->
+                    <!--<i class="fa fa-star has-text-warning" id="favouriteIcon" aria-hidden="true"></i></a></th>-->
+                <!--<th class="iconHolder"><a href="#" onclick="showModal()"-->
+                                          <!--th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i-->
+                        <!--class="fa fa-check has-text-primary" aria-hidden="true" id="rate_modal_button"></i></a>-->
+                <!--</th>-->
+                <!--<th class="iconHolder"><a href="#" onclick="showEditModal()"-->
+                                          <!--th:onclick="'javascript:showEditModal(\'' + ${activities.id} + '\');'">-->
+                    <!--<i class="fa fa-cog has-text-dark" id="cog" aria-hidden="true"></i></a></th>-->
+                <!--<th class="iconHolder"><a href="#" onclick="showDeleteModal()"-->
+                                          <!--th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'">-->
+                    <!--<i class="fa fa-trash has-text-danger" id="trash" aria-hidden="true"></i></a></th>-->
+
+
+                <!--<th th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VerySad.png"  /></th>-->
+                <!--<th th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Upset.png"  /></th>-->
+                <!--<th th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Sad.png"  /></th>-->
+                <!--<th th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Neutral.png"  /></th>-->
+                <!--<th th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Happy.png"  /></th>-->
+                <!--<th th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VeryHappy.png" /></th>-->
+
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+        <table class="table is-fullwidth">
+            <thead>
+
+            </thead>
             <tbody>
-            <tr class="accordion is-primary">
-                <td class="is-size-1" th:text="${activities.name} " id="upcomingTabRow">This is the header</td>
-                <!--<td class="is-size-1"    th:text="${activities.activityDate}"> </td>-->
-            </tr>
-            <tr>
-                <th><span><i class="fa fa-clock-o has-text-danger" aria-hidden="true"></i> </span>
+            <tr th:each="activities : ${upcoming}">
+                <td class="is-size-1"> <span><i class="fa fa-heartbeat has-text-danger" aria-hidden="true"></i> </span>
+                    <span th:text="${activities.name} " class="activityName"> </span></td>
+                <td id="upcomingImg"> <span><i class="fa fa-clock-o has-text-info" aria-hidden="true" id="activityClock"></i> </span>
                     <span th:text="${activities.activityDate} "> </span>
-                </th>
+
+                    <span th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VerySad.png" class=" is-vcentered" /></span>
+                    <span th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Upset.png" class=" is-vcentered" /></span>
+                    <span th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Sad.png" class=" is-vcentered" /></span>
+                    <span th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Neutral.png" class=" is-vcentered"  /></span>
+                    <span th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Happy.png" class=" is-vcentered" /></span>
+                    <span th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VeryHappy.png" class=" is-vcentered" /></span>
+
+
+
+                </td>
+
+                <td>
+                    <a class="show-details">
+                        <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="details has-text-centered" id="ulx">
+                        <li class="iconHolder"><a href="#" onclick="showFavouriteModal()"
+                                                  th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'">
+                            <i class="fa fa-star has-text-warning" id="favouriteIcon" aria-hidden="true"></i></a></li>
+                        <li class="iconHolder"><a href="#" onclick="showModal()"
+                                                  th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i
+                                class="fa fa-check has-text-primary" aria-hidden="true" id="rate_modal_button"></i></a></li>
+                        <li class="iconHolder"><a href="#" onclick="showEditModal()"
+                                                  th:onclick="'javascript:showEditModal(\'' + ${activities.id} + '\');'">
+                            <i class="fa fa-cog has-text-dark" id="cog" aria-hidden="true"></i></a></li>
+                        <li class="iconHolder"><a href="#" onclick="showDeleteModal()"
+                                                  th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'">
+                            <i class="fa fa-trash has-text-danger" id="trash" aria-hidden="true"></i></a></li>
+
+
+                    </ul>
+                </td>
             </tr>
 
-            <tr>
-                <!--<td th:text="${activities.activityDate}">data</td>-->
-                <th class="iconHolder"><a href="#" onclick="showFavouriteModal()"
-                                          th:onclick="'javascript:showFavouriteModal(\'' + ${activities.id} + '\');'">
-                    <i class="fa fa-star has-text-warning" id="favouriteIcon" aria-hidden="true"></i></a></th>
-                <th class="iconHolder"><a href="#" onclick="showModal()"
-                                          th:onclick="'javascript:showModal(\'' + ${activities.id} + '\');'"> <i
-                        class="fa fa-check has-text-primary" aria-hidden="true" id="rate_modal_button"></i></a>
-                </th>
-                <th class="iconHolder"><a href="#" onclick="showEditModal()"
-                                          th:onclick="'javascript:showEditModal(\'' + ${activities.id} + '\');'">
-                    <i class="fa fa-cog has-text-dark" id="cog" aria-hidden="true"></i></a></th>
-                <th class="iconHolder"><a href="#" onclick="showDeleteModal()"
-                                          th:onclick="'javascript:showDeleteModal(\'' + ${activities.id} + '\');'">
-                    <i class="fa fa-trash has-text-danger" id="trash" aria-hidden="true"></i></a></th>
 
-
-                <th th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VerySad.png"  /></th>
-                <th th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Upset.png"  /></th>
-                <th th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Sad.png"  /></th>
-                <th th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Neutral.png"  /></th>
-                <th th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Happy.png"  /></th>
-                <th th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VeryHappy.png" /></th>
-
-            </tr>
             </tbody>
         </table>
 
@@ -648,6 +702,25 @@
         }
 
     });
+</script>
+
+<script th:inline="javascript">
+    $(document).ready(function(){
+        $('.show-details').click(function(){
+            console.log($(this).find('.fa.fa-arrow-circle-down'));
+            $(this).find('i')
+                .toggleClass('fa-arrow-circle-down fa-arrow-circle-up');
+
+            $(this).siblings('.details')
+                .toggleClass('open')
+                .slideToggle('milliseconds');
+        });
+
+
+
+    });
+
+
 </script>
 
 <script th:inline="javascript">
