@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Create Activity | BehaviourApp</title>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div th:replace="fragments/header :: header"></div>
+</header>
+
+
+
+<div th:replace="fragments/patientSideMenu :: patientSideMenu"></div>
+
+
+<main id="main" class="main">
+    <div class="container">
+        <div class="formContainer">
+            <form  class="activityForm" method="POST" action="http://localhost:8080/api/patient/1/activities/create">
+                <div class="form-group">
+                    <input type="text" name="activityName" id="activity_name" class="form-control" placeholder="Activity Name" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="date" id="activity_date" class="form-control" placeholder="Date and Time e.g 20/11/2017 19:34" value="" />
+                </div>
+                <button id="activitySubmitBtn" type="submit" class="btn btn-primary">Create Activity</button>
+            </form>
+    </div>
+    </div>
+
+
+</main>
+
+
+
+<script>
+    $('#main-nav li a').click(function(){
+        $('#main-nav li').removeClass('active');
+        $(this).parent().addClass('active')
+    });
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+</script>
+
+
+</body>
+</html>

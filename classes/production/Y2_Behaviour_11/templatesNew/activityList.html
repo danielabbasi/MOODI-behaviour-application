@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Activity List</title>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../javascript/linegraph.js" th:href="@{/linegraph.js}"/>
+    <script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
+    <script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}" ></script >
+
+
+</head>
+<body>
+
+<header>
+    <div th:replace="fragments/gpHeaderForActivitiesAndRecords :: gpHeaderForActivitiesAndRecords"></div>
+
+</header>
+
+
+<div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+
+<div id="sidenav" th:fragment="gpSideMenu">
+
+
+    <ul id="main-nav" class="nav">
+        <div class="userSection">
+            <div class="imageWrapper">
+                <div class="userImageWrapper">
+                    <img src="http://www.tiredofmydayjob.com/wp-content/uploads/2017/04/Dr-Axe-face.jpg"/>
+                </div>
+                <div class="userTitle">
+                    <p id="userTitle"> <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        John Smith</p>
+
+                </div>
+            </div>
+        </div>
+
+        <li class="liSection">
+            <p>
+                MAIN
+            </p>
+        </li>
+        <li>
+            <a href="patientIndex.html" th:href="@{/patient/index}" >
+                <i class="fa fa-th-large"></i>
+                Dashboard
+            </a>
+        </li>
+
+
+
+        <li>
+            <a href="patientsList.html" th:href="@{/gp/patients}">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                Patients
+
+            </a>
+        </li>
+
+        <li class="liSection">
+            <p>
+                EXTRAS
+            </p>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-wrench"></i>
+                Settings
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-calendar"></i>
+                Calendar
+                <div class="notificationWrapper">
+                    <div class="notificationNav">
+                        <p id="calanderNotification">
+                            5
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<div class="activityContainer">
+
+<main id="main" class="main">
+
+    <div class="graphToggleWrapper">
+        <div class="graphToggleHolder">
+            <i class="fa fa-bar-chart" aria-hidden="true" onclick="openFullScreenModalChart()"></i>
+        </div>
+    </div>
+
+    <div class="activityContainer">
+
+
+            <div class="activityBoxes" id="activityBoxIndex">
+
+                <div class="boxContainer" id="boxContainerIndex" >
+                    <div class="activityUpcoming" onclick="openIndexModal()">
+                        <div class="boxIcon">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+
+
+                        </div>
+                        <h2  th:text="${upcomingActivities}"> # </h2>
+                        <!--<h2 th:text="${patient}"> # </h2>-->
+
+                        <p> upcoming activities </p>
+
+                    </div>
+                </div>
+                <div class="boxContainer" id="boxContainerIndex" >
+                    <div class="activityUpcoming">
+                        <div class="boxIcon">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+
+
+                        </div>
+                        <h2  th:text="${avgRating}"> # </h2>
+                        <!--<h2 th:text="${patient}"> # </h2>-->
+
+                        <p> average score </p>
+
+                    </div>
+                </div>
+                <div class="activityBoxes" >
+                    <div class="boxContainer" id="completionRateIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${percent}"> </h2> <h2 class="inline"> % </h2>
+                            <p> completion rate</p>
+                        </div>
+                    </div>
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+                    <div class="boxContainer" id="positiveActivityIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${positiveActivity}"> </h2> <h2 class="inline"></h2>
+                            <p> activities with highest positive mood change</p>
+                        </div>
+                    </div>
+                    <div class="boxContainer" id="negativeActivityIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${negativeActivity}"> </h2> <h2 class="inline"></h2>
+                            <p> activities with highest negative mood change</p>
+                        </div>
+                    </div>
+                    <div class="boxContainer" id="completionRateIndex">
+                        <div class="completionRate" >
+                            <div class="boxIcon">
+                                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+
+                            </div>
+                            <!--<h2 class="inline" th:text="${completedCount}"> # </h2> <p class="inline"> of </p> <h2 class="inline" th:text="${totalCreated}" > #</h2>-->
+                            <h2 class="inline" th:text="${totalDeleted}"> </h2> <h2 class="inline"></h2>
+                            <p> deleted activities</p>
+                        </div>
+                    </div>
+
+                    <!--IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII-->
+
+
+                    <div class="boxContainer" id="completedCountIndex">
+                        <div class="completedCnt"  >
+                            <div class="boxIcon">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <h2 th:text="${completedCount}"> # </h2>
+
+                            <p> completed </p>
+                        </div>
+                    </div>
+
+
+                    <div class="boxContainer" id="indexFav" onclick="openIndexModalFavourites()">
+                        <div class="activityCount">
+                            <div class="boxIcon">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
+
+
+                            </div>
+                            <h2 th:text="${favouriteCount}"> # </h2>
+                            <p> favourites </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+    </div>
+
+    <div class="container">
+        <div class="box effect">
+            <table>
+                <tr>
+                    <th>Activity Name</th>
+                    <th>Date</th>
+                    <th>Rating Before</th>
+                    <th>Rating After</th>
+                </tr>
+                <tr th:each="activities : ${activities}">
+                    <td th:text="${activities.name}"> Test</td>
+                    <td th:text="${activities.activityDate}">Test</td>
+
+                    <!-- <td th:text="${activities.ratingAfter}">Test</td> -->
+                    <td th:if="${activities.ratingBefore == 1}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 2}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 3}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 4}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 5}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingBefore == 6}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+
+
+                    <td th:if="${activities.ratingAfter == 1}"><img src="/images/emojis/VerySad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 2}"><img src="/images/emojis/Upset.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 3}"><img src="/images/emojis/Sad.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 4}"><img src="/images/emojis/Neutral.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 5}"><img src="/images/emojis/Happy.png" style="width: 32px; height: 32px;" /></td>
+                    <td th:if="${activities.ratingAfter == 6}"><img src="/images/emojis/VeryHappy.png" style="width: 32px; height: 32px;" /></td>
+
+
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="fullScreenModal" id="chartOverlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeFullScreenModalChart()">&times;</a>
+
+        <div class="chartWrapper">
+        <div class="chart-container">
+            <canvas id="mycanvas"></canvas>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+</main>
+</div>
+
+
+<script>
+    function openFullScreenModalChart() {
+        document.getElementById("chartOverlay").style.width = "100%";
+    }
+
+    function closeFullScreenModalChart() {
+        document.getElementById("chartOverlay").style.width = "0";
+    }
+</script>
+<script>
+
+    // $('#menu-toggle,#menu-overlay').click(function(){
+    //   $('body').toggleClass('open-menu');
+    // });
+
+    $('#main-nav li a').click(function(){
+        $('#main-nav li').removeClass('active');
+        $(this).parent().addClass('active')
+    });
+
+
+
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

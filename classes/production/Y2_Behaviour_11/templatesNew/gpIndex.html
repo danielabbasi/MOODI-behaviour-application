@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<header>
+    <div th:replace="fragments/gpHeader :: gpHeader"></div>
+</header>
+
+
+<body class="gpDashboard">
+<div th:replace="fragments/gpSideMenu :: gpSideMenu"></div>
+
+<div class="activityContainer">
+
+<main id="main" class="main">
+<div class="container">
+    <div class="box effect">
+    <!--<h1> Dashboard content </h1>-->
+    </div>
+</div>
+</main>
+</div>
+
+<script>
+
+    // $('#menu-toggle,#menu-overlay').click(function(){
+    //   $('body').toggleClass('open-menu');
+    // });
+
+    $('#main-nav li a').click(function(){
+        $('#main-nav li').removeClass('active');
+        $(this).parent().addClass('active')
+    });
+
+
+
+    function togNav() {
+        var nav = document.getElementById("sidenav");
+        var main = document.getElementById("main");
+
+        if (nav.style.width == '250px') {
+            nav.style.width = '0';
+            main.style.marginLeft = 0;
+
+        } else {
+            nav.style.width = "250px";
+            main.style.marginLeft = '250px';
+        }
+    }
+</script>
+
+</body>
+</html>

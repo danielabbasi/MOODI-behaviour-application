@@ -1,0 +1,17 @@
+#tileWrapper{
+    margin-top:5%;
+}
+
+#ButtonTile{
+height: 100%;
+}
+
+#button-list button{
+    margin-top: 20px;
+    width:50%;
+}
+#graphBtn .icon{
+    pading-right: 50px;
+
+
+}
