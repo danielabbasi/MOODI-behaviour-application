@@ -5,7 +5,7 @@ $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "/api/patient/" + id + "/activities/difference",
+        url : "/api/patient/" + id + "/statistics/difference",
         type : "GET",
         dataType: "json",
         success : function(data){

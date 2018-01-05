@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>MOODi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css"/>
+</head>
+
+<section class="hero is-medium is-primary is-bold is-fixed-top">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                <span class="icon">
+                <i class="fa fa-heartbeat" aria-hidden="true"></i>
+        </span>
+                MOODi
+            </h1>
+            <h2 class="subtitle">
+                Helping you feel better
+            </h2>
+        </div>
+    </div>
+</section>
+
+<nav class="navbar has-shadow " role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+
+
+        <button class="button navbar-burger" data-target="navMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="navbar-menu is-centered" id="navMenu">
+        <a class="navbar-item">
+            <span class="icon">
+                <i class="fa fa-home" aria-hidden="true"></i>
+        </span>
+            Dashboard
+        </a>
+        <a class="navbar-item">
+             <span class="icon">
+                <i class="fa fa-heartbeat" aria-hidden="true"></i>
+        </span>
+            Activities
+        </a>
+        <a class="navbar-item">
+            <span class="icon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+
+        </span>
+            Calendar
+        </a>
+        <div class="navbar-end">
+
+            <a class="navbar-item">
+                <span class="icon">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+
+        </span>
+
+                Settings
+            </a>
+
+            <a class="navbar-item">
+                <img src="https://lh3.googleusercontent.com/rmURjEPHr_LM4Y-s7P9GYcUVysch6EDIBVRBqL4OuORZh_xpaEMco_ZhxVXYnttG-A=w300"
+                     width="28" height="28"/>
+
+                User
+            </a>
+        </div>
+
+
+        <!-- navbar-start, navbar-end... -->
+    </div>
+</nav>
+<body>
+
+
+<div class="section">
+    <div class="columns">
+
+
+        <main class="column" id="main">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <div class="title">Dashboard</div>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <button type="button" class="button is-small">
+                            March 8, 2017 - April 6, 2017
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-multiline">
+                <div class="column">
+                    <div class="box notification">
+                        <div class="title is-1 has-text-right	">
+                        <span class="icon">
+                            <i class="fa fa-exclamation-circle has-text-danger	" aria-hidden="true" ></i>
+                        </span>
+                        </div>
+                        <div class="heading is-right">Coming Up</div>
+                        <div class="title is-1">#</div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box notification ">
+                        <div class="title is-1 has-text-right	">
+                        <span class="icon">
+                            <i class="fa fa-bar-chart has-text-info	" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                        <div class="heading is-right">Average Score</div>
+                        <div class="title is-1">#</div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box notification ">
+                        <div class="title is-1 has-text-right	">
+                        <span class="icon">
+                            <i class="fa fa-pie-chart has-text-primary	" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                        <div class="heading is-right">Completion Rate</div>
+                        <div class="title is-1">#</div>
+
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="box notification">
+                        <div class="title is-1 has-text-right	">
+                        <span class="icon">
+                            <i class="fa fa-heart has-text-warning	" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                        <div class="heading is-right">Favourites</div>
+                        <div class="title is-1">#</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-multiline">
+                <div class="column is-6">
+                    <div class="panel ">
+                        <p class="panel-heading has-text-centered	is-uppercase	">
+                            Your last 3 activities
+                        </p>
+                        <div class="panel-block">
+                            <canvas id="chartBar" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="panel">
+                        <p class="panel-heading has-text-centered is-uppercase		">
+                            Overall activities by day
+                        </p>
+                        <div class="panel-block">
+                            <canvas id="indexGraphDays" width="400" height="400"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="panel">
+                        <p class="panel-heading has-text-centered	is-uppercase	">
+                            What you generally feel before and after activities
+                        </p>
+                        <div class="panel-block">
+                            <canvas id="chartDoughnut" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="panel">
+                        <p class="panel-heading has-text-centered	is-uppercase	">
+                            random graph
+                        </p>
+                        <div class="panel-block">
+                            <canvas id="chartScatter" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Get all "navbar-burger" elements
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach(function ($el) {
+                $el.addEventListener('click', function () {
+
+                    // Get the target from the "data-target" attribute
+                    var target = $el.dataset.target;
+                    var $target = document.getElementById(target);
+
+                    // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                    $el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+
+                });
+            });
+        }
+
+    });
+</script>
+
+
+<script src="../../javascript/Chart.min.js" th:href="@{/Chart.min.js}"/>
+<script src="../../javascript/js-url-2.5.0/url.js" th:href="@{/url.js}"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</body>
+</html>

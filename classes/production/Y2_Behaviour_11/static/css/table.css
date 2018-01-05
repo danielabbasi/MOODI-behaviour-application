@@ -1,0 +1,58 @@
+
+
+/*#ulx {*/
+    /*padding-left:0px;*/
+    /*list-style:none;*/
+    /*margin-top:1rem;*/
+/*}*/
+
+/*#ulx li{*/
+    /*display: inline-block;*/
+/*}*/
+
+#ulxx {
+    padding-left:0px;
+    list-style:none;
+    margin-top:1rem;
+}
+
+
+
+.btn {
+    cursor:pointer;
+}
+
+.details {
+    display: none;
+}
+
+.details .open {
+    display: table-cell;
+}
+
+#ulx .iconHolder{
+    font-size: 60px;
+}
+
+#upcomingImg img    {
+    heigt: 40px;
+    width: 40px;
+}
+
+.is-vcentered{
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.activityName{
+    margin-left: 20px;
+}
+
+#activityClock{
+    font-size: 30px;
+}
+
+.show-details i{
+    font-size: 30px;
+}
+

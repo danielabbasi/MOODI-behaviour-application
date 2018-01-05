@@ -8,7 +8,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
  */
 public class ActivityNotifer {
 
-    @MessageMapping("/helloooooooooi")
+    @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public String greeting() throws Exception {
         Thread.sleep(1000); // simulated delay

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/master.css" th:href="@{/master.css}"/>
+    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<div class="topBar" th:fragment="header">
+    <div class="holder" id="logoHolder">
+        <div class="companyHolder">
+            <p><i class="fa fa-heartbeat"></i>
+                MOODi </p>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="holder">
+        <i id="open-menu" class="fa fa-bars toggleMenu" onclick="togNav()"> </i>
+    </div>
+
+    <div class="holder" id="pageTitle">
+        <div class="pageTitle">
+            <h1  th:text="${topBarTitle}"    id="titleChange"> Test
+            </h1>
+        </div>
+    </div>
+
+
+
+    <div class="holder" id="userHolder">
+        <div class="loggedInUser">
+            <p  th:text="|${patientName.firstname} ${patientName.lastname}|"></p>
+            <!--<p class="inline" th:text="${patientName.lastname}"></p>-->
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<body>
+
+</body>
+</html>

@@ -1,42 +1,55 @@
 /**
- * Created by c1673218 on 11/12/2017.
+ * Created by c1673218 on 26/11/2017.
  */
 $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "/api/patient/" + id + "/activities/difference",
+        url : "/api/gp/1/patients/" + id + "/activities/statistics/completed",
         type : "GET",
-        dataType: "json",
         success : function(data){
             console.log(data);
 
-            var difference = [];
             var name = [];
+            var ratingBefore = [];
+            var ratingAfter = [];
+
 
             for(var i in data) {
-                difference.push(data[i][0]);
-                name.push(data[i][1]);
+                name.push(data[i].name);
+                ratingBefore.push(data[i].ratingBefore);
+                ratingAfter.push(data[i].ratingAfter);
             }
 
             var chartdata = {
                 labels: name,
+                fontColor: 'white',
                 datasets: [
                     {
-                        label: "relative mood change",
+                        label: "Before",
                         backgroundColor: "rgba(255,99,132,0.2)",
                         borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(255,99,132,0.8)",
                         hoverBorderColor: "#000",
-                        fill: false,
-                        data: difference
+                        data: ratingBefore
+                    }, {
+                        label: "After",
+                        backgroundColor: "rgba(51, 187, 255, 0.2)",
+                        borderColor: "#00b3b3",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(51, 187, 255, 0.8)",
+                        hoverBorderColor: "#000",
+                        data: ratingAfter
                     }
+
                 ]
             };
 
-            var ctx = $("#differenceGraph");
+            var ctx = $("#mycanvas");
 
-            var LineGraph = new Chart(ctx, {
-                type: 'line',
+            var BarGraph = new Chart(ctx, {
+                type: 'bar',
                 data: chartdata,
                 options:
                     {
@@ -49,7 +62,7 @@ $(document).ready(function(){
                         },
                         scales: {
                             yAxes: [{
-                                display:false,
+                                display:true,
                                 gridLines: {
                                     display: true,
                                     color: "rgba(255,99,132,0.2)"
@@ -64,7 +77,7 @@ $(document).ready(function(){
                             }],
                             xAxes: [{
                                 gridLines: {
-                                    display: false,
+                                    display: true,
                                     color: "rgba(255,99,132,0.2)"
                                 },
 
@@ -76,7 +89,6 @@ $(document).ready(function(){
                             }]
                         }
                     }
-
             });
         },
         error : function(data) {
@@ -84,7 +96,3 @@ $(document).ready(function(){
         }
     });
 });
-
-
-
-

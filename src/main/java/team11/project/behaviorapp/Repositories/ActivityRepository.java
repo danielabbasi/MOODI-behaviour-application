@@ -15,9 +15,6 @@ import java.util.List;
 public interface ActivityRepository extends JpaRepository<Activities, Long>{
 
     List<Activities> findAll();
-//    List<Activities> findActivitiesById(Long id);
-
-    //    Collection<CustomList>findActivitiesById(Long id);
     Collection<CustomList> findActivitiesByPatients(Patient p);
     List<Activities> findActivitiesByPatientsAndIsCompletedAndIsDeleted(Patient p, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsCompletedOrderByActivityDateAsc(Patient p, Boolean isCompleted);
@@ -26,9 +23,6 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     List<Activities> findFirst3ActivitiesByPatientsAndIsCompletedOrderByActivityDateDesc(Patient p, Boolean isCompleted);
     List<Activities> findActivitiesByActivityDateEqualsAndIsCompletedAndIsDeleted(LocalDateTime aMoment, Boolean isCompleted, Boolean isDeleted);
     List<Activities> findActivitiesByPatientsAndIsDeleted(Patient p, Boolean isDeleted);
-
-    List<Activities> findActivitiesByIsCompleted(Boolean isCompleted);
-    Collection<CustomList> findActivitiesByIsDeleted(Boolean x);
 
     @Query(value = "SELECT COUNT(name) FROM Activities WHERE isCompleted = 1 AND patients=?1")
     int getActivitiesByName(Patient p);
@@ -70,7 +64,7 @@ public interface ActivityRepository extends JpaRepository<Activities, Long>{
     int getActivitiesByIsDeleted(Patient p);
 
     @Query(value = "SELECT ratingAfter-ratingBefore as difference, name FROM Activities WHERE patients=?1 AND isCompleted = 1")
-    List<Activities> differenceGraph(Patient p);
+    List<Activities> findByDifferenceAndName(Patient p);
 
 
 

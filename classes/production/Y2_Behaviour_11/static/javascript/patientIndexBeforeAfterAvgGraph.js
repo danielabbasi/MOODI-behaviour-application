@@ -1,42 +1,55 @@
 /**
- * Created by c1673218 on 11/12/2017.
+ * Created by c1443907 on 05/12/2017.
  */
+
+
 $(document).ready(function(){
     var id = $.url(2);
 
     $.ajax({
-        url : "/api/patient/" + id + "/activities/difference",
+        url : "/api/patient/" + id + "/statistics/average",
         type : "GET",
-        dataType: "json",
         success : function(data){
             console.log(data);
 
-            var difference = [];
-            var name = [];
+            var before = [];
+            var after = [];
+
 
             for(var i in data) {
-                difference.push(data[i][0]);
-                name.push(data[i][1]);
+                before.push(data[i][0]);
+                after.push(data[i][1]);
             }
 
             var chartdata = {
-                labels: name,
+                labels: ['Before', 'After'],
+                fontColor: 'white',
                 datasets: [
                     {
-                        label: "relative mood change",
+                        label: "Before",
                         backgroundColor: "rgba(255,99,132,0.2)",
                         borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(255,99,132,0.8)",
                         hoverBorderColor: "#000",
-                        fill: false,
-                        data: difference
+                        data: before
+                    }, {
+                        label: "After",
+                        backgroundColor: "rgba(51, 187, 255, 0.2)",
+                        borderColor: "#00b3b3",
+                        borderWidth: 2,
+                        hoverBackgroundColor: "rgba(51, 187, 255, 0.8)",
+                        hoverBorderColor: "#000",
+                        data: after
                     }
+
                 ]
             };
 
-            var ctx = $("#differenceGraph");
+            var ctx = $("#indexGraphAverage");
 
-            var LineGraph = new Chart(ctx, {
-                type: 'line',
+            var BarGraph = new Chart(ctx, {
+                type: 'bar',
                 data: chartdata,
                 options:
                     {
@@ -84,7 +97,3 @@ $(document).ready(function(){
         }
     });
 });
-
-
-
-
