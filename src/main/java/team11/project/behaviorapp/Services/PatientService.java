@@ -204,7 +204,7 @@ public class PatientService {
     public List<Activities> differenceGraph(@PathVariable Long id){
         Patient p = patientRepository.findById(id);
 
-        List <Activities> differenceActivities = activityRepository.differenceGraph(p);
+        List <Activities> differenceActivities = activityRepository.findByDifferenceAndName(p);
 
         return differenceActivities;
     }
