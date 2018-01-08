@@ -5,7 +5,8 @@ GitLab SSH: git@gitlab.cs.cf.ac.uk:c1673218/Y2_Behaviour_11.git
 
 Master branch is where the full working version lies.
 
-SQL script should also be run before checking any system tests.
+Before starting the application, in the directory go to the SQL folder and run the 
+behaviourdb.sql script.
 
 ## Test 1
 GO TO: http://localhost:8080/patient/1/index
