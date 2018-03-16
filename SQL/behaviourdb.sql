@@ -12,9 +12,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `behaviourdb` DEFAULT CHARACTER SET utf8 ;
 USE `behaviourdb` ;
 -- -----------------------------------------------------
--- Table `behaviourdb`.`GPs`
+-- Table `behaviourdb`.`gps`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `behaviourdb`.`GPs` (
+CREATE TABLE IF NOT EXISTS `behaviourdb`.`gps` (
   `gp_id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(5) NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
@@ -32,10 +32,10 @@ CREATE TABLE IF NOT EXISTS `behaviourdb`.`patients` (
   `last_name` VARCHAR(45) NOT NULL,
   `gp_ID` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_patients_GPs_idx` (`gp_ID` ASC),
-  CONSTRAINT `fk_patients_GPs`
+  INDEX `fk_patients_gps_idx` (`gp_ID` ASC),
+  CONSTRAINT `fk_patients_gps`
     FOREIGN KEY (`gp_ID`)
-    REFERENCES `behaviourdb`.`GPs` (`gp_id`)
+    REFERENCES `behaviourdb`.`gps` (`gp_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -65,12 +65,12 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-insert into GPs (gp_id, title, first_name, last_name) values (1, 'Dr', 'John', 'Smith');
-insert into GPs (gp_id, title, first_name, last_name) values (2, 'Dr', 'Daniel', 'Abbasi');
-insert into GPs (gp_id, title, first_name, last_name) values (3, 'Dr', 'Jamie', 'Highfield'); 
-insert into GPs (gp_id, title, first_name, last_name) values (4, 'Dr', 'Ahmed', 'Alsaab'); 
-insert into GPs (gp_id, title, first_name, last_name) values (5, 'Dr', 'Josh', 'Teague'); 
-insert into GPs (gp_id, title, first_name, last_name) values (6, 'Dr', 'Carl', 'Jones');
+insert into gps (gp_id, title, first_name, last_name) values (1, 'Dr', 'John', 'Smith');
+insert into gps (gp_id, title, first_name, last_name) values (2, 'Dr', 'Daniel', 'Abbasi');
+insert into gps (gp_id, title, first_name, last_name) values (3, 'Dr', 'Jamie', 'Highfield'); 
+insert into gps (gp_id, title, first_name, last_name) values (4, 'Dr', 'Ahmed', 'Alsaab'); 
+insert into gps (gp_id, title, first_name, last_name) values (5, 'Dr', 'Josh', 'Teague'); 
+insert into gps (gp_id, title, first_name, last_name) values (6, 'Dr', 'Carl', 'Jones');
 insert into patients (id, nhs_number, first_name, last_name, gp_id) values (1, 12345, 'Andres', 'Montgomery', '1');
 insert into patients (id, nhs_number, first_name, last_name, gp_id) values (2, 45345, 'Alex', 'Young', '2');
 insert into patients (id, nhs_number, first_name, last_name, gp_id) values (3, 64322, 'Kerry', 'Guzman', '3');
