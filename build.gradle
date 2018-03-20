@@ -13,6 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'pmd'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -21,10 +22,41 @@ repositories {
 	mavenCentral()
 }
 
+compile group: 'pmd', name: 'pmd', version: '4.3'
+
+
+pmd {
+	ignoreFailures=true
+	pmdTest.enabled=false
+	ruleSets = [
+			'java-basic',
+			'java-braces',
+			'java-clone',
+			'java-codesize',
+			'java-comments',
+			'java-controversial',
+			'java-coupling',
+			'java-design',
+			'java-empty',
+			'java-finalizers',
+			'java-imports',
+			'java-optimizations',
+			'java-strictexception',
+			'java-strings',
+			'java-typeresolution',
+			'java-unnecessary',
+			'java-unusedcode'
+	]
+}
+
+test {
+	ignoreFailures = false
+}
+
 
 dependencies {
 	compileOnly 'org.projectlombok:lombok:1.16.18'
-
+	compile group: 'pmd', name: 'pmd', version: '4.3'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	//compile('org.springframework.boot:spring-boot-starter-data-rest')
 	//compile('org.springframework.boot:spring-boot-starter-hateoas')

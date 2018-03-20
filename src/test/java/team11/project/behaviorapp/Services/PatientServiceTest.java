@@ -1,37 +1,44 @@
-//package team11.project.behaviorapp.Services;
-//
-//import org.junit.Assert;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//import team11.project.behaviorapp.AbstractTest;
-//import team11.project.behaviorapp.Entities.Activities;
-//import team11.project.behaviorapp.Entities.Patient;
-//import team11.project.behaviorapp.Repositories.ActivityRepository;
-//
-//import static org.hamcrest.Matchers.hasProperty;
-//
-//
-//import javax.transaction.Transactional;
-//
-//import java.util.List;
-//
-//import static org.hamcrest.CoreMatchers.allOf;
-//import static org.hamcrest.CoreMatchers.hasItems;
-//import static org.hamcrest.core.Is.is;
-//import static org.junit.Assert.*;
-//
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@Transactional
-//public class PatientServiceTest extends AbstractTest {
-//
-//    @Autowired
-//    private PatientService patientService;
-//    @Autowired
-//    private ActivityRepository activityRepository;
-//
-//    // Test to verify that there are 12 records in the patients table, indicating that the findall query in the service should only return 12 records/patients.
+package team11.project.behaviorapp.Services;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import team11.project.behaviorapp.AbstractTest;
+import team11.project.behaviorapp.Entities.Activities;
+import team11.project.behaviorapp.Entities.Patient;
+import team11.project.behaviorapp.Repositories.ActivityRepository;
+
+import static org.hamcrest.Matchers.hasProperty;
+
+
+import javax.transaction.Transactional;
+
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+public class PatientServiceTest extends AbstractTest {
+
+    @Autowired
+    private PatientService patientService;
+    @Autowired
+    private ActivityRepository activityRepository;
+
+    public class PatientServiceTests {
+
+        public String concatenate(String one, String two){
+            return one + two;
+        }
+    }
+
+    // Test to verify that there are 12 records in the patients table, indicating that the findall query in the service should only return 12 records/patients.
 //    @Test
 //    public void getAllPatients() throws Exception {
 //        List<Patient> list = patientService.getAllPatients();
@@ -73,5 +80,5 @@
 //
 //
 //    }
-//
-//}
+
+}
