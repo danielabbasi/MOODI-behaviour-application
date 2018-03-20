@@ -22,7 +22,6 @@ repositories {
 	mavenCentral()
 }
 
-compile group: 'pmd', name: 'pmd', version: '4.3'
 
 
 pmd {
