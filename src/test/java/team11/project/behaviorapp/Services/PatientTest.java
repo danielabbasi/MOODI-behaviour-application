@@ -6,9 +6,9 @@ package team11.project.behaviorapp.Services;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TestClass {
+public class PatientTest {
     @Test
-    public void testConcatenate() {
+    public void patientTest() {
         MyUnit myUnit = new MyUnit();
 
         String result = myUnit.concatenate("one", "two");
