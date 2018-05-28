@@ -96,3 +96,15 @@ insert into activities (activity_name, activity_date, is_completed, rating_befor
 insert into activities (activity_name, activity_date, is_completed, rating_before, rating_after, is_deleted, is_favourite, patient_id) values ('Go to the Park', '2017-05-18 04:53:33', 1, 1, 6, 0, 0, 1);
 insert into activities (activity_name, activity_date, is_completed, rating_before, rating_after, is_deleted, is_favourite, patient_id) values ('Cinema', '2017-05-18 04:53:33', 1, 6, 1, 1, 0, 1);
 insert into activities (activity_name, activity_date, is_completed, rating_before, rating_after, is_deleted, is_favourite, patient_id) values ('Go to Grocery Store', '2017-05-18 04:53:33', 0, 6, 0, 1, 0, 1);
+
+EXPLAIN SELECT * FROM activities WHERE is_completed = 1;
+
+CREATE INDEX activityCompletion ON activities(is_completed);
+
+EXPLAIN SELECT * FROM activities WHERE is_completed = 1;
+
+CREATE INDEX activityFavourite ON activities(is_favourite);
+
+CREATE INDEX activityName ON activity(activity_name);
+
+CREATE INDEX patientName ON patient(first_name);

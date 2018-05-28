@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by c1628725 on 07/12/2017.
@@ -89,6 +90,16 @@ public class PatientActivitiesAPI {
 
         return activities;
     }
+
+
+    @RequestMapping("{id}/activities/completed")
+    public List<Activities> getCompletedActivities(@PathVariable Long id ) {
+
+        List<Activities> completedActivities = patientService.getCompletedActivities(id, true);
+
+        return completedActivities;
+    }
+
 
     //Done
     @RequestMapping("{id}/activities/{activityId}/rate")

@@ -100,14 +100,6 @@ public class APIController {
 //        return activities;
 //    }
 
-//    @RequestMapping("{id}/activities/completed")
-//    public List<Activities> getCompletedActivities(@PathVariable Long id ) {
-//
-//        List<Activities> completedActivities = patientService.getCompletedActivities(id, true);
-//
-//        return completedActivities;
-//    }
-
 //    @RequestMapping("{id}/activities/patient/index")
 //    public List<Activities> getPatientsLastActivities(@PathVariable Long id ) {
 //
