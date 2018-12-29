@@ -1,16 +1,22 @@
-# System Tests
-GitLab URL: https://gitlab.cs.cf.ac.uk/c1673218/Y2_Behaviour_11
+# MOODi Behaviour Application
 
-GitLab SSH: git@gitlab.cs.cf.ac.uk:c1673218/Y2_Behaviour_11.git
+Developed a full stack web application using the Java SpringBoot framework and Thymeleaf (server-side template engine) which would be prescribed by GPs to patients who suffer from depression to help plan their monthly activities and track their mood.
+Created a RESTful application which used MySQL for data storage. The GP side of the application creates dynamic graphs for each of their patients allowing them to see how different activities were affecting their mood.
+
+
+## System Tests
+GitHub URL: https://github.com/danielabbasi/MOODI-behaviour-application
+
+GitHub SSH: git@github.com:danielabbasi/MOODI-behaviour-application.git
 
 Master branch is where the full working version lies.
 
 Before starting the application, in the directory go to the SQL folder and run the 
 behaviourdb.sql script.
 
-## Test 1
+### Test 1
 GO TO: http://localhost:8080/patient/1/index
-### Expected Output:
+#### Expected Output:
 Under Dashboard:
 - Coming up: 2
 - Average Score: 2
@@ -50,9 +56,9 @@ Your Last Three Activities:
  Go to Park = 5
  Cinema = -5
  
- ## TEST 2 
+ ### TEST 2 
  GO TO: http://localhost:8080/patient/activities/1
- ### Expected Output:
+ #### Expected Output:
  Under Upcoming Tab:
  Walking
  Painting
@@ -69,9 +75,9 @@ Your Last Three Activities:
  Go to the Park
  
  
- ## Test 3
+ ### Test 3
  GO TO: http://localhost:8080/patient/2/index
- ### Expected Output:
+ #### Expected Output:
  Under Dashboard:
  - Coming up: 2 
  - Average Score: 2
@@ -110,9 +116,9 @@ Your Last Three Activities:
   Go to Cinema = 5
   
   
-  ## TEST 4 
+  ### TEST 4 
   GO TO: http://localhost:8080/patient/activities/2
-  ### Expected Output:
+  #### Expected Output:
   Under Upcoming Tab:
   Go cycling to Maidenhead
   Planting
